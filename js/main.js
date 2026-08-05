@@ -64,11 +64,10 @@
       if (socialMap[k]) el.setAttribute('href', socialMap[k]);
     });
 
-    // Terminal hero ikut bahasa (render ulang tanpa animasi)
+    // Terminal hero ikut bahasa (restart loop agar teks baru terketik)
     const termBox = $('#term-output');
     if (termBox && termTyped) {
-      termTyped = false;
-      renderTerminalInstant();
+      runTerminalLoop();
     }
   };
 
@@ -154,14 +153,18 @@
         } else {
           setTimeout(() => { if (cursor) cursor.hidden = true; }, 900);
           revealExtras();
-          setTimeout(startTerminalTyping, 250);
+          setTimeout(runTerminalLoop, 250);
         }
       };
       type();
     } else {
       nameEl.textContent = CONFIG.name;
       revealExtras();
-      renderTerminalInstant();
+      if (reduceMotion) {
+        renderTerminalInstant();
+      } else {
+        runTerminalLoop();
+      }
     }
   };
 
@@ -213,27 +216,40 @@
   };
 
   let termTyped = false;
+  let termLoopToken = 0; // token untuk membatalkan loop lama saat ganti bahasa
+
   const renderTerminalInstant = () => {
     const box = $('#term-output');
-    if (!box || termTyped) return;
+    if (!box) return;
+    termLoopToken++; // batalkan loop yang sedang berjalan
     termTyped = true;
     box.innerHTML = '';
     buildTermLines().forEach((l) => box.appendChild(makeTermRow(l)));
     appendTermCursor(box);
   };
 
-  const startTerminalTyping = () => {
+  /* loop animasi mengetik: ketik → tahan → bersihkan → ulang */
+  const runTerminalLoop = () => {
     const box = $('#term-output');
-    if (!box || termTyped) return;
+    if (!box) return;
     if (reduceMotion) { renderTerminalInstant(); return; }
+    const token = ++termLoopToken;
     termTyped = true;
-    box.innerHTML = '';
     const lines = buildTermLines();
-    let li = 0;
-    const typeLine = () => {
-      if (li >= lines.length) { appendTermCursor(box); return; }
+    box.innerHTML = '';
+
+    const typeLine = (li) => {
+      if (token !== termLoopToken || !box.isConnected) return; // dibatalkan / ganti bahasa
+      if (li >= lines.length) {
+        appendTermCursor(box);
+        setTimeout(() => {
+          if (token !== termLoopToken || !box.isConnected) return;
+          box.innerHTML = '';
+          setTimeout(() => typeLine(0), 500); // jeda sebelum loop berikutnya
+        }, 3200); // tahan hasil sebentar
+        return;
+      }
       const line = lines[li];
-      if (!box.isConnected) return; // berhenti bila konten sudah diganti (ganti bahasa)
       if (line.kind === 'cmd') {
         const row = document.createElement('p');
         row.className = 'term-row';
@@ -246,19 +262,20 @@
         box.appendChild(row);
         let i = 0;
         const tick = () => {
-          if (!c.isConnected) return;
+          if (token !== termLoopToken || !c.isConnected) return;
           c.textContent = line.text.slice(0, ++i);
           if (i < line.text.length) setTimeout(tick, 34);
-          else { li++; setTimeout(typeLine, 140); }
+          else { li++; setTimeout(() => typeLine(li), 140); }
         };
         tick();
       } else {
         box.appendChild(makeTermRow(line));
         li++;
-        setTimeout(typeLine, 80);
+        setTimeout(() => typeLine(li), 80);
       }
     };
-    typeLine();
+
+    setTimeout(() => typeLine(0), 300);
   };
 
   /* ---------- NAVBAR ---------- */
