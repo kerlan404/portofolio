@@ -6,6 +6,7 @@
 const CONFIG = {
   name: 'NAMA LENGKAP',        // Nama besar di hero (efek mengetik)
   nameShort: 'NAMA',           // Nama di navbar & footer
+  role: 'Software Developer',  // Peran di terminal hero
   github: 'https://github.com/username',
   linkedin: 'https://linkedin.com/in/username',
   email: 'email@example.com',
@@ -37,6 +38,15 @@ const I18N = {
     'hero.ctaProjects': 'Lihat Proyek →',
     'hero.ctaCv': 'Unduh CV',
     'hero.scroll': '↓ scroll',
+    'hero.meta.ready': 'terbuka untuk kolaborasi',
+
+    'about.stats.years': 'tahun pengalaman',
+    'about.stats.projects': 'proyek selesai',
+    'about.stats.clients': 'klien',
+
+    'proj.tech': 'TEKNOLOGI',
+
+    'contact.response': 'biasanya membalas dalam 1×24 jam',
 
     'about.p1': 'Saya seorang software developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.',
     'about.p2': 'Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.',
@@ -68,13 +78,21 @@ const I18N = {
     'contact.socialLabel': 'LINK',
 
     'footer.made': 'dibuat dengan kopi ☕',
+    'footer.thanks': 'terima kasih sudah mampir',
+    'footer.backTop': 'kembali ke atas',
 
     'game.hint1': 'Koneksi ke rekruter terputus?',
     'game.hint2': 'Sambil nunggu, main dulu ↓',
     'game.control': 'SPASI / TAP — LOMPAT',
     'game.over': 'GAME OVER',
-    'game.restart': 'SPASI UNTUK MAIN LAGI',
+    'game.restart': 'MAIN LAGI',
+    'game.restartHint': 'atau tekan spasi',
     'game.score': 'SKOR',
+    'game.best': 'BEST',
+    'game.status.idle': 'SIAP',
+    'game.status.run': 'BERJALAN',
+    'game.status.over': 'SELESAI',
+    'game.status.static': 'REDUCED MOTION',
     'game.aria': 'Game Dino Run bertema developer. Tekan spasi atau tap untuk melompati rintangan.',
   },
 
@@ -95,6 +113,15 @@ const I18N = {
     'hero.ctaProjects': 'View Projects →',
     'hero.ctaCv': 'Download CV',
     'hero.scroll': '↓ scroll',
+    'hero.meta.ready': 'open to collaboration',
+
+    'about.stats.years': 'years of experience',
+    'about.stats.projects': 'projects completed',
+    'about.stats.clients': 'clients',
+
+    'proj.tech': 'STACK',
+
+    'contact.response': 'usually replies within 24h',
 
     'about.p1': 'I am a software developer who enjoys building products from scratch: designing databases, writing APIs, and polishing user interfaces. I believe good code is code that is easy to read, and a good product is one that feels simple to its users.',
     'about.p2': 'My current focus is full-stack web development and user experience. In my spare time, I like exploring new developer tools, contributing to open source, and occasionally writing technical articles.',
@@ -126,13 +153,21 @@ const I18N = {
     'contact.socialLabel': 'LINKS',
 
     'footer.made': 'made with coffee ☕',
+    'footer.thanks': 'thanks for stopping by',
+    'footer.backTop': 'back to top',
 
     'game.hint1': 'Connection to recruiter lost?',
     'game.hint2': 'Play while you wait ↓',
     'game.control': 'SPACE / TAP — JUMP',
     'game.over': 'GAME OVER',
-    'game.restart': 'SPACE TO PLAY AGAIN',
+    'game.restart': 'PLAY AGAIN',
+    'game.restartHint': 'or press space',
     'game.score': 'SCORE',
+    'game.best': 'BEST',
+    'game.status.idle': 'READY',
+    'game.status.run': 'RUNNING',
+    'game.status.over': 'OVER',
+    'game.status.static': 'REDUCED MOTION',
     'game.aria': 'Developer-themed Dino Run game. Press space or tap to jump over obstacles.',
   },
 };

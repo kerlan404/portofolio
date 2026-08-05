@@ -51,6 +51,7 @@
     const footerName = $('#footer-name');
     if (footerName) footerName.textContent = CONFIG.nameShort;
     document.title = t('meta.title');
+    if (window.__gameRefreshUI) window.__gameRefreshUI();
   };
 
   $$('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -114,7 +115,7 @@
     const nameEl = $('#hero-name');
     if (!nameEl) return;
     const cursor = $('#name-cursor');
-    const extras = ['#hero-tagline', '#hero-actions', '#hero-scroll'];
+    const extras = ['#hero-tagline', '#hero-actions', '#hero-meta', '#hero-terminal', '#hero-scroll'];
 
     const revealExtras = () => {
       extras.forEach((sel) => { const el = $(sel); if (el) el.classList.add('shown'); });
@@ -131,18 +132,118 @@
         } else {
           setTimeout(() => { if (cursor) cursor.hidden = true; }, 900);
           revealExtras();
+          setTimeout(startTerminalTyping, 250);
         }
       };
       type();
     } else {
       nameEl.textContent = CONFIG.name;
       revealExtras();
+      renderTerminalInstant();
     }
+  };
+
+  /* ---------- HERO: TERMINAL MOCKUP (mengetik skrip) ---------- */
+  const buildTermLines = () => [
+    { kind: 'cmd', prompt: '~/portfolio $', text: 'whoami' },
+    { kind: 'outName', value: CONFIG.name },
+    { kind: 'cmd', prompt: '~/portfolio $', text: './status.sh' },
+    { kind: 'out', key: 'role', value: CONFIG.role },
+    { kind: 'out', key: 'status', value: t('hero.meta.ready') },
+    { kind: 'out', key: 'stack', value: '[JavaScript · PHP · MySQL · React]' },
+  ];
+
+  const makeTermRow = (line) => {
+    const row = document.createElement('p');
+    row.className = 'term-row';
+    if (line.kind === 'cmd') {
+      const p = document.createElement('span');
+      p.className = 'term-prompt';
+      p.textContent = line.prompt + ' ';
+      const c = document.createElement('span');
+      c.className = 'term-cmd';
+      c.textContent = line.text;
+      row.appendChild(p); row.appendChild(c);
+    } else if (line.kind === 'outName') {
+      const v = document.createElement('span');
+      v.className = 'term-out-name';
+      v.textContent = line.value;
+      row.appendChild(v);
+    } else {
+      const k = document.createElement('span');
+      k.className = 'term-out-key';
+      k.textContent = (line.key ? line.key + ': ' : '') + ' ';
+      const v = document.createElement('span');
+      v.className = 'term-out-val';
+      v.textContent = line.value;
+      row.appendChild(k); row.appendChild(v);
+    }
+    return row;
+  };
+
+  const appendTermCursor = (box) => {
+    const row = document.createElement('p');
+    row.className = 'term-row term-cursor-row';
+    const cur = document.createElement('span');
+    cur.className = 'cursor';
+    row.appendChild(cur);
+    box.appendChild(row);
+  };
+
+  let termTyped = false;
+  const renderTerminalInstant = () => {
+    const box = $('#term-output');
+    if (!box || termTyped) return;
+    termTyped = true;
+    box.innerHTML = '';
+    buildTermLines().forEach((l) => box.appendChild(makeTermRow(l)));
+    appendTermCursor(box);
+  };
+
+  const startTerminalTyping = () => {
+    const box = $('#term-output');
+    if (!box || termTyped) return;
+    if (reduceMotion) { renderTerminalInstant(); return; }
+    termTyped = true;
+    box.innerHTML = '';
+    const lines = buildTermLines();
+    let li = 0;
+    const typeLine = () => {
+      if (li >= lines.length) { appendTermCursor(box); return; }
+      const line = lines[li];
+      if (line.kind === 'cmd') {
+        const row = document.createElement('p');
+        row.className = 'term-row';
+        const p = document.createElement('span');
+        p.className = 'term-prompt';
+        p.textContent = line.prompt + ' ';
+        const c = document.createElement('span');
+        c.className = 'term-cmd';
+        row.appendChild(p); row.appendChild(c);
+        box.appendChild(row);
+        let i = 0;
+        const tick = () => {
+          c.textContent = line.text.slice(0, ++i);
+          if (i < line.text.length) setTimeout(tick, 34);
+          else { li++; setTimeout(typeLine, 140); }
+        };
+        tick();
+      } else {
+        box.appendChild(makeTermRow(line));
+        li++;
+        setTimeout(typeLine, 80);
+      }
+    };
+    typeLine();
   };
 
   /* ---------- NAVBAR ---------- */
   const navbar = $('#navbar');
-  const onScroll = () => navbar && navbar.classList.toggle('scrolled', window.scrollY > 24);
+  const backTop = $('#back-to-top');
+  const onScroll = () => {
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 24);
+    if (backTop) backTop.classList.toggle('show', window.scrollY > 600);
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 

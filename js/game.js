@@ -1,6 +1,7 @@
 /* ==========================================================================
    EASTER EGG: DINO RUN bertema developer
    Rintangan: `{ }`, `404`, bug · Lompat: spasi / tap · Lazy saat terlihat
+   Skor & status tampil di bilah judul jendela terminal
    ========================================================================== */
 (() => {
   'use strict';
@@ -10,8 +11,18 @@
   const ctx = canvas.getContext('2d');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Pixel art — dino (siluet biru) & bug */
-  const DINO = [
+  const els = {
+    score: document.getElementById('game-score'),
+    best: document.getElementById('game-best'),
+    status: document.getElementById('game-status'),
+    overlay: document.getElementById('game-overlay'),
+    overTitle: document.getElementById('over-title'),
+    overScore: document.getElementById('over-score'),
+    restart: document.getElementById('game-restart'),
+  };
+
+  /* Pixel art — dino dua frame (lari) & bug */
+  const DINO_A = [
     '...XXX..',
     '..XXXX..',
     '.XXXXX..',
@@ -25,6 +36,20 @@
     'X..X....',
     'X...X...',
   ];
+  const DINO_B = [
+    '...XXX..',
+    '..XXXX..',
+    '.XXXXX..',
+    '.XXXXXX.',
+    'XXXXXXX.',
+    '.XXXXXX.',
+    '.XXX....',
+    'XXXX....',
+    'XXX.....',
+    'XX.XX...',
+    'X..X.X..',
+    'X..X..X.',
+  ];
   const BUG = [
     '..XX..',
     '.XXXX.',
@@ -35,13 +60,12 @@
     '.X..X.',
   ];
 
-  const PX = 6;                       // ukuran piksel dino/bug
-  const DINO_W = DINO[0].length * PX;
-  const DINO_H = DINO.length * PX;
+  const PX = 6;
+  const DINO_H = DINO_A.length * PX;
 
-  const GRAVITY = 2500;               // px/detik^2
-  const JUMP_V = 840;                 // px/detik (ke atas)
-  const GROUND_OFFSET = 46;           // jarak tanah dari bawah canvas
+  const GRAVITY = 2500;
+  const JUMP_V = 840;
+  const GROUND_OFFSET = 46;
   const DINO_X = 64;
 
   let W = 0, H = 170, dpr = 1;
@@ -51,13 +75,18 @@
   const colors = () => ({ accent: cssVar('--accent'), ink: cssVar('--ink'), border: cssVar('--border'), muted: cssVar('--ink-muted') });
 
   const state = {
-    mode: 'idle',                     // idle | running | over
+    mode: 'idle',
     dinoY: 0, vy: 0,
     speed: 3.4,
     score: 0,
     obstacles: [],
     spawnAt: 1100,
     best: 0,
+    leg: 0,
+    legT: 0,
+    dashOffset: 0,
+    lastScoreShown: -1,
+    lastBestShown: -1,
   };
 
   try {
@@ -68,7 +97,7 @@
   const resize = () => {
     const box = canvas.parentElement.getBoundingClientRect();
     dpr = window.devicePixelRatio || 1;
-    W = Math.max(280, box.width);
+    W = Math.max(280, box.width - 20); // kurangi padding wrap agar selaras overlay
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
     canvas.style.width = W + 'px';
@@ -79,12 +108,55 @@
   window.addEventListener('resize', resize);
   resize();
 
+  /* ---------- UI SYNC (bilah judul & overlay) ---------- */
+  const setStatus = () => {
+    if (!els.status) return;
+    const map = { idle: 'game.status.idle', running: 'game.status.run', over: 'game.status.over' };
+    els.status.textContent = reduceMotion
+      ? t('game.status.static')
+      : t(map[state.mode] || 'game.status.run');
+  };
+
+  const syncMeta = () => {
+    const s = Math.floor(state.score);
+    if (els.score && s !== state.lastScoreShown) {
+      els.score.textContent = String(s).padStart(4, '0');
+      state.lastScoreShown = s;
+    }
+    if (els.best && state.best !== state.lastBestShown) {
+      els.best.textContent = String(state.best).padStart(4, '0');
+      state.lastBestShown = state.best;
+    }
+  };
+
+  const showOverlay = (show) => {
+    if (!els.overlay) return;
+    els.overlay.hidden = !show;
+    if (show) {
+      if (els.overTitle) els.overTitle.textContent = t('game.over');
+      if (els.overScore) {
+        els.overScore.textContent = t('game.score') + ' ' +
+          String(Math.floor(state.score)).padStart(4, '0') + ' · BEST ' +
+          String(state.best).padStart(4, '0');
+      }
+    }
+  };
+
+  const refreshUI = () => { setStatus(); syncMeta(); showOverlay(state.mode === 'over'); };
+
+  // Aksesibilitas: umumkan hasil game ke screen reader
+  if (els.overlay && !els.overlay.hasAttribute('role')) els.overlay.setAttribute('role', 'alert');
+  window.__gameRefreshUI = refreshUI; // dipanggil saat bahasa berubah
+
   /* ---------- STATE ---------- */
   const reset = () => {
     state.mode = 'running';
     state.dinoY = 0; state.vy = 0;
     state.speed = 3.4; state.score = 0;
     state.obstacles = []; state.spawnAt = 1100;
+    state.lastScoreShown = -1;
+    showOverlay(false);
+    setStatus(); syncMeta();
   };
 
   const spawnObstacle = () => {
@@ -96,15 +168,24 @@
 
   const jump = () => {
     if (state.mode === 'over') { reset(); return; }
-    if (state.mode === 'idle') { state.mode = 'running'; }
+    if (state.mode === 'idle') { state.mode = 'running'; setStatus(); }
     if (state.dinoY <= 1) state.vy = -JUMP_V;
+  };
+
+  const gameOver = () => {
+    state.mode = 'over';
+    state.best = Math.max(state.best, Math.floor(state.score));
+    try { sessionStorage.setItem('pf-dino-best', String(state.best)); } catch (e) { /* ignore */ }
+    syncMeta();
+    setStatus();
+    showOverlay(true);
   };
 
   /* ---------- MENGGAMBAR ---------- */
   const drawDino = (x, y) => {
-    const c = colors().accent;
-    ctx.fillStyle = c;
-    DINO.forEach((row, r) => {
+    const frame = state.leg ? DINO_B : DINO_A;
+    ctx.fillStyle = colors().accent;
+    frame.forEach((row, r) => {
       for (let col = 0; col < row.length; col++) {
         if (row[col] === 'X') ctx.fillRect(x + col * PX, y + r * PX, PX, PX);
       }
@@ -134,38 +215,23 @@
     const c = colors();
     ctx.clearRect(0, 0, W, H);
 
-    // garis tanah putus-putus
+    // garis tanah putus-putus yang ikut bergerak
     ctx.strokeStyle = c.border;
     ctx.lineWidth = 2;
     ctx.setLineDash([10, 8]);
+    ctx.lineDashOffset = -state.dashOffset;
     ctx.beginPath();
     ctx.moveTo(0, groundY + 4);
     ctx.lineTo(W, groundY + 4);
     ctx.stroke();
     ctx.setLineDash([]);
+    ctx.lineDashOffset = 0;
 
     // dino
     drawDino(DINO_X, groundY - DINO_H + 4 - state.dinoY);
 
     // rintangan
     state.obstacles.forEach(drawObstacle);
-
-    // skor
-    ctx.font = '500 13px "JetBrains Mono", monospace';
-    ctx.fillStyle = c.muted;
-    ctx.textAlign = 'right';
-    ctx.fillText(t('game.score') + ' ' + String(Math.floor(state.score)).padStart(4, '0'), W - 14, 24);
-    if (state.best > 0) ctx.fillText('BEST ' + String(state.best).padStart(4, '0'), W - 14, 42);
-
-    if (state.mode === 'over') {
-      ctx.textAlign = 'center';
-      ctx.fillStyle = c.ink;
-      ctx.font = '700 22px "Space Grotesk", sans-serif';
-      ctx.fillText(t('game.over'), W / 2, H / 2 - 6);
-      ctx.font = '500 13px "JetBrains Mono", monospace';
-      ctx.fillStyle = c.muted;
-      ctx.fillText(t('game.restart'), W / 2, H / 2 + 18);
-    }
   };
 
   /* ---------- GAME LOOP (delta-time) ---------- */
@@ -185,6 +251,12 @@
       state.dinoY += state.vy * dt;
       if (state.dinoY <= 0) { state.dinoY = 0; state.vy = 0; }
 
+      // animasi kaki (hanya saat di tanah)
+      if (state.dinoY <= 0) {
+        state.legT += dt;
+        if (state.legT > 0.13) { state.legT = 0; state.leg = state.leg ? 0 : 1; }
+      }
+
       // spawn
       state.spawnAt -= dt * 1000;
       if (state.spawnAt <= 0) {
@@ -192,9 +264,11 @@
         state.spawnAt = 900 + Math.random() * 800;
       }
 
-      // gerak rintangan
-      state.obstacles.forEach((o) => { o.x -= state.speed * 60 * dt; });
+      // gerak rintangan & tanah
+      const step = state.speed * 60 * dt;
+      state.obstacles.forEach((o) => { o.x -= step; });
       state.obstacles = state.obstacles.filter((o) => o.x + o.w > -30);
+      state.dashOffset = (state.dashOffset + step * 0.5) % 18;
 
       // tabrakan (AABB dengan sedikit inset agar adil)
       const dx = DINO_X + 6, dw = 40;
@@ -202,12 +276,11 @@
       for (const o of state.obstacles) {
         const ox = o.x + 6, oy = groundY - o.h + 8 + 4, ow = o.w - 12, oh = o.h - 8;
         if (dx < ox + ow && dx + dw > ox && dy < oy + oh && dy + dh > oy) {
-          state.mode = 'over';
-          state.best = Math.max(state.best, Math.floor(state.score));
-          try { sessionStorage.setItem('pf-dino-best', String(state.best)); } catch (e) { /* ignore */ }
+          gameOver();
           break;
         }
       }
+      syncMeta();
     }
 
     draw();
@@ -235,10 +308,8 @@
     state.mode = 'idle';
     state.obstacles = [{ x: W * 0.58, type: 'braces', w: 54, h: 40 }];
     draw();
-    ctx.font = '500 12px "JetBrains Mono", monospace';
-    ctx.fillStyle = colors().muted;
-    ctx.textAlign = 'right';
-    ctx.fillText('REDUCED MOTION — NO ANIMATION', W - 14, 62);
+    setStatus();
+    syncMeta();
   };
 
   /* ---------- LAZY: hanya jalan saat terlihat ---------- */
@@ -246,7 +317,7 @@
     entries.forEach((en) => {
       visible = en.isIntersecting;
       if (visible) {
-        if (state.mode === 'idle' && !reduceMotion) state.mode = 'running';
+        if (state.mode === 'idle' && !reduceMotion) { state.mode = 'running'; setStatus(); }
         startLoop();
       } else {
         stopLoop();
@@ -256,10 +327,12 @@
   io.observe(canvas);
 
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopLoop();
+    if (document.hidden) { stopLoop(); return; }
+    if (visible && state.mode === 'running') startLoop();
   });
 
   /* ---------- KONTROL ---------- */
+  if (els.restart) els.restart.addEventListener('click', reset);
   canvas.addEventListener('click', jump);
   canvas.addEventListener('touchstart', (e) => { e.preventDefault(); jump(); }, { passive: false });
   canvas.addEventListener('keydown', (e) => {
@@ -274,7 +347,9 @@
     jump();
   });
 
-  /* Initial draw agar canvas tidak kosong sebelum terlihat */
+  /* Inisialisasi */
   if (reduceMotion) drawStaticScene();
   else draw();
+  syncMeta();
+  setStatus();
 })();

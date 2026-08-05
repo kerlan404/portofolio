@@ -65,10 +65,19 @@ npx serve -l 4173
 ## Fitur
 
 - ⏳ Loading screen kata "halo" 12 bahasa + progres bar, hanya sekali per sesi
-- ⌨️ Hero `$ whoami` dengan efek mengetik nama (sekali per kunjungan)
+- ⌨️ Hero berupa **jendela terminal**: `$ whoami` + nama mengetik, lalu skrip
+  `./status.sh` diketik baris demi baris dengan kursor berkedip
+- 📟 **Ticker berjalan** berisi humor developer (`$ npm install kesuksesan`,
+  `404: rasa takut tidak ditemukan`) sebagai pembatas antar-section
+- 🔢 **Angka hantu** besar (01–04) di belakang tiap section
+- 🖼️ Foto & form kontak dibingkai **jendela terminal** (`~/profile.jpg`,
+  `~/kirim-pesan.js`) — identitas visual yang konsisten
+- 🦖 **Easter egg Dino Run** dalam jendela terminal `~/dino-run.js`: rintangan
+  `{ }`, `404`, bug; animasi kaki berlari; skor & BEST di bilah judul;
+  overlay GAME OVER + tombol main lagi; lompat dengan spasi/tap; hanya
+  berjalan saat section terlihat
 - 🌗 Mode terang/gelap (mengikuti sistem saat pertama kali, tersimpan di localStorage)
 - 🌐 Dwibahasa ID/EN tanpa reload (label mono & nama teknologi tetap universal)
-- 🦖 **Easter egg Dino Run** di footer: rintangan `{ }`, `404`, bug; lompat dengan
-  spasi/tap; skor terbaik tersimpan; hanya berjalan saat section terlihat
 - ♿ Aksesibilitas: kontras WCAG AA, fokus keyboard terlihat, `prefers-reduced-motion`
 - 📱 Responsif: desktop 2 kolom → mobile 1 kolom + menu hamburger
+- ⬆️ Tombol kembali ke atas mengambang
