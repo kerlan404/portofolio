@@ -197,8 +197,8 @@
       state.obstacles = state.obstacles.filter((o) => o.x + o.w > -30);
 
       // tabrakan (AABB dengan sedikit inset agar adil)
-      const dx = DINO_X + 8, dy = groundY - DINO_H + 4 - state.dinoY + 8;
-      const dw = 34, dh = 28;
+      const dx = DINO_X + 6, dw = 40;
+      const dy = groundY - DINO_H + 4 - state.dinoY + 12, dh = DINO_H - 16;
       for (const o of state.obstacles) {
         const ox = o.x + 6, oy = groundY - o.h + 8 + 4, ow = o.w - 12, oh = o.h - 8;
         if (dx < ox + ow && dx + dw > ox && dy < oy + oh && dy + dh > oy) {

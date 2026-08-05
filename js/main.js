@@ -63,6 +63,7 @@
   let playedAnimation = false;
 
   const finishLoader = (instant) => {
+    document.body.style.overflow = '';
     if (instant) {
       if (loader) loader.style.display = 'none';
       startHero();
@@ -84,6 +85,7 @@
     } catch (e) { /* ignore */ }
 
     playedAnimation = true;
+    document.body.style.overflow = 'hidden';
     const total = LOADER_WORDS.length * WORD_MS;
     requestAnimationFrame(() => {
       loaderProgress.style.transition = `width ${total}ms linear`;

@@ -72,6 +72,7 @@ body {
 
 a { color: var(--accent); text-decoration: none; }
 img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 ul { list-style: none; }
 button { font-family: inherit; cursor: pointer; }
 
