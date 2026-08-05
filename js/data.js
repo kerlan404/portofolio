@@ -79,6 +79,7 @@ const I18N = {
 
     'exp1.role': 'Anggota Ekstrakurikuler IT Preneur',
     'exp1.desc': 'Anggota ekstrakurikuler IT Preneur periode 2024–2025 — belajar dasar pengembangan web, kewirausahaan digital, dan membangun proyek teknologi bersama tim.',
+    'exp.done': 'selesai',
 
     'proj1.name': 'Toko Online — CMS E-Commerce',
     'proj1.desc': 'Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.',
@@ -166,6 +167,7 @@ const I18N = {
 
     'exp1.role': 'Member — IT Preneur Extracurricular',
     'exp1.desc': 'Member of the IT Preneur extracurricular (2024–2025) — learned web development fundamentals, digital entrepreneurship, and built tech projects with a team.',
+    'exp.done': 'completed',
 
     'proj1.name': 'Online Store — E-Commerce CMS',
     'proj1.desc': 'Full online store platform: manage products, promos, customers, and orders through an admin dashboard.',
@@ -232,6 +234,7 @@ const I18N = {
 
     'exp1.role': 'IT Preneur 部活動 メンバー',
     'exp1.desc': '2024〜2025年にIT Preneur部活動に参加し、Web開発の基礎、デジタル起業、チームでのテクノロジープロジェクト制作を学びました。',
+    'exp.done': '完了',
 
     'proj1.name': 'オンラインストア — EC CMS',
     'proj1.desc': '商品・プロモーション・顧客・注文を管理画面でまとめて管理できる、本格的なECプラットフォーム。',

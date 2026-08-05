@@ -317,6 +317,14 @@
   }, { threshold: 0.2 });
   $$('.section-label').forEach((el) => revealObs.observe(el));
 
+  /* ---------- REVEAL: kartu pengalaman (bilah periode terisi) ---------- */
+  const expObs = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add('is-revealed'); expObs.unobserve(en.target); }
+    });
+  }, { threshold: 0.25 });
+  $$('.timeline-item').forEach((el) => expObs.observe(el));
+
   /* ---------- KONTAK: FORM (Netlify Forms) ---------- */
   const form = $('#contact-form');
   const status = $('#form-status');
