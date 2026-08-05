@@ -22,6 +22,11 @@ kata "Hai" multi-bahasa, mode terang/gelap, trilingual **ID/EN/JA**, dan angka
 │   ├── data.js             # ⭐ KONFIGURASI & semua teks (id/en/ja) — edit di sini
 │   └── main.js             # Loader, typing, tema, bahasa, nav, form, parallax 404
 ├── assets/
+│   ├── favicon.svg         # Favicon (prompt terminal >_)
+│   ├── favicon-32.png      #   + versi PNG 32×32
+│   ├── apple-touch-icon.png#   + ikon iOS 180×180
+│   ├── og-image.svg        # Gambar OG 1200×630 (sumber, bisa diedit)
+│   ├── og-image.png        #   + versi PNG untuk sosmed (dipakai meta OG)
 │   └── images/             # Thumbnail proyek (SVG kustom siap pakai)
 │       ├── proyek-1..4.svg #   Thumbnail proyek bertema terminal
 │       └── placeholder.svg #   Cadangan jika file tidak ditemukan
@@ -43,6 +48,10 @@ kata "Hai" multi-bahasa, mode terang/gelap, trilingual **ID/EN/JA**, dan angka
    `assets/images/README.md`).
 5. **Link proyek "live ↗"** → di `index.html`, ganti `href="#"` pada
    `.project-link` dengan URL proyek.
+6. **Domain untuk OG/sosmed** → di `index.html`, ganti semua
+   `YOUR-DOMAIN` di blok meta `og:*` / `twitter:*` dengan domain Netlify
+   asli (contoh: `https://portofolio-mrezy.netlify.app`). Tanpa ini,
+   thumbnail link tidak tampil saat dibagikan ke WhatsApp/Twitter/etc.
 
 ## Menjalankan di lokal
 
@@ -62,6 +71,8 @@ npx serve -l 4173
 4. Deploy — setiap push ke GitHub otomatis ter-deploy.
 5. **Form kontak** aktif otomatis (Netlify Forms, gratis) — notifikasi
    submission ada di **Site settings → Forms**.
+6. Setelah domain Netlify diketahui, ganti `YOUR-DOMAIN` pada meta `og:*`
+   di `index.html` (lihat langkah 6 di atas) — thumbnail link baru tampil.
 
 ## Fitur
 
