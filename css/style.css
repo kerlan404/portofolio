@@ -24,6 +24,10 @@
 }
 
 /* Mode terang (default) */
+/* ikon GitHub (monokrom) tetap terlihat di mode gelap */
+html[data-theme='dark'] img[src$='github.svg'] {
+  filter: invert(1);
+}
 :root,
 html[data-theme='light'] {
   --bg: #FFFFFF;
@@ -656,6 +660,7 @@ body, a, button, input, textarea, .tag, .project-card,
   transition: border-color var(--dur) ease, transform 0.2s ease,
               background-color var(--dur) ease;
 }
+.timeline-item + .timeline-item { margin-top: 26px; }
 .timeline-item:hover { border-color: var(--accent); transform: translateX(4px); }
 /* angka tahun raksasa sebagai watermark di dalam kartu */
 .timeline-item::after {
@@ -708,6 +713,24 @@ body, a, button, input, textarea, .tag, .project-card,
   color: var(--ink-muted);
 }
 .timeline-done::before { content: '✓ '; color: var(--accent); }
+/* badge "berlangsung": titik berdenyut */
+.timeline-done.live {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--accent);
+}
+.timeline-done.live::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent-soft);
+  animation: live-pulse 1.8s ease-out infinite;
+}
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent); }
+  70% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent); }
+}
 .timeline-role {
   font-family: var(--display);
   font-size: 1.35rem;

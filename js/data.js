@@ -6,7 +6,7 @@
 const CONFIG = {
   name: 'Mochammad Rezy Alfarabi',  // Nama besar di hero (efek mengetik)
   nameShort: 'M.Rezy',              // Nama di navbar & footer
-  role: 'Software Developer',  // Peran di terminal hero
+  role: 'Full Stack Developer',  // Peran di terminal hero
   github: 'https://github.com/username',
   instagram: 'https://instagram.com/username',
   whatsapp: '6281234567890',   // Nomor WA, format internasional tanpa '+'
@@ -37,7 +37,7 @@ const I18N = {
     'theme.toLight': 'Mode terang',
     'theme.toDark': 'Mode gelap',
 
-    'hero.tagline': 'Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.',
+    'hero.tagline': 'Full Stack Developer — membangun produk web yang rapi, cepat, dan bermanfaat.',
     'hero.ctaProjects': 'Lihat Proyek →',
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'terbuka untuk kolaborasi',
@@ -49,9 +49,9 @@ const I18N = {
     'ticker.5': 'SIGINT: cukup scroll',
     'ticker.6': 'syntax error: hidup tanpa kopi',
 
-    'about.stats.years': 'tahun pengalaman',
+    'about.stats.years': 'tahun belajar coding',
     'about.stats.projects': 'proyek selesai',
-    'about.stats.clients': 'klien',
+    'about.stats.clubs': 'eskul & komunitas',
 
     'proj.tech': 'TEKNOLOGI',
     'proj.featured': 'PROYEK UNGGULAN',
@@ -74,12 +74,15 @@ const I18N = {
 
     'contact.response': 'biasanya membalas dalam 1×24 jam',
 
-    'about.p1': 'Saya seorang software developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.',
+    'about.p1': 'Saya seorang full stack developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.',
     'about.p2': 'Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.',
 
-    'exp1.role': 'Anggota Ekstrakurikuler IT Preneur',
-    'exp1.desc': 'Anggota ekstrakurikuler IT Preneur periode 2024–2025 — belajar dasar pengembangan web, kewirausahaan digital, dan membangun proyek teknologi bersama tim.',
+    'exp1.role': 'Siswa — SMK Jakarta Pusat 1',
+    'exp1.desc': 'Siswa kelas XII RPL 2 di SMK Jakarta Pusat 1 — mendalami pengembangan web full stack dan belajar basis data (MySQL): merancang skema, menulis query, sampai mengintegrasikannya ke aplikasi web.',
+    'exp.ongoing': 'berlangsung',
     'exp.done': 'selesai',
+    'exp2.role': 'Anggota Ekstrakurikuler IT Preneur',
+    'exp2.desc': 'Anggota ekstrakurikuler IT Preneur periode 2024–2025 — belajar dasar pengembangan web, kewirausahaan digital, dan membangun proyek teknologi bersama tim.',
 
     'proj1.name': 'Toko Online — CMS E-Commerce',
     'proj1.desc': 'Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.',
@@ -125,7 +128,7 @@ const I18N = {
     'theme.toLight': 'Switch to light mode',
     'theme.toDark': 'Switch to dark mode',
 
-    'hero.tagline': 'Software Developer — building clean, fast, useful web products.',
+    'hero.tagline': 'Full Stack Developer — building clean, fast, useful web products.',
     'hero.ctaProjects': 'View Projects →',
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'open to collaboration',
@@ -137,9 +140,9 @@ const I18N = {
     'ticker.5': 'SIGINT: enough scrolling',
     'ticker.6': 'syntax error: life without coffee',
 
-    'about.stats.years': 'years of experience',
+    'about.stats.years': 'years of coding',
     'about.stats.projects': 'projects completed',
-    'about.stats.clients': 'clients',
+    'about.stats.clubs': 'clubs & communities',
 
     'proj.tech': 'STACK',
     'proj.featured': 'FEATURED PROJECT',
@@ -162,12 +165,15 @@ const I18N = {
 
     'contact.response': 'usually replies within 24h',
 
-    'about.p1': 'I am a software developer who enjoys building products from scratch: designing databases, writing APIs, and polishing user interfaces. I believe good code is code that is easy to read, and a good product is one that feels simple to its users.',
+    'about.p1': 'I am a full stack developer who enjoys building products from scratch: designing databases, writing APIs, and polishing user interfaces. I believe good code is code that is easy to read, and a good product is one that feels simple to its users.',
     'about.p2': 'My current focus is full-stack web development and user experience. In my spare time, I like exploring new developer tools, contributing to open source, and occasionally writing technical articles.',
 
-    'exp1.role': 'Member — IT Preneur Extracurricular',
-    'exp1.desc': 'Member of the IT Preneur extracurricular (2024–2025) — learned web development fundamentals, digital entrepreneurship, and built tech projects with a team.',
+    'exp1.role': 'Student — SMK Jakarta Pusat 1',
+    'exp1.desc': 'Grade XII student of RPL 2 at SMK Jakarta Pusat 1 — diving into full stack web development and learning databases (MySQL): designing schemas, writing queries, and integrating them into web apps.',
+    'exp.ongoing': 'ongoing',
     'exp.done': 'completed',
+    'exp2.role': 'Member — IT Preneur Extracurricular',
+    'exp2.desc': 'Member of the IT Preneur extracurricular (2024–2025) — learned web development fundamentals, digital entrepreneurship, and built tech projects with a team.',
 
     'proj1.name': 'Online Store — E-Commerce CMS',
     'proj1.desc': 'Full online store platform: manage products, promos, customers, and orders through an admin dashboard.',
@@ -213,7 +219,7 @@ const I18N = {
     'theme.toLight': 'ライトモードに切り替え',
     'theme.toDark': 'ダークモードに切り替え',
 
-    'hero.tagline': 'ソフトウェア開発者 — 美しく、速く、使いやすいWebプロダクトを開発しています。',
+    'hero.tagline': 'フルスタック開発者 — 美しく、速く、使いやすいWebプロダクトを開発しています。',
     'hero.ctaProjects': '制作物を見る →',
     'hero.scroll': '↓ スクロール',
     'hero.meta.ready': 'コラボレーション歓迎',
@@ -225,16 +231,19 @@ const I18N = {
     'ticker.5': 'SIGINT: スクロールはここまで',
     'ticker.6': 'syntax error: コーヒーのない人生',
 
-    'about.p1': '私はソフトウェア開発者として、データベース設計からAPI、UIの仕上げまで、プロダクトをゼロから作り上げる過程を楽しんでいます。良いコードは読みやすいコードであり、良いプロダクトは使う人にとってシンプルに感じられるものだと考えています。',
+    'about.p1': '私はフルスタック開発者として、データベース設計からAPI、UIの仕上げまで、プロダクトをゼロから作り上げる過程を楽しんでいます。良いコードは読みやすいコードであり、良いプロダクトは使う人にとってシンプルに感じられるものだと考えています。',
     'about.p2': '現在はフルスタックなWeb開発とユーザー体験に注力しています。空き時間には新しい開発ツールを試したり、オープンソースへの貢献や技術記事の執筆をしたりしています。',
 
-    'about.stats.years': '年以上の経験',
+    'about.stats.years': '年のコーディング経験',
     'about.stats.projects': '件のプロジェクト',
-    'about.stats.clients': '社のクライアント',
+    'about.stats.clubs': '部活・コミュニティ',
 
-    'exp1.role': 'IT Preneur 部活動 メンバー',
-    'exp1.desc': '2024〜2025年にIT Preneur部活動に参加し、Web開発の基礎、デジタル起業、チームでのテクノロジープロジェクト制作を学びました。',
+    'exp1.role': '学生 — SMK ジャカルタ中央 1',
+    'exp1.desc': 'SMKジャカルタ中央1のRPL 2（ソフトウェアエンジニアリング科）12年生。フルスタックWeb開発を深め、データベース（MySQL）のスキーマ設計・クエリ・Webアプリへの統合を学んでいます。',
+    'exp.ongoing': '在学中',
     'exp.done': '完了',
+    'exp2.role': 'IT Preneur 部活動 メンバー',
+    'exp2.desc': '2024〜2025年にIT Preneur部活動に参加し、Web開発の基礎、デジタル起業、チームでのテクノロジープロジェクト制作を学びました。',
 
     'proj1.name': 'オンラインストア — EC CMS',
     'proj1.desc': '商品・プロモーション・顧客・注文を管理画面でまとめて管理できる、本格的なECプラットフォーム。',
