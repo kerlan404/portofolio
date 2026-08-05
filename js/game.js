@@ -419,10 +419,14 @@
 
   window.addEventListener('keydown', (e) => {
     if (e.code !== 'Space' && e.code !== 'ArrowUp') return;
-    const tag = document.activeElement ? document.activeElement.tagName : '';
-    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'BUTTON') return;
+    // Hanya blokir saat sedang mengetik di form — bukan karena tombol yang
+    // sempat diklik (fokus tombol tidak boleh menonaktifkan lompatan)
+    const tag = e.target ? e.target.tagName : '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (!visible) return; // di luar area game, Space tetap dipakai scroll biasa
     e.preventDefault();
     jump();
+    if (state.mode === 'running') startLoop();
   });
 
   /* Inisialisasi */

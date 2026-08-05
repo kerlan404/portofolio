@@ -23,9 +23,9 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 │   ├── main.js             # Loader, typing, tema, bahasa, nav, form
 │   └── game.js             # Easter egg Dino Run (canvas)
 ├── assets/
-│   └── images/             # ⭐ Taruh thumbnail proyek Anda di sini
-│       ├── proyek-1..4.jpg #   Thumbnail proyek
-│       └── placeholder.svg #   Cadangan jika gambar belum diisi
+│   └── images/             # Thumbnail proyek (SVG kustom siap pakai)
+│       ├── proyek-1..4.svg #   Thumbnail proyek bertema terminal
+│       └── placeholder.svg #   Cadangan jika file tidak ditemukan
 ├── netlify.toml            # Konfigurasi deploy Netlify
 └── desain.md               # Dokumen desain awal
 ```
@@ -37,8 +37,10 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 2. **Teks & terjemahan** → masih di `js/data.js`, kamus `I18N` (kunci `id` & `en`).
 3. **Ikon teknologi di hero** → di `index.html`, blok `<ul class="hero-tech">`
    (ikon dari cdn.simpleicons.org) — tambah/hapus chip sesuai stack Anda.
-4. **Gambar proyek** → masukkan ke `assets/images/` dengan nama yang sama
-   seperti di atas (lihat `assets/images/README.md`). Otomatis muncul.
+4. **Gambar proyek** → thumbnail SVG kustom sudah tersedia di
+   `assets/images/`. Untuk memakai screenshot asli, simpan sebagai
+   `proyek-1.png` lalu ubah `src` di `index.html` (lihat
+   `assets/images/README.md`).
 5. **Link proyek "live ↗"** → di `index.html`, ganti `href="#"` pada
    `.project-link` dengan URL proyek.
 

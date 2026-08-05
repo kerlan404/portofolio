@@ -14,8 +14,9 @@ const CONFIG = {
 
 /* ----- Loading screen: kata "halo" dari berbagai bahasa ----- */
 const LOADER_WORDS = [
-  'Hai', 'Hello', 'Hola', 'Bonjour', 'Hallo', 'Ciao',
-  'こんにちは', '你好', '안녕', 'Olá', 'مرحبا', 'Namaste',
+  'Hai', 'Hello', 'Hola', 'Привет', 'Bonjour', 'Hallo',
+  'Ciao', 'こんにちは', '你好', 'Merhaba', '안녕', 'Olá',
+  'مرحبا', 'Zdravo', 'Hej', 'Namaste', 'สวัสดี',
 ];
 
 /* ----- Kamus dwibahasa (label mono & nama teknologi tidak diterjemahkan) ----- */
@@ -24,10 +25,12 @@ const I18N = {
     'meta.title': '{name} — Portofolio',
     'nav.about': 'Tentang',
     'nav.experience': 'Pengalaman',
+    'nav.now': 'Sekarang',
     'nav.projects': 'Proyek',
     'nav.contact': 'Kontak',
     'nav.aboutLabel': 'TENTANG SAYA',
     'nav.expLabel': 'PENGALAMAN',
+    'nav.nowLabel': 'SEDANG APA SEKARANG?',
     'nav.projLabel': 'PROYEK',
     'nav.contactLabel': 'KONTAK',
     'theme.toLight': 'Mode terang',
@@ -44,6 +47,14 @@ const I18N = {
 
     'proj.tech': 'TEKNOLOGI',
     'proj.featured': 'PROYEK UNGGULAN',
+
+    'now.build': 'sedang membangun',
+    'now.learn': 'sedang mempelajari',
+    'now.open': 'terbuka untuk',
+    'now.buildVal': 'aplikasi kasir & stok dengan Flutter',
+    'now.learnVal': 'Flutter, Dart, dan CI/CD mobile',
+    'now.openVal': 'kolaborasi & proyek freelance',
+    'now.updated': 'diperbarui: Agustus 2026',
 
     'contact.response': 'biasanya membalas dalam 1×24 jam',
 
@@ -99,10 +110,12 @@ const I18N = {
     'meta.title': '{name} — Portfolio',
     'nav.about': 'About',
     'nav.experience': 'Experience',
+    'nav.now': 'Now',
     'nav.projects': 'Projects',
     'nav.contact': 'Contact',
     'nav.aboutLabel': 'ABOUT ME',
     'nav.expLabel': 'EXPERIENCE',
+    'nav.nowLabel': "WHAT I'M DOING NOW",
     'nav.projLabel': 'PROJECTS',
     'nav.contactLabel': 'CONTACT',
     'theme.toLight': 'Switch to light mode',
@@ -119,6 +132,14 @@ const I18N = {
 
     'proj.tech': 'STACK',
     'proj.featured': 'FEATURED PROJECT',
+
+    'now.build': 'currently building',
+    'now.learn': 'currently learning',
+    'now.open': 'open to',
+    'now.buildVal': 'POS & inventory app with Flutter',
+    'now.learnVal': 'Flutter, Dart, mobile CI/CD',
+    'now.openVal': 'collaboration & freelance work',
+    'now.updated': 'updated: August 2026',
 
     'contact.response': 'usually replies within 24h',
 
@@ -168,6 +189,90 @@ const I18N = {
     'game.status.over': 'OVER',
     'game.status.static': 'REDUCED MOTION',
     'game.aria': 'Developer-themed Dino Run game. Press space or tap to jump over obstacles.',
+  },
+
+  ja: {
+    'meta.title': '{name} — ポートフォリオ',
+    'nav.about': 'プロフィール',
+    'nav.experience': '経歴',
+    'nav.now': '今',
+    'nav.projects': '作品',
+    'nav.contact': 'お問い合わせ',
+    'nav.aboutLabel': 'プロフィール',
+    'nav.expLabel': '経歴',
+    'nav.nowLabel': '今、何をしているか',
+    'nav.projLabel': '作品',
+    'nav.contactLabel': 'お問い合わせ',
+    'theme.toLight': 'ライトモードへ',
+    'theme.toDark': 'ダークモードへ',
+
+    'hero.tagline': 'ソフトウェア開発者 — きれいで、速くて、便利なウェブプロダクトを開発しています。',
+    'hero.ctaProjects': '作品を見る →',
+    'hero.scroll': '↓ スクロール',
+    'hero.meta.ready': 'コラボレーション歓迎',
+
+    'about.p1': '私はソフトウェア開発者で、データベース設計からAPI、ユーザーインターフェースの仕上げまで、ゼロからプロダクトを作る過程を楽しんでいます。良いコードとは読みやすいコードであり、良いプロダクトとはユーザーにとってシンプルに感じられるものだと信じています。',
+    'about.p2': '現在の注力分野はフルスタックウェブ開発とユーザー体験です。空き時間には新しい開発ツールを試したり、オープンソースに貢献したり、技術記事を書いたりしています。',
+
+    'about.stats.years': '年の経験',
+    'about.stats.projects': '完了プロジェクト',
+    'about.stats.clients': 'クライアント',
+
+    'exp.now': '現在',
+    'exp1.role': 'フロントエンド開発者 — PT Digital Nusantara',
+    'exp1.desc': '社内ダッシュボードの全面リニューアルを主導し、ページ読み込み時間を40%短縮。デザインチームとコンポーネントのデザインシステムを構築。',
+    'exp2.role': 'フルスタック開発者 — ローカルスタートアップ',
+    'exp2.desc': '50以上の小規模事業者向けPOS・在庫管理アプリを構築 — MySQLデータベース設計から使いやすいUIまで。',
+    'exp3.role': 'フリーランスウェブ開発者 — 各種クライアント',
+    'exp3.desc': '企業サイト、オンラインストア、ランディングページを様々な業界のクライアント向けに制作。',
+
+    'proj1.name': 'オンラインストア — EC CMS',
+    'proj1.desc': '製品・プロモ・顧客・注文を管理画面で操作できる本格的なECプラットフォーム。',
+    'proj2.name': 'POS & 在庫アプリ',
+    'proj2.desc': '小規模事業者向けオフラインPOSアプリ。日次売上レポートと在庫管理機能付き。',
+    'proj3.name': 'エージェンシー用ランディングページ',
+    'proj3.desc': 'Lighthouse 98+ の高パフォーマンスLP。軽量なアニメーションとモバイルファースト。',
+    'proj4.name': 'このポートフォリオサイト',
+    'proj4.desc': 'ライト/ダークモード、ID/EN/日本語、フッターの恐竜ランイースターエッグ付きポートフォリオ。',
+
+    'proj.tech': '技術',
+    'proj.featured': '注目作品',
+
+    'now.build': '開発中',
+    'now.learn': '学習中',
+    'now.open': '募集中',
+    'now.buildVal': 'FlutterのPOS・在庫アプリ',
+    'now.learnVal': 'Flutter, Dart, モバイルCI/CD',
+    'now.openVal': 'コラボレーション & フリーランス',
+    'now.updated': '更新: 2026年8月',
+
+    'contact.name': '名前',
+    'contact.email': 'メール',
+    'contact.message': 'メッセージ',
+    'contact.send': '送信',
+    'contact.sending': '送信中…',
+    'contact.sent': 'メッセージを送信しました。',
+    'contact.error': '送信に失敗しました。もう一度お試しください。',
+    'contact.socialLabel': 'リンク',
+    'contact.response': '通常24時間以内に返信します',
+
+    'footer.made': 'コーヒーと一緒に ☕',
+    'footer.thanks': 'ご覧いただきありがとうございます',
+    'footer.backTop': 'トップへ ↑',
+
+    'game.hint1': '採用担当者との接続が切れましたか？',
+    'game.hint2': '待っている間に遊んでください ↓',
+    'game.control': 'SPACE / TAP — ジャンプ',
+    'game.over': 'ゲームオーバー',
+    'game.restart': 'もう一度',
+    'game.restartHint': 'またはスペースキー',
+    'game.score': 'スコア',
+    'game.best': 'ベスト',
+    'game.status.idle': '準備完了',
+    'game.status.run': '実行中',
+    'game.status.over': '終了',
+    'game.status.static': 'REDUCED MOTION',
+    'game.aria': '開発者テーマの恐竜ランゲーム。スペースキーまたはタップで障害物を飛び越えます。',
   },
 };
 

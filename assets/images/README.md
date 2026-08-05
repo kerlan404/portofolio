@@ -1,16 +1,17 @@
 # Folder Gambar — `assets/images/`
 
-Tempatkan semua gambar Anda di folder ini. Beri nama file **persis** seperti di
-bawah ini agar otomatis tampil di website (jika file belum ada, website akan
-menampilkan placeholder):
+Folder ini sudah berisi **thumbnail SVG kustom** bertema terminal untuk semua
+proyek (tidak perlu isi apa pun agar tampil bagus). Ganti dengan screenshot
+asli Anda kapan pun:
 
 | File | Dipakai di |
 |---|---|
-| `proyek-1.jpg` | Thumbnail proyek **1 — Toko Online** (rasio 16:10) |
-| `proyek-2.jpg` | Thumbnail proyek **2 — Aplikasi Kasir** |
-| `proyek-3.jpg` | Thumbnail proyek **3 — Landing Page** |
-| `proyek-4.jpg` | Thumbnail proyek **4 — Website Portofolio** |
+| `proyek-1.svg` | Thumbnail proyek **1 — Toko Online** (rasio 16:10) |
+| `proyek-2.svg` | Thumbnail proyek **2 — Aplikasi Kasir** |
+| `proyek-3.svg` | Thumbnail proyek **3 — Landing Page** |
+| `proyek-4.svg` | Thumbnail proyek **4 — Website Portofolio** |
 
-> **Tips:** gunakan file JPG/PNG/WebP dengan rasio seperti tabel di atas dan
-> ukuran sekitar 800–1200px lebar agar cepat dimuat. `placeholder.svg` jangan
-> dihapus — dipakai sebagai cadangan jika ada gambar yang belum diisi.
+> **Cara mengganti dengan screenshot asli:** simpan screenshot Anda sebagai
+> `proyek-1.png` (atau `.jpg`), lalu di `index.html` ubah `src` dari
+> `proyek-1.svg` menjadi `proyek-1.png`. `placeholder.svg` jangan dihapus —
+> dipakai sebagai cadangan jika file tidak ditemukan.

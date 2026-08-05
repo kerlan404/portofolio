@@ -710,6 +710,33 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
 .timeline-desc { color: var(--ink-muted); max-width: 60ch; }
 .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 
+/* ---------- SEKARANG (NOW) ---------- */
+.now-window { max-width: 720px; }
+.now-body {
+  padding: 28px 30px;
+  display: flex; flex-direction: column; gap: 16px;
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+}
+.now-row {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.now-ico { color: var(--accent); }
+.now-key {
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  min-width: 150px;
+}
+.now-val { color: var(--ink-muted); }
+.now-meta {
+  margin-top: 8px;
+  color: var(--ink-muted);
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* ---------- PROYEK (grid asimetris, bukan template genap) ---------- */
 .projects-grid {
   display: grid;
@@ -744,6 +771,41 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   color: var(--accent);
 }
 .project-desc-lg { font-size: var(--fs-body); max-width: 46ch; }
+
+.project-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+.project-status .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+.project-status.off .dot { background: var(--ink-muted); }
+
+.thumb-overlay {
+  position: absolute; left: 12px; bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color var(--dur) ease;
+}
+.project-card:hover .thumb-overlay,
+.project-card:focus-within .thumb-overlay {
+  opacity: 1; transform: none;
+  border-color: var(--accent);
+}
+.thumb-overlay .ok { color: var(--accent); }
 .project-card {
   background: var(--bg-soft);
   border: 1px solid var(--border);
@@ -1097,6 +1159,8 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 
   .game-meta { gap: 10px; }
   .terminal-bar { gap: 8px; }
+  .lang-toggle { gap: 5px; font-size: 0.72rem; }
+  .nav-controls { gap: 8px; }
 }
 
 /* ---------- AKSESIBILITAS: REDUCED MOTION ---------- */

@@ -46,8 +46,9 @@
     <nav class="nav-links" id="nav-links" aria-label="Navigasi utama">
       <a class="nav-link" href="#tentang"><span class="nav-idx">01.</span><span data-i18n="nav.about">Tentang</span></a>
       <a class="nav-link" href="#pengalaman"><span class="nav-idx">02.</span><span data-i18n="nav.experience">Pengalaman</span></a>
-      <a class="nav-link" href="#proyek"><span class="nav-idx">03.</span><span data-i18n="nav.projects">Proyek</span></a>
-      <a class="nav-link" href="#kontak"><span class="nav-idx">04.</span><span data-i18n="nav.contact">Kontak</span></a>
+      <a class="nav-link" href="#sekarang"><span class="nav-idx">03.</span><span data-i18n="nav.now">Sekarang</span></a>
+      <a class="nav-link" href="#proyek"><span class="nav-idx">04.</span><span data-i18n="nav.projects">Proyek</span></a>
+      <a class="nav-link" href="#kontak"><span class="nav-idx">05.</span><span data-i18n="nav.contact">Kontak</span></a>
     </nav>
 
     <div class="nav-controls">
@@ -55,6 +56,8 @@
         <button type="button" class="lang-btn active" data-lang="id">ID</button>
         <span class="lang-sep" aria-hidden="true">|</span>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button type="button" class="lang-btn" data-lang="ja">日本語</button>
       </div>
       <button type="button" id="theme-toggle" class="icon-btn" aria-label="Mode gelap"></button>
       <button type="button" id="nav-toggle" class="hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links">
@@ -212,8 +215,29 @@
     </div>
   </section>
 
+  <!-- ============ SEKARANG (NOW) ============ -->
+  <section id="sekarang" class="section" data-num="03">
+    <div class="container">
+      <h2 class="sr-only" data-i18n="nav.now">Sekarang</h2>
+      <p class="section-label">NAV.03 — <span data-i18n="nav.nowLabel">SEDANG APA SEKARANG?</span></p>
+      <p class="section-cmd" aria-hidden="true">$ cat sekarang.md</p>
+      <div class="terminal-window now-window">
+        <div class="terminal-bar">
+          <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="t-title">~/sekarang.md</span>
+        </div>
+        <div class="now-body">
+          <p class="now-row"><span class="now-ico" aria-hidden="true">▶</span><span class="now-key" data-i18n="now.build">sedang membangun</span><span class="now-val" data-i18n="now.buildVal">aplikasi kasir & stok dengan Flutter</span></p>
+          <p class="now-row"><span class="now-ico" aria-hidden="true">▶</span><span class="now-key" data-i18n="now.learn">sedang mempelajari</span><span class="now-val" data-i18n="now.learnVal">Flutter, Dart, dan CI/CD mobile</span></p>
+          <p class="now-row"><span class="now-ico" aria-hidden="true">▶</span><span class="now-key" data-i18n="now.open">terbuka untuk</span><span class="now-val" data-i18n="now.openVal">kolaborasi & proyek freelance</span></p>
+          <p class="now-meta" data-i18n="now.updated">diperbarui: Agustus 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PROYEK ============ -->
-  <section id="proyek" class="section" data-num="03">
+  <section id="proyek" class="section" data-num="04">
     <div class="container">
       <h2 class="sr-only" data-i18n="nav.projects">Proyek</h2>
       <p class="section-label">NAV.03 — <span data-i18n="nav.projLabel">PROYEK</span></p>
@@ -221,9 +245,10 @@
       <div class="projects-grid">
         <article class="project-card project-featured">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-1.jpg" alt="Tampilan dashboard admin toko online" loading="lazy"
+            <img src="assets/images/proyek-1.svg" alt="Tampilan dashboard admin toko online" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
+            <span class="thumb-overlay" aria-hidden="true"><span>$ npm run deploy</span><span class="ok">✓ ok</span></span>
           </a>
           <div class="project-info">
             <p class="featured-tag" data-i18n="proj.featured">PROYEK UNGGULAN</p>
@@ -243,11 +268,12 @@
 
         <article class="project-card project-offset">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-2.jpg" alt="Tampilan aplikasi kasir" loading="lazy"
+            <img src="assets/images/proyek-2.svg" alt="Tampilan aplikasi kasir" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
           </a>
           <div class="project-info">
+            <p class="project-status off"><span class="dot" aria-hidden="true"></span>IN&nbsp;DEV</p>
             <div class="project-head">
               <h3><span class="project-num" aria-hidden="true">02</span><span data-i18n="proj2.name">Aplikasi Kasir & Stok</span></h3>
               <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
@@ -264,11 +290,12 @@
 
         <article class="project-card">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-3.jpg" alt="Tampilan landing page agency" loading="lazy"
+            <img src="assets/images/proyek-3.svg" alt="Tampilan landing page agency" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
           </a>
           <div class="project-info">
+            <p class="project-status"><span class="dot" aria-hidden="true"></span>LIVE</p>
             <div class="project-head">
               <h3><span class="project-num" aria-hidden="true">03</span><span data-i18n="proj3.name">Landing Page Agency</span></h3>
               <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
@@ -285,11 +312,12 @@
 
         <article class="project-card project-pull">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-4.jpg" alt="Tampilan website portofolio ini" loading="lazy"
+            <img src="assets/images/proyek-4.svg" alt="Tampilan website portofolio ini" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
           </a>
           <div class="project-info">
+            <p class="project-status"><span class="dot" aria-hidden="true"></span>LIVE</p>
             <div class="project-head">
               <h3><span class="project-num" aria-hidden="true">04</span><span data-i18n="proj4.name">Website Portofolio Ini</span></h3>
               <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
@@ -308,7 +336,7 @@
   </section>
 
   <!-- ============ KONTAK ============ -->
-  <section id="kontak" class="section" data-num="04">
+  <section id="kontak" class="section" data-num="05">
     <div class="container">
       <h2 class="sr-only" data-i18n="nav.contact">Kontak</h2>
       <p class="section-label">NAV.04 — <span data-i18n="nav.contactLabel">KONTAK</span></p>

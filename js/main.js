@@ -60,7 +60,7 @@
   const loader = $('#loader');
   const loaderWord = $('#loader-word');
   const loaderProgress = $('#loader-progress');
-  const WORD_MS = 340; // per kata: 200ms tampil + 140ms fade
+  const WORD_MS = 300; // per kata: 180ms tampil + 120ms fade
   let playedAnimation = false;
 
   const finishLoader = (instant) => {
@@ -101,8 +101,8 @@
         setTimeout(() => {
           if (i + 1 < LOADER_WORDS.length) showWord(i + 1);
           else finishLoader(false);
-        }, 140);
-      }, 200);
+        }, 120);
+      }, 180);
     };
     showWord(0);
   };
@@ -282,7 +282,7 @@
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
-  ['tentang', 'pengalaman', 'proyek', 'kontak'].forEach((id) => {
+  ['tentang', 'pengalaman', 'sekarang', 'proyek', 'kontak'].forEach((id) => {
     const sec = document.getElementById(id);
     if (sec) spy.observe(sec);
   });
@@ -332,7 +332,7 @@
   const init = () => {
     let lang = 'id';
     try { lang = localStorage.getItem('pf-lang') || 'id'; } catch (e) { /* ignore */ }
-    setLang(lang === 'en' ? 'en' : 'id', false);
+    setLang(['id', 'en', 'ja'].includes(lang) ? lang : 'id', false);
     applyTheme();
     runLoader();
   };
