@@ -195,12 +195,6 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   color: var(--ink-muted);
   padding: 6px 2px;
 }
-.nav-idx {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--accent);
-  margin-right: 7px;
-}
 .nav-link::after {
   content: '';
   position: absolute; left: 0; bottom: 0;
@@ -548,20 +542,6 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
 /* ---------- SECTION UMUM ---------- */
 .section { position: relative; padding: 112px 0; scroll-margin-top: calc(var(--nav-h) + 8px); }
 
-.section::before {
-  content: attr(data-num);
-  position: absolute;
-  top: 44px; right: 3vw;
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(7rem, 17vw, 11.5rem);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--border);
-  opacity: 0.65;
-  pointer-events: none;
-  user-select: none;
-}
 .section .container { position: relative; z-index: 1; }
 
 .section-label {
@@ -859,13 +839,6 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   font-weight: 600;
   color: var(--ink);
 }
-.project-num {
-  font-family: var(--mono);
-  font-size: var(--fs-mono);
-  font-weight: 700;
-  color: var(--accent);
-  margin-right: 10px;
-}
 .project-link {
   font-family: var(--mono);
   font-size: var(--fs-mono);
@@ -1101,7 +1074,6 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-terminal { max-width: 520px; }
-  .section::before { font-size: clamp(6rem, 22vw, 9rem); top: 36px; }
 }
 
 @media (max-width: 767px) {
@@ -1141,7 +1113,6 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 
   .hero-terminal { display: none; }
   .hero-meta { gap: 8px 18px; }
-  .section::before { display: none; }
 
   .about-grid { gap: 32px; }
 
