@@ -7,10 +7,10 @@ const CONFIG = {
   name: 'Mochammad Rezy Alfarabi',  // Nama besar di hero (efek mengetik)
   nameShort: 'M.Rezy Alfarabi',        // Nama di navbar & footer
   role: 'Full Stack Developer',  // Peran di terminal hero
-  github: 'https://github.com/username',
-  instagram: 'https://instagram.com/username',
-  whatsapp: '6281234567890',   // Nomor WA, format internasional tanpa '+'
-  email: 'email@example.com',
+  github: 'https://github.com/kerlan404',
+  instagram: 'https://www.instagram.com/devick404?igsh=azVnNjFzcG5lb2k1',
+  whatsapp: '62859102765755',   // Nomor WA 0859102765755 → format internasional tanpa '+'
+  email: 'mochammadrezyalfarabi@gmail.com',
 };
 
 /* ----- Loading screen: kata "halo" dari berbagai bahasa ----- */
@@ -65,19 +65,24 @@ const I18N = {
     'win.social': '~/kontak.txt',
 
     'now.projectName': 'Sistem Absensi Siswa',
+    'now.status': 'dalam pengembangan',
     'now.build': 'sedang membangun',
     'now.learn': 'sedang mempelajari',
     'now.open': 'terbuka untuk',
     'now.buildVal': 'sistem absensi siswa — Next.js + React dengan pengenalan wajah',
     'now.learnVal': 'Next.js, React, dan integrasi face recognition',
     'now.openVal': 'kolaborasi & proyek freelance',
+    'now.progress': 'progres proyek',
+    'now.f1': 'deteksi wajah',
+    'now.f2': 'rekap kehadiran otomatis',
+    'now.f3': 'notifikasi realtime',
     'now.scanLabel': 'MEMINDAI…',
     'now.updated': 'diperbarui: Agustus 2026',
 
     'contact.response': 'biasanya membalas dalam 1×24 jam',
 
-    'about.p1': 'Saya seorang full stack developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.',
-    'about.p2': 'Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.',
+    'about.p1': 'Saya siswa RPL (Rekayasa Perangkat Lunak) yang juga berkarya sebagai full stack developer. Saya menikmati proses membangun produk dari nol — merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.',
+    'about.p2': 'Saya juga penggemar vibe coding: menuangkan ide dengan bantuan AI supaya cepat jadi prototipe, lalu merapikannya menjadi kode yang solid dan terstruktur. Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.',
 
     'exp1.role': 'Siswa — SMK Jakarta Pusat 1',
     'exp1.desc': 'Siswa kelas XII RPL 2 di SMK Jakarta Pusat 1 — mendalami pengembangan web full stack dan belajar basis data (MySQL): merancang skema, menulis query, sampai mengintegrasikannya ke aplikasi web.',
@@ -158,19 +163,24 @@ const I18N = {
     'win.social': '~/contact.txt',
 
     'now.projectName': 'Student Attendance System',
+    'now.status': 'in development',
     'now.build': 'currently building',
     'now.learn': 'currently learning',
     'now.open': 'open to',
     'now.buildVal': 'student attendance system — Next.js + React with face recognition',
     'now.learnVal': 'Next.js, React, and face recognition integration',
     'now.openVal': 'collaboration & freelance work',
+    'now.progress': 'project progress',
+    'now.f1': 'face detection',
+    'now.f2': 'automatic attendance recap',
+    'now.f3': 'realtime notifications',
     'now.scanLabel': 'SCANNING…',
     'now.updated': 'updated: August 2026',
 
     'contact.response': 'usually replies within 24h',
 
-    'about.p1': 'I am a full stack developer who enjoys building products from scratch: designing databases, writing APIs, and polishing user interfaces. I believe good code is code that is easy to read, and a good product is one that feels simple to its users.',
-    'about.p2': 'My current focus is full-stack web development and user experience. In my spare time, I like exploring new developer tools, contributing to open source, and occasionally writing technical articles.',
+    'about.p1': 'I am an RPL (Software Engineering) student who also works as a full stack developer. I enjoy building products from scratch — designing databases, writing APIs, and polishing user interfaces. I believe good code is code that is easy to read, and a good product is one that feels simple to its users.',
+    'about.p2': 'I am also a vibe coder: pouring ideas with AI assistance to get a prototype fast, then refining them into solid, structured code. My current focus is full-stack web development and user experience. In my spare time, I like exploring new developer tools, contributing to open source, and occasionally writing technical articles.',
 
     'exp1.role': 'Student — SMK Jakarta Pusat 1',
     'exp1.desc': 'Grade XII student of RPL 2 at SMK Jakarta Pusat 1 — diving into full stack web development and learning databases (MySQL): designing schemas, writing queries, and integrating them into web apps.',
@@ -235,8 +245,8 @@ const I18N = {
     'ticker.5': 'SIGINT: スクロールはここまで',
     'ticker.6': 'syntax error: コーヒーのない人生',
 
-    'about.p1': '私はフルスタック開発者として、データベース設計からAPI、UIの仕上げまで、プロダクトをゼロから作り上げる過程を楽しんでいます。良いコードは読みやすいコードであり、良いプロダクトは使う人にとってシンプルに感じられるものだと考えています。',
-    'about.p2': '現在はフルスタックなWeb開発とユーザー体験に注力しています。空き時間には新しい開発ツールを試したり、オープンソースへの貢献や技術記事の執筆をしたりしています。',
+    'about.p1': '私はRPL（ソフトウェアエンジニアリング科）の学生で、フルスタック開発者としても活動しています。データベース設計からAPI、UIの仕上げまで、プロダクトをゼロから作り上げる過程を楽しんでいます。良いコードは読みやすいコードであり、良いプロダクトは使う人にとってシンプルに感じられるものだと考えています。',
+    'about.p2': 'また、vibe coding（AIの力を借りてアイデアを素早くプロトタイプ化し、それを堅牢で構造化されたコードへ仕上げる手法）の実践者でもあります。現在はフルスタックなWeb開発とユーザー体験に注力しています。空き時間には新しい開発ツールを試したり、オープンソースへの貢献や技術記事の執筆をしたりしています。',
 
     'about.stats.years': '年のコーディング経験',
     'about.stats.projects': '件のプロジェクト',
@@ -270,12 +280,17 @@ const I18N = {
     'win.social': '~/連絡.txt',
 
     'now.projectName': '学生出席管理システム',
+    'now.status': '開発中',
     'now.build': '現在開発中',
     'now.learn': '現在学習中',
     'now.open': '募集中',
     'now.buildVal': '生徒の出席管理システム — Next.js + React で顔認証を導入',
     'now.learnVal': 'Next.js、React、顔認証の統合',
     'now.openVal': 'コラボレーション & フリーランス案件',
+    'now.progress': 'プロジェクト進捗',
+    'now.f1': '顔認証',
+    'now.f2': '出席集計の自動化',
+    'now.f3': 'リアルタイム通知',
     'now.scanLabel': 'スキャン中…',
     'now.updated': '最終更新: 2026年8月',
 

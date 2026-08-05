@@ -375,6 +375,14 @@
   const year = $('#footer-year');
   if (year) year.textContent = new Date().getFullYear();
 
+  /* ---------- SEKARANG: sinkronkan label % progress dengan CSS variable ---------- */
+  const nowProgress = $('.now-progress');
+  const nowProgressPct = $('#now-progress-pct');
+  if (nowProgress && nowProgressPct) {
+    const pct = getComputedStyle(nowProgress).getPropertyValue('--now-progress').trim();
+    if (pct) nowProgressPct.textContent = pct;
+  }
+
   /* ---------- SEKARANG: wajah 3D menoleh mengikuti kursor ---------- */
   const nowScan = $('.now-scan');
   if (nowScan && !reduceMotion) {
