@@ -27,6 +27,7 @@
 </head>
 <body>
 <noscript><style>#loader{display:none}</style></noscript>
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ============ LOADING SCREEN ============ -->
 <div id="loader" aria-hidden="true">
@@ -69,10 +70,19 @@
       <div class="hero-left">
         <p class="whoami"><span class="prompt">$</span> whoami<span class="cursor" id="whoami-cursor" aria-hidden="true"></span></p>
         <h1 class="hero-name"><span id="hero-name"></span><span class="cursor hero-cursor" id="name-cursor" hidden aria-hidden="true"></span></h1>
+        <ul class="hero-tech" id="hero-tech" aria-label="Teknologi">
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/php" alt="PHP" width="16" height="16" loading="lazy"><span>PHP</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/flutter" alt="Flutter" width="16" height="16" loading="lazy"><span>Flutter</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/dart" alt="Dart" width="16" height="16" loading="lazy"><span>Dart</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/javascript" alt="JavaScript" width="16" height="16" loading="lazy"><span>JavaScript</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/html5" alt="HTML" width="16" height="16" loading="lazy"><span>HTML</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/css3" alt="CSS" width="16" height="16" loading="lazy"><span>CSS</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/github" alt="GitHub" width="16" height="16" loading="lazy"><span>GitHub</span></li>
+          <li class="tech-chip"><img src="https://cdn.simpleicons.org/mysql" alt="MySQL" width="16" height="16" loading="lazy"><span>MySQL</span></li>
+        </ul>
         <p class="hero-tagline" id="hero-tagline" data-i18n="hero.tagline">Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.</p>
         <div class="hero-actions" id="hero-actions">
           <a class="btn btn-primary" href="#proyek" data-i18n="hero.ctaProjects">Lihat Proyek →</a>
-          <a class="btn btn-secondary" href="assets/CV.pdf" download data-i18n="hero.ctaCv">Unduh CV</a>
         </div>
         <ul class="hero-meta" id="hero-meta" aria-label="Status">
           <li>~/portfolio</li>
@@ -120,29 +130,19 @@
       <h2 class="sr-only" data-i18n="nav.about">Tentang</h2>
       <p class="section-label">NAV.01 — <span data-i18n="nav.aboutLabel">TENTANG SAYA</span></p>
       <div class="about-grid">
-        <figure class="about-photo terminal-window">
-          <div class="terminal-bar">
-            <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="t-title">~/profile.jpg</span>
-          </div>
-          <div class="photo-body">
-            <img src="assets/images/profil.jpg" alt="Foto profil — ganti dengan foto Anda di assets/images/profil.jpg"
-                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
-          </div>
-        </figure>
         <div class="about-text">
           <p data-i18n="about.p1">Saya seorang software developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.</p>
           <p data-i18n="about.p2">Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.</p>
           <ul class="skills" aria-label="Skill">
-            <li class="tag">JavaScript</li>
-            <li class="tag">TypeScript</li>
-            <li class="tag">React</li>
-            <li class="tag">Node.js</li>
             <li class="tag">PHP</li>
+            <li class="tag">Flutter</li>
+            <li class="tag">Dart</li>
+            <li class="tag">JavaScript</li>
+            <li class="tag">HTML</li>
+            <li class="tag">CSS</li>
             <li class="tag">MySQL</li>
-            <li class="tag">HTML/CSS</li>
+            <li class="tag">GitHub</li>
             <li class="tag">Git</li>
-            <li class="tag">Tailwind CSS</li>
           </ul>
           <ul class="about-stats">
             <li><b>5+</b><span data-i18n="about.stats.years">tahun pengalaman</span></li>
@@ -166,9 +166,9 @@
             <h3 class="timeline-role" data-i18n="exp1.role">Frontend Developer — PT Digital Nusantara</h3>
             <p class="timeline-desc" data-i18n="exp1.desc">Memimpin pengembangan ulang dashboard internal, memangkas waktu muat halaman hingga 40%, dan membangun design system komponen bersama tim desain.</p>
             <ul class="exp-tags">
-              <li class="tag">React</li>
-              <li class="tag">TypeScript</li>
-              <li class="tag">CI/CD</li>
+              <li class="tag">Flutter</li>
+              <li class="tag">Dart</li>
+              <li class="tag">JavaScript</li>
             </ul>
           </div>
         </div>
@@ -192,7 +192,7 @@
             <ul class="exp-tags">
               <li class="tag">HTML</li>
               <li class="tag">CSS</li>
-              <li class="tag">Git</li>
+              <li class="tag">GitHub</li>
             </ul>
           </div>
         </div>
@@ -222,7 +222,7 @@
             <ul class="project-tags">
               <li class="tag">PHP</li>
               <li class="tag">MySQL</li>
-              <li class="tag">MVC</li>
+              <li class="tag">JavaScript</li>
             </ul>
           </div>
         </article>
@@ -241,8 +241,8 @@
             <p class="project-desc" data-i18n="proj2.desc">Aplikasi point-of-sale offline untuk UMKM dengan laporan penjualan harian dan pencatatan stok.</p>
             <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
             <ul class="project-tags">
-              <li class="tag">JavaScript</li>
-              <li class="tag">Node.js</li>
+              <li class="tag">Flutter</li>
+              <li class="tag">Dart</li>
               <li class="tag">SQLite</li>
             </ul>
           </div>
@@ -352,7 +352,12 @@
   <div class="container">
     <div class="footer-top">
       <p class="copyright">© <span id="footer-year">2026</span> <span id="footer-name">NAMA</span> — <span data-i18n="footer.made">dibuat dengan kopi ☕</span></p>
-      <a class="footer-top-link" href="#hero" data-i18n="footer.backTop">kembali ke atas ↑</a>
+      <div class="footer-actions">
+        <a class="footer-link" href="https://github.com/username" target="_blank" rel="noopener" aria-label="GitHub"><span class="footer-link-ico"><img src="https://cdn.simpleicons.org/github" alt="" width="14" height="14" loading="lazy"></span>GitHub</a>
+        <a class="footer-link" href="https://linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="footer-link-ico"><img src="https://cdn.simpleicons.org/linkedin" alt="" width="14" height="14" loading="lazy"></span>LinkedIn</a>
+        <a class="footer-link" href="mailto:email@example.com" aria-label="Email"><span class="footer-link-ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>Email</a>
+        <a class="footer-top-link" href="#hero" aria-label="Kembali ke atas" data-i18n="footer.backTop">kembali ke atas ↑</a>
+      </div>
     </div>
 
     <div class="dino-wrap">

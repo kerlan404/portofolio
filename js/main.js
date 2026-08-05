@@ -115,7 +115,7 @@
     const nameEl = $('#hero-name');
     if (!nameEl) return;
     const cursor = $('#name-cursor');
-    const extras = ['#hero-tagline', '#hero-actions', '#hero-meta', '#hero-terminal', '#hero-scroll'];
+    const extras = ['#hero-tech', '#hero-tagline', '#hero-actions', '#hero-meta', '#hero-terminal', '#hero-scroll'];
 
     const revealExtras = () => {
       extras.forEach((sel) => { const el = $(sel); if (el) el.classList.add('shown'); });
@@ -150,7 +150,7 @@
     { kind: 'cmd', prompt: '~/portfolio $', text: './status.sh' },
     { kind: 'out', key: 'role', value: CONFIG.role },
     { kind: 'out', key: 'status', value: t('hero.meta.ready') },
-    { kind: 'out', key: 'stack', value: '[JavaScript · PHP · MySQL · React]' },
+    { kind: 'out', key: 'stack', value: '[PHP · Flutter · Dart · JavaScript · HTML · CSS]' },
   ];
 
   const makeTermRow = (line) => {
@@ -240,9 +240,15 @@
   /* ---------- NAVBAR ---------- */
   const navbar = $('#navbar');
   const backTop = $('#back-to-top');
+  const progBar = $('#scroll-progress');
   const onScroll = () => {
     if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 24);
     if (backTop) backTop.classList.toggle('show', window.scrollY > 600);
+    if (progBar) {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      progBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

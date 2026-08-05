@@ -6,7 +6,6 @@ menampilkan placeholder):
 
 | File | Dipakai di |
 |---|---|
-| `profil.jpg` (atau `.png` / `.webp`) | Foto profil — section **Tentang Saya** (rasio 4:5) |
 | `proyek-1.jpg` | Thumbnail proyek **1 — Toko Online** (rasio 16:10) |
 | `proyek-2.jpg` | Thumbnail proyek **2 — Aplikasi Kasir** |
 | `proyek-3.jpg` | Thumbnail proyek **3 — Landing Page** |

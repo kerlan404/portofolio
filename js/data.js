@@ -10,7 +10,6 @@ const CONFIG = {
   github: 'https://github.com/username',
   linkedin: 'https://linkedin.com/in/username',
   email: 'email@example.com',
-  cv: 'assets/CV.pdf',
 };
 
 /* ----- Loading screen: kata "halo" dari berbagai bahasa ----- */
@@ -36,7 +35,6 @@ const I18N = {
 
     'hero.tagline': 'Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.',
     'hero.ctaProjects': 'Lihat Proyek →',
-    'hero.ctaCv': 'Unduh CV',
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'terbuka untuk kolaborasi',
 
@@ -111,7 +109,6 @@ const I18N = {
 
     'hero.tagline': 'Software Developer — building clean, fast, useful web products.',
     'hero.ctaProjects': 'View Projects →',
-    'hero.ctaCv': 'Download CV',
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'open to collaboration',
 

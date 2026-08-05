@@ -23,11 +23,9 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 │   ├── main.js             # Loader, typing, tema, bahasa, nav, form
 │   └── game.js             # Easter egg Dino Run (canvas)
 ├── assets/
-│   ├── images/             # ⭐ Taruh semua gambar Anda di sini
-│   │   ├── profil.jpg      #   Foto profil (section Tentang)
-│   │   ├── proyek-1..4.jpg #   Thumbnail proyek
-│   │   └── placeholder.svg #   Cadangan jika gambar belum diisi
-│   └── CV.pdf              # ⭐ Ganti dengan CV asli Anda
+│   └── images/             # ⭐ Taruh thumbnail proyek Anda di sini
+│       ├── proyek-1..4.jpg #   Thumbnail proyek
+│       └── placeholder.svg #   Cadangan jika gambar belum diisi
 ├── netlify.toml            # Konfigurasi deploy Netlify
 └── desain.md               # Dokumen desain awal
 ```
@@ -35,11 +33,12 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 ## Cara mengisi data Anda
 
 1. **Nama & link sosial** → buka `js/data.js`, ubah objek `CONFIG`
-   (`name`, `nameShort`, `github`, `linkedin`, `email`, `cv`).
+   (`name`, `nameShort`, `github`, `linkedin`, `email`).
 2. **Teks & terjemahan** → masih di `js/data.js`, kamus `I18N` (kunci `id` & `en`).
-3. **Gambar** → masukkan ke `assets/images/` dengan nama yang sama seperti
-   di atas (lihat `assets/images/README.md`). Foto/proyek otomatis muncul.
-4. **CV** → ganti `assets/CV.pdf` dengan CV asli Anda (tombol "Unduh CV").
+3. **Ikon teknologi di hero** → di `index.html`, blok `<ul class="hero-tech">`
+   (ikon dari cdn.simpleicons.org) — tambah/hapus chip sesuai stack Anda.
+4. **Gambar proyek** → masukkan ke `assets/images/` dengan nama yang sama
+   seperti di atas (lihat `assets/images/README.md`). Otomatis muncul.
 5. **Link proyek "live ↗"** → di `index.html`, ganti `href="#"` pada
    `.project-link` dengan URL proyek.
 
@@ -67,15 +66,18 @@ npx serve -l 4173
 - ⏳ Loading screen kata "halo" 12 bahasa + progres bar, hanya sekali per sesi
 - ⌨️ Hero berupa **jendela terminal**: `$ whoami` + nama mengetik, lalu skrip
   `./status.sh` diketik baris demi baris dengan kursor berkedip
+- 🛠️ **Ikon teknologi** (PHP, Flutter, Dart, JS, HTML, CSS, GitHub, MySQL)
+  di samping nama hero — sesuai stack Anda
 - 📟 **Ticker berjalan** berisi humor developer (`$ npm install kesuksesan`,
   `404: rasa takut tidak ditemukan`) sebagai pembatas antar-section
 - 🔢 **Angka hantu** besar (01–04) di belakang tiap section
-- 🖼️ Foto & form kontak dibingkai **jendela terminal** (`~/profile.jpg`,
-  `~/kirim-pesan.js`) — identitas visual yang konsisten
+- 🖼️ Form kontak dibingkai **jendela terminal** (`~/kirim-pesan.js`)
 - 🦖 **Easter egg Dino Run** dalam jendela terminal `~/dino-run.js`: rintangan
-  `{ }`, `404`, bug; animasi kaki berlari; skor & BEST di bilah judul;
-  overlay GAME OVER + tombol main lagi; lompat dengan spasi/tap; hanya
-  berjalan saat section terlihat
+  `{ }`, `404`, bug; animasi kaki berlari; latar grid paralaks + token kode
+  melayang; debu saat mendarat; skor & BEST di bilah judul; overlay GAME
+  OVER + tombol main lagi; lompat dengan spasi/tap; hanya berjalan saat
+  section terlihat
+- 📊 **Progress bar scroll** tipis berwarna aksen di paling atas halaman
 - 🌗 Mode terang/gelap (mengikuti sistem saat pertama kali, tersimpan di localStorage)
 - 🌐 Dwibahasa ID/EN tanpa reload (label mono & nama teknologi tetap universal)
 - ♿ Aksesibilitas: kontras WCAG AA, fokus keyboard terlihat, `prefers-reduced-motion`

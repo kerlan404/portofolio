@@ -65,10 +65,12 @@
 
   const GRAVITY = 2500;
   const JUMP_V = 840;
-  const GROUND_OFFSET = 46;
+  const GROUND_OFFSET = 52;
   const DINO_X = 64;
 
-  let W = 0, H = 170, dpr = 1;
+  const SCENERY_TOKENS = ['const', '=>', '{ }', '() =>', 'async', 'await', '404', 'npm', 'flutter', 'null', '...', '=>'];
+
+  let W = 0, H = 190, dpr = 1;
   let groundY = 0;
 
   const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#888';
@@ -85,6 +87,10 @@
     leg: 0,
     legT: 0,
     dashOffset: 0,
+    gridOffset: 0,
+    tokens: [],
+    tokenAt: 1800,
+    dust: [],
     lastScoreShown: -1,
     lastBestShown: -1,
   };
@@ -154,9 +160,24 @@
     state.dinoY = 0; state.vy = 0;
     state.speed = 3.4; state.score = 0;
     state.obstacles = []; state.spawnAt = 1100;
+    state.tokens = []; state.tokenAt = 1800;
+    state.dust = [];
     state.lastScoreShown = -1;
     showOverlay(false);
     setStatus(); syncMeta();
+  };
+
+  const spawnDust = () => {
+    for (let i = 0; i < 4; i++) {
+      state.dust.push({
+        x: DINO_X + 16 + Math.random() * 16,
+        y: groundY + 4,
+        vx: -(30 + Math.random() * 70),
+        vy: -(20 + Math.random() * 60),
+        life: 0.3 + Math.random() * 0.15,
+        max: 0.45,
+      });
+    }
   };
 
   const spawnObstacle = () => {
@@ -215,6 +236,19 @@
     const c = colors();
     ctx.clearRect(0, 0, W, H);
 
+    // latar: grid vertikal paralaks sangat samar
+    ctx.globalAlpha = 0.3;
+    ctx.strokeStyle = c.border;
+    ctx.lineWidth = 1;
+    const gridW = 44;
+    for (let x = -state.gridOffset; x < W; x += gridW) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, groundY);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
     // garis tanah putus-putus yang ikut bergerak
     ctx.strokeStyle = c.border;
     ctx.lineWidth = 2;
@@ -227,11 +261,29 @@
     ctx.setLineDash([]);
     ctx.lineDashOffset = 0;
 
+    // scenery: token kode melayang
+    ctx.font = '500 12px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = c.muted;
+    ctx.globalAlpha = 0.5;
+    state.tokens.forEach((tk) => {
+      ctx.fillText(tk.text, tk.x, tk.y);
+    });
+    ctx.globalAlpha = 1;
+
     // dino
     drawDino(DINO_X, groundY - DINO_H + 4 - state.dinoY);
 
     // rintangan
     state.obstacles.forEach(drawObstacle);
+
+    // debu saat mendarat
+    ctx.fillStyle = c.muted;
+    state.dust.forEach((p) => {
+      ctx.globalAlpha = Math.max(0, p.life / p.max);
+      ctx.fillRect(p.x, p.y, 3, 3);
+    });
+    ctx.globalAlpha = 1;
   };
 
   /* ---------- GAME LOOP (delta-time) ---------- */
@@ -249,7 +301,10 @@
       // fisika dino
       state.vy -= GRAVITY * dt;
       state.dinoY += state.vy * dt;
-      if (state.dinoY <= 0) { state.dinoY = 0; state.vy = 0; }
+      if (state.dinoY <= 0) {
+        if (state.dinoY < 0) spawnDust(); // mendarat → debu
+        state.dinoY = 0; state.vy = 0;
+      }
 
       // animasi kaki (hanya saat di tanah)
       if (state.dinoY <= 0) {
@@ -264,11 +319,34 @@
         state.spawnAt = 900 + Math.random() * 800;
       }
 
-      // gerak rintangan & tanah
+      // gerak rintangan, tanah & latar
       const step = state.speed * 60 * dt;
       state.obstacles.forEach((o) => { o.x -= step; });
       state.obstacles = state.obstacles.filter((o) => o.x + o.w > -30);
       state.dashOffset = (state.dashOffset + step * 0.5) % 18;
+      state.gridOffset = (state.gridOffset + step * 0.35) % 44;
+
+      // scenery: token kode melayang dari kanan
+      state.tokenAt -= dt * 1000;
+      if (state.tokenAt <= 0) {
+        state.tokenAt = 1400 + Math.random() * 1200;
+        state.tokens.push({
+          text: SCENERY_TOKENS[Math.floor(Math.random() * SCENERY_TOKENS.length)],
+          x: W + 30,
+          y: 34 + Math.random() * (groundY - 90),
+        });
+      }
+      state.tokens.forEach((tk) => { tk.x -= step * 0.45; });
+      state.tokens = state.tokens.filter((tk) => tk.x > -90);
+
+      // partikel debu
+      state.dust.forEach((p) => {
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.vy += 480 * dt;
+        p.life -= dt;
+      });
+      state.dust = state.dust.filter((p) => p.life > 0);
 
       // tabrakan (AABB dengan sedikit inset agar adil)
       const dx = DINO_X + 6, dw = 40;
