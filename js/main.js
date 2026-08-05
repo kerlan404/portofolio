@@ -52,6 +52,18 @@
     if (footerName) footerName.textContent = CONFIG.nameShort;
     document.title = t('meta.title');
     if (window.__gameRefreshUI) window.__gameRefreshUI();
+
+    // Link sosial diambil dari CONFIG (satu tempat untuk edit)
+    const socialMap = {
+      github: CONFIG.github,
+      instagram: CONFIG.instagram,
+      whatsapp: 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent('Halo! Saya melihat portofolio Anda.'),
+      email: 'mailto:' + CONFIG.email,
+    };
+    $$('[data-social]').forEach((el) => {
+      const k = el.dataset.social;
+      if (socialMap[k]) el.setAttribute('href', socialMap[k]);
+    });
   };
 
   $$('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -121,6 +133,8 @@
 
     const revealExtras = () => {
       extras.forEach((sel) => { const el = $(sel); if (el) el.classList.add('shown'); });
+      const waFloat = $('#wa-float');
+      if (waFloat) waFloat.classList.add('show');
     };
 
     if (playedAnimation && !reduceMotion) {

@@ -33,7 +33,8 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 ## Cara mengisi data Anda
 
 1. **Nama & link sosial** → buka `js/data.js`, ubah objek `CONFIG`
-   (`name`, `nameShort`, `github`, `linkedin`, `email`).
+   (`name`, `nameShort`, `github`, `instagram`, `whatsapp`, `email`).
+   Nomor WhatsApp memakai format internasional tanpa `+` (contoh: `6281234567890`).
 2. **Teks & terjemahan** → masih di `js/data.js`, kamus `I18N` (kunci `id` & `en`).
 3. **Ikon teknologi di hero** → di `index.html`, blok `<ul class="hero-tech">`
    (ikon dari cdn.simpleicons.org) — tambah/hapus chip sesuai stack Anda.
@@ -74,6 +75,8 @@ npx serve -l 4173
   `404: rasa takut tidak ditemukan`) sebagai pembatas antar-section
 - 🔢 **Angka hantu** besar (01–04) di belakang tiap section
 - 🖼️ Form kontak dibingkai **jendela terminal** (`~/kirim-pesan.js`)
+- 💬 **WhatsApp & Instagram** di kontak (link otomatis dari `CONFIG`),
+  ditambah **tombol WhatsApp mengambang** dengan animasi pulse
 - 🦖 **Easter egg Dino Run** dalam jendela terminal `~/dino-run.js`: rintangan
   `{ }`, `404`, bug; animasi kaki berlari; latar grid paralaks + token kode
   melayang; debu saat mendarat; skor & BEST di bilah judul; overlay GAME

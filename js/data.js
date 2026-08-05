@@ -8,7 +8,8 @@ const CONFIG = {
   nameShort: 'NAMA',           // Nama di navbar & footer
   role: 'Software Developer',  // Peran di terminal hero
   github: 'https://github.com/username',
-  linkedin: 'https://linkedin.com/in/username',
+  instagram: 'https://instagram.com/username',
+  whatsapp: '6281234567890',   // Nomor WA, format internasional tanpa '+'
   email: 'email@example.com',
 };
 
@@ -86,6 +87,7 @@ const I18N = {
     'contact.sent': 'Pesan terkirim.',
     'contact.error': 'Gagal terkirim, coba lagi.',
     'contact.socialLabel': 'LINK',
+    'contact.fastest': 'paling cepat: WhatsApp',
 
     'footer.made': 'dibuat dengan kopi ☕',
     'footer.thanks': 'terima kasih sudah mampir',
@@ -171,6 +173,7 @@ const I18N = {
     'contact.sent': 'Message sent.',
     'contact.error': 'Failed to send, try again.',
     'contact.socialLabel': 'LINKS',
+    'contact.fastest': 'fastest: WhatsApp',
 
     'footer.made': 'made with coffee ☕',
     'footer.thanks': 'thanks for stopping by',
@@ -254,6 +257,7 @@ const I18N = {
     'contact.sent': 'メッセージを送信しました。',
     'contact.error': '送信に失敗しました。もう一度お試しください。',
     'contact.socialLabel': 'リンク',
+    'contact.fastest': '最速: WhatsApp',
     'contact.response': '通常24時間以内に返信します',
 
     'footer.made': 'コーヒーと一緒に ☕',
