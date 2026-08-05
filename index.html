@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portofolio pribadi seorang software developer.">
+<title>NAMA LENGKAP — Portofolio</title>
+<script>
+  /* Set tema sebelum CSS dimuat supaya tidak flash */
+  (function () {
+    try {
+      var t = localStorage.getItem('pf-theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231447E6'/%3E%3Ctext x='50' y='72' font-size='60' text-anchor='middle' fill='white' font-family='monospace' font-weight='bold'%3E_%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<noscript><style>#loader{display:none}</style></noscript>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-word" id="loader-word">Hai</div>
+    <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+  </div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="#hero" aria-label="Ke bagian atas">~/<span id="logo-name">NAMA</span></a>
+
+    <nav class="nav-links" id="nav-links" aria-label="Navigasi utama">
+      <a class="nav-link" href="#tentang" data-i18n="nav.about">Tentang</a>
+      <a class="nav-link" href="#pengalaman" data-i18n="nav.experience">Pengalaman</a>
+      <a class="nav-link" href="#proyek" data-i18n="nav.projects">Proyek</a>
+      <a class="nav-link" href="#kontak" data-i18n="nav.contact">Kontak</a>
+    </nav>
+
+    <div class="nav-controls">
+      <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Bahasa / Language">
+        <button type="button" class="lang-btn active" data-lang="id">ID</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button type="button" id="theme-toggle" class="icon-btn" aria-label="Mode gelap"></button>
+      <button type="button" id="nav-toggle" class="hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO / LANDING ============ -->
+  <section id="hero">
+    <div class="container hero-inner">
+      <p class="whoami"><span class="prompt">$</span> whoami<span class="cursor" id="whoami-cursor" aria-hidden="true"></span></p>
+      <h1 class="hero-name"><span id="hero-name"></span><span class="cursor hero-cursor" id="name-cursor" hidden aria-hidden="true"></span></h1>
+      <p class="hero-tagline" id="hero-tagline" data-i18n="hero.tagline">Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.</p>
+      <div class="hero-actions" id="hero-actions">
+        <a class="btn btn-primary" href="#proyek" data-i18n="hero.ctaProjects">Lihat Proyek →</a>
+        <a class="btn btn-secondary" href="assets/CV.pdf" download data-i18n="hero.ctaCv">Unduh CV</a>
+      </div>
+    </div>
+    <a class="scroll-hint" id="hero-scroll" href="#tentang" data-i18n="hero.scroll" aria-label="scroll ke bawah">↓ scroll</a>
+  </section>
+
+  <!-- ============ TENTANG SAYA ============ -->
+  <section id="tentang" class="section">
+    <div class="container">
+      <h2 class="sr-only" data-i18n="nav.about">Tentang</h2>
+      <p class="section-label">NAV.01 — <span data-i18n="nav.aboutLabel">TENTANG SAYA</span></p>
+      <div class="about-grid">
+        <figure class="about-photo">
+          <img src="assets/images/profil.jpg" alt="Foto profil — ganti dengan foto Anda di assets/images/profil.jpg"
+               onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+        </figure>
+        <div class="about-text">
+          <p data-i18n="about.p1">Saya seorang software developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.</p>
+          <p data-i18n="about.p2">Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.</p>
+          <ul class="skills" aria-label="Skill">
+            <li class="tag">JavaScript</li>
+            <li class="tag">TypeScript</li>
+            <li class="tag">React</li>
+            <li class="tag">Node.js</li>
+            <li class="tag">PHP</li>
+            <li class="tag">MySQL</li>
+            <li class="tag">HTML/CSS</li>
+            <li class="tag">Git</li>
+            <li class="tag">Tailwind CSS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PENGALAMAN ============ -->
+  <section id="pengalaman" class="section">
+    <div class="container">
+      <h2 class="sr-only" data-i18n="nav.experience">Pengalaman</h2>
+      <p class="section-label">NAV.02 — <span data-i18n="nav.expLabel">PENGALAMAN</span></p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-date">2024 — <span data-i18n="exp.now">SEKARANG</span></p>
+          <div class="timeline-body">
+            <h3 class="timeline-role" data-i18n="exp1.role">Frontend Developer — PT Digital Nusantara</h3>
+            <p class="timeline-desc" data-i18n="exp1.desc">Memimpin pengembangan ulang dashboard internal, memangkas waktu muat halaman hingga 40%, dan membangun design system komponen bersama tim desain.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">2022 — 2024</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role" data-i18n="exp2.role">Full-Stack Developer — Startup Lokal</h3>
+            <p class="timeline-desc" data-i18n="exp2.desc">Membangun aplikasi kasir dan manajemen stok untuk 50+ UMKM — dari perancangan database MySQL hingga antarmuka pengguna yang mudah dipakai.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">2020 — 2022</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role" data-i18n="exp3.role">Freelance Web Developer — Berbagai Klien</h3>
+            <p class="timeline-desc" data-i18n="exp3.desc">Membuat website company profile, toko online, dan landing page untuk klien lintas industri, dari brief hingga serah terima.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYEK ============ -->
+  <section id="proyek" class="section">
+    <div class="container">
+      <h2 class="sr-only" data-i18n="nav.projects">Proyek</h2>
+      <p class="section-label">NAV.03 — <span data-i18n="nav.projLabel">PROYEK</span></p>
+      <div class="projects-grid">
+        <article class="project-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek-1.jpg" alt="Tampilan dashboard admin toko online" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+          </a>
+          <div class="project-info">
+            <div class="project-head">
+              <h3 data-i18n="proj1.name">Toko Online — CMS E-Commerce</h3>
+              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
+            </div>
+            <p class="project-desc" data-i18n="proj1.desc">Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.</p>
+            <ul class="project-tags">
+              <li class="tag">PHP</li>
+              <li class="tag">MySQL</li>
+              <li class="tag">MVC</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek-2.jpg" alt="Tampilan aplikasi kasir" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+          </a>
+          <div class="project-info">
+            <div class="project-head">
+              <h3 data-i18n="proj2.name">Aplikasi Kasir & Stok</h3>
+              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
+            </div>
+            <p class="project-desc" data-i18n="proj2.desc">Aplikasi point-of-sale offline untuk UMKM dengan laporan penjualan harian dan pencatatan stok.</p>
+            <ul class="project-tags">
+              <li class="tag">JavaScript</li>
+              <li class="tag">Node.js</li>
+              <li class="tag">SQLite</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek-3.jpg" alt="Tampilan landing page agency" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+          </a>
+          <div class="project-info">
+            <div class="project-head">
+              <h3 data-i18n="proj3.name">Landing Page Agency</h3>
+              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
+            </div>
+            <p class="project-desc" data-i18n="proj3.desc">Landing page berperforma tinggi dengan skor Lighthouse 98+, animasi ringan, dan pendekatan mobile-first.</p>
+            <ul class="project-tags">
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek-4.jpg" alt="Tampilan website portofolio ini" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+          </a>
+          <div class="project-info">
+            <div class="project-head">
+              <h3 data-i18n="proj4.name">Website Portofolio Ini</h3>
+              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
+            </div>
+            <p class="project-desc" data-i18n="proj4.desc">Portofolio dengan mode terang/gelap, dwibahasa ID/EN, dan easter egg dino-run di bagian footer.</p>
+            <ul class="project-tags">
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KONTAK ============ -->
+  <section id="kontak" class="section">
+    <div class="container">
+      <h2 class="sr-only" data-i18n="nav.contact">Kontak</h2>
+      <p class="section-label">NAV.04 — <span data-i18n="nav.contactLabel">KONTAK</span></p>
+      <div class="contact-grid">
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <p class="hp-field"><label>Jangan diisi: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <input type="hidden" name="form-name" value="contact">
+          <div class="field-wrap">
+            <label class="sr-only" for="cf-name">Nama</label>
+            <input class="field" id="cf-name" name="nama" type="text" required autocomplete="name"
+                   data-i18n-placeholder="contact.name" placeholder="Nama">
+          </div>
+          <div class="field-wrap">
+            <label class="sr-only" for="cf-email">Email</label>
+            <input class="field" id="cf-email" name="email" type="email" required autocomplete="email"
+                   data-i18n-placeholder="contact.email" placeholder="Email">
+          </div>
+          <div class="field-wrap">
+            <label class="sr-only" for="cf-pesan">Pesan</label>
+            <textarea class="field" id="cf-pesan" name="pesan" rows="5" required
+                      data-i18n-placeholder="contact.message" placeholder="Pesan"></textarea>
+          </div>
+          <div class="form-row">
+            <button class="btn btn-primary" type="submit" data-i18n="contact.send">Kirim</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+
+        <aside class="social">
+          <p class="mono-caption" data-i18n="contact.socialLabel">LINK</p>
+          <a class="social-link" href="https://github.com/username" target="_blank" rel="noopener" aria-label="GitHub">→ GitHub</a>
+          <a class="social-link" href="https://linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn">→ LinkedIn</a>
+          <a class="social-link" href="mailto:email@example.com" aria-label="Email">→ Email</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER + EASTER EGG DINO RUN ============ -->
+<footer id="footer">
+  <div class="container">
+    <p class="copyright">© <span id="footer-year">2026</span> <span id="footer-name">NAMA</span> — <span data-i18n="footer.made">dibuat dengan kopi ☕</span></p>
+
+    <div class="dino-wrap">
+      <p class="dino-hint" data-i18n="game.hint1">Koneksi ke rekruter terputus?</p>
+      <p class="dino-hint" data-i18n="game.hint2">Sambil nunggu, main dulu ↓</p>
+      <div class="game-box">
+        <canvas id="game" tabindex="0" role="img"
+                aria-label="Game Dino Run. Tekan spasi atau tap untuk melompati rintangan { }, 404, dan bug."></canvas>
+      </div>
+      <p class="game-control" data-i18n="game.control">SPASI / TAP — LOMPAT</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

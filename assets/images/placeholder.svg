@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#F3F5F8"/>
+  <rect x="16" y="16" width="768" height="468" fill="none" stroke="#E2E6EB" stroke-width="3" stroke-dasharray="10 10"/>
+  <text x="400" y="248" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="28" fill="#5B6572">GAMBAR DI SINI</text>
+  <text x="400" y="286" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="#8C96A3">assets/images/</text>
+  <circle cx="400" cy="176" r="26" fill="none" stroke="#8C96A3" stroke-width="4"/>
+</svg>

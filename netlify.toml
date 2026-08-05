@@ -1,0 +1,5 @@
+# Konfigurasi Netlify — situs statis tanpa build step
+[build]
+  publish = "."
+
+# Form kontak otomatis terdeteksi oleh Netlify Forms (gratis, tanpa backend)
