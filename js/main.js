@@ -63,6 +63,13 @@
       const k = el.dataset.social;
       if (socialMap[k]) el.setAttribute('href', socialMap[k]);
     });
+
+    // Terminal hero ikut bahasa (render ulang tanpa animasi)
+    const termBox = $('#term-output');
+    if (termBox && termTyped) {
+      termTyped = false;
+      renderTerminalInstant();
+    }
   };
 
   $$('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -226,6 +233,7 @@
     const typeLine = () => {
       if (li >= lines.length) { appendTermCursor(box); return; }
       const line = lines[li];
+      if (!box.isConnected) return; // berhenti bila konten sudah diganti (ganti bahasa)
       if (line.kind === 'cmd') {
         const row = document.createElement('p');
         row.className = 'term-row';
@@ -238,6 +246,7 @@
         box.appendChild(row);
         let i = 0;
         const tick = () => {
+          if (!c.isConnected) return;
           c.textContent = line.text.slice(0, ++i);
           if (i < line.text.length) setTimeout(tick, 34);
           else { li++; setTimeout(typeLine, 140); }

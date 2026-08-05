@@ -4,8 +4,8 @@
 
 /* ----- Identitas (placeholder — ganti dengan data Anda) ----- */
 const CONFIG = {
-  name: 'NAMA LENGKAP',        // Nama besar di hero (efek mengetik)
-  nameShort: 'NAMA',           // Nama di navbar & footer
+  name: 'Mochammad Rezy Alfarabi',  // Nama besar di hero (efek mengetik)
+  nameShort: 'M.Rezy',              // Nama di navbar & footer
   role: 'Software Developer',  // Peran di terminal hero
   github: 'https://github.com/username',
   instagram: 'https://instagram.com/username',
@@ -42,12 +42,27 @@ const I18N = {
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'terbuka untuk kolaborasi',
 
+    'ticker.1': '$ npm install kesuksesan',
+    'ticker.2': '404: rasa takut tidak ditemukan',
+    'ticker.3': 'git commit -m "rapi"',
+    'ticker.4': 'ping rekruter… time out — main dulu ↓',
+    'ticker.5': 'SIGINT: cukup scroll',
+    'ticker.6': 'syntax error: hidup tanpa kopi',
+
     'about.stats.years': 'tahun pengalaman',
     'about.stats.projects': 'proyek selesai',
     'about.stats.clients': 'klien',
 
     'proj.tech': 'TEKNOLOGI',
     'proj.featured': 'PROYEK UNGGULAN',
+
+    'cmd.exp': '$ ls ~/riwayat/',
+    'cmd.now': '$ cat sekarang.md',
+    'cmd.proj': '$ ls ~/proyek/',
+    'cmd.contact': '$ ./kirim-pesan.js',
+    'win.now': '~/sekarang.md',
+    'win.contact': '~/kirim-pesan.js',
+    'win.social': '~/kontak.txt',
 
     'now.build': 'sedang membangun',
     'now.learn': 'sedang mempelajari',
@@ -62,13 +77,8 @@ const I18N = {
     'about.p1': 'Saya seorang software developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.',
     'about.p2': 'Fokus saya saat ini adalah pengembangan web full-stack dan pengalaman pengguna. Di waktu luang, saya suka mengeksplorasi tools developer baru, berkontribusi ke open source, dan sesekali menulis artikel teknis.',
 
-    'exp.now': 'SEKARANG',
-    'exp1.role': 'Frontend Developer — PT Digital Nusantara',
-    'exp1.desc': 'Memimpin pengembangan ulang dashboard internal, memangkas waktu muat halaman hingga 40%, dan membangun design system komponen bersama tim desain.',
-    'exp2.role': 'Full-Stack Developer — Startup Lokal',
-    'exp2.desc': 'Membangun aplikasi kasir dan manajemen stok untuk 50+ UMKM — dari perancangan database MySQL hingga antarmuka pengguna yang mudah dipakai.',
-    'exp3.role': 'Freelance Web Developer — Berbagai Klien',
-    'exp3.desc': 'Membuat website company profile, toko online, dan landing page untuk klien lintas industri, dari brief hingga serah terima.',
+    'exp1.role': 'Anggota Ekstrakurikuler IT Preneur',
+    'exp1.desc': 'Anggota ekstrakurikuler IT Preneur periode 2024–2025 — belajar dasar pengembangan web, kewirausahaan digital, dan membangun proyek teknologi bersama tim.',
 
     'proj1.name': 'Toko Online — CMS E-Commerce',
     'proj1.desc': 'Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.',
@@ -119,12 +129,27 @@ const I18N = {
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'open to collaboration',
 
+    'ticker.1': '$ npm install success',
+    'ticker.2': '404: fear not found',
+    'ticker.3': 'git commit -m "clean"',
+    'ticker.4': 'ping recruiter… time out — play later ↓',
+    'ticker.5': 'SIGINT: enough scrolling',
+    'ticker.6': 'syntax error: life without coffee',
+
     'about.stats.years': 'years of experience',
     'about.stats.projects': 'projects completed',
     'about.stats.clients': 'clients',
 
     'proj.tech': 'STACK',
     'proj.featured': 'FEATURED PROJECT',
+
+    'cmd.exp': '$ ls ~/history/',
+    'cmd.now': '$ cat now.md',
+    'cmd.proj': '$ ls ~/projects/',
+    'cmd.contact': '$ ./send-message.js',
+    'win.now': '~/now.md',
+    'win.contact': '~/send-message.js',
+    'win.social': '~/contact.txt',
 
     'now.build': 'currently building',
     'now.learn': 'currently learning',
@@ -139,13 +164,8 @@ const I18N = {
     'about.p1': 'I am a software developer who enjoys building products from scratch: designing databases, writing APIs, and polishing user interfaces. I believe good code is code that is easy to read, and a good product is one that feels simple to its users.',
     'about.p2': 'My current focus is full-stack web development and user experience. In my spare time, I like exploring new developer tools, contributing to open source, and occasionally writing technical articles.',
 
-    'exp.now': 'NOW',
-    'exp1.role': 'Frontend Developer — PT Digital Nusantara',
-    'exp1.desc': 'Led a full redesign of the internal dashboard, cutting page load time by 40%, and built a component design system together with the design team.',
-    'exp2.role': 'Full-Stack Developer — Local Startup',
-    'exp2.desc': 'Built a point-of-sale and inventory app for 50+ small businesses — from MySQL database design to an easy-to-use interface.',
-    'exp3.role': 'Freelance Web Developer — Various Clients',
-    'exp3.desc': 'Delivered company profile websites, online stores, and landing pages for clients across industries, from brief to handover.',
+    'exp1.role': 'Member — IT Preneur Extracurricular',
+    'exp1.desc': 'Member of the IT Preneur extracurricular (2024–2025) — learned web development fundamentals, digital entrepreneurship, and built tech projects with a team.',
 
     'proj1.name': 'Online Store — E-Commerce CMS',
     'proj1.desc': 'Full online store platform: manage products, promos, customers, and orders through an admin dashboard.',
@@ -196,6 +216,13 @@ const I18N = {
     'hero.scroll': '↓ スクロール',
     'hero.meta.ready': 'コラボレーション歓迎',
 
+    'ticker.1': '$ npm install 成功',
+    'ticker.2': '404: 恐怖は見つかりません',
+    'ticker.3': 'git commit -m "きれい"',
+    'ticker.4': 'ping リクルーター… タイムアウト — あとで遊ぼう ↓',
+    'ticker.5': 'SIGINT: スクロールはここまで',
+    'ticker.6': 'syntax error: コーヒーのない人生',
+
     'about.p1': '私はソフトウェア開発者として、データベース設計からAPI、UIの仕上げまで、プロダクトをゼロから作り上げる過程を楽しんでいます。良いコードは読みやすいコードであり、良いプロダクトは使う人にとってシンプルに感じられるものだと考えています。',
     'about.p2': '現在はフルスタックなWeb開発とユーザー体験に注力しています。空き時間には新しい開発ツールを試したり、オープンソースへの貢献や技術記事の執筆をしたりしています。',
 
@@ -203,13 +230,8 @@ const I18N = {
     'about.stats.projects': '件のプロジェクト',
     'about.stats.clients': '社のクライアント',
 
-    'exp.now': '現在',
-    'exp1.role': 'フロントエンド開発者 — PT Digital Nusantara',
-    'exp1.desc': '社内ダッシュボードの全面リニューアルを主導し、ページの読み込み時間を40%短縮。デザインチームと共にコンポーネントのデザインシステムも構築しました。',
-    'exp2.role': 'フルスタック開発者 — 地元のスタートアップ',
-    'exp2.desc': '50以上の小規模事業者向けにPOS・在庫管理アプリを開発 — MySQLでのデータベース設計から、使いやすいUIまで一貫して担当しました。',
-    'exp3.role': 'フリーランスWeb開発者 — さまざまなクライアント',
-    'exp3.desc': '企業サイト、オンラインストア、ランディングページを、さまざまな業界のクライアント向けに要件定義から納品まで制作しました。',
+    'exp1.role': 'IT Preneur 部活動 メンバー',
+    'exp1.desc': '2024〜2025年にIT Preneur部活動に参加し、Web開発の基礎、デジタル起業、チームでのテクノロジープロジェクト制作を学びました。',
 
     'proj1.name': 'オンラインストア — EC CMS',
     'proj1.desc': '商品・プロモーション・顧客・注文を管理画面でまとめて管理できる、本格的なECプラットフォーム。',
@@ -222,6 +244,14 @@ const I18N = {
 
     'proj.tech': '使用技術',
     'proj.featured': '注目のプロジェクト',
+
+    'cmd.exp': '$ ls ~/履歴/',
+    'cmd.now': '$ cat 現在.md',
+    'cmd.proj': '$ ls ~/制作物/',
+    'cmd.contact': '$ ./send-message.js',
+    'win.now': '~/現在.md',
+    'win.contact': '~/send-message.js',
+    'win.social': '~/連絡.txt',
 
     'now.build': '現在開発中',
     'now.learn': '現在学習中',
