@@ -24,8 +24,9 @@
 }
 
 /* Mode terang (default) */
-/* ikon GitHub (monokrom) tetap terlihat di mode gelap */
-html[data-theme='dark'] img[src$='github.svg'] {
+/* ikon berwarna gelap (GitHub, Next.js) tetap terlihat di mode gelap */
+html[data-theme='dark'] img[src$='github.svg'],
+html[data-theme='dark'] img[src$='nextdotjs.svg'] {
   filter: invert(1);
 }
 :root,
@@ -431,6 +432,17 @@ body, a, button, input, textarea, .tag, .project-card,
 }
 .tech-chip:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-2px); }
 .tech-chip img { width: 16px; height: 16px; flex-shrink: 0; }
+/* icon berwarna terang tetap terbaca di tema terang */
+.tech-chip img {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+}
+html[data-theme='dark'] .tech-chip img {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+html[data-theme='dark'] .tech-chip img[src$='github.svg'],
+html[data-theme='dark'] .tech-chip img[src$='nextdotjs.svg'] {
+  filter: invert(1) drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+}
 
 .hero-tagline {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
