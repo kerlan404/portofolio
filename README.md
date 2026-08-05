@@ -2,8 +2,8 @@
 
 Website portofolio pribadi bergaya **"Terminal yang rapi"** — nuansa developer
 yang presisi: palet biru/putih/hitam, font mono untuk metadata, loading screen
-kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
-**Dino Run** bertema developer di bagian footer (rintangan `{ }`, `404`, bug).
+kata "Hai" multi-bahasa, mode terang/gelap, trilingual **ID/EN/JA**, dan angka
+**404 tiga dimensi** animasi di bagian footer.
 
 > Desain lengkap ada di [`desain.md`](desain.md).
 
@@ -19,9 +19,8 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 ├── index.html              # Halaman utama (semua section)
 ├── css/style.css           # Token warna, tema, tipografi, responsive
 ├── js/
-│   ├── data.js             # ⭐ KONFIGURASI & semua teks (id/en) — edit di sini
-│   ├── main.js             # Loader, typing, tema, bahasa, nav, form
-│   └── game.js             # Easter egg Dino Run (canvas)
+│   ├── data.js             # ⭐ KONFIGURASI & semua teks (id/en/ja) — edit di sini
+│   └── main.js             # Loader, typing, tema, bahasa, nav, form, parallax 404
 ├── assets/
 │   └── images/             # Thumbnail proyek (SVG kustom siap pakai)
 │       ├── proyek-1..4.svg #   Thumbnail proyek bertema terminal
@@ -35,7 +34,7 @@ kata "Hai" multi-bahasa, mode terang/gelap, dwibahasa **ID/EN**, dan easter egg
 1. **Nama & link sosial** → buka `js/data.js`, ubah objek `CONFIG`
    (`name`, `nameShort`, `github`, `instagram`, `whatsapp`, `email`).
    Nomor WhatsApp memakai format internasional tanpa `+` (contoh: `6281234567890`).
-2. **Teks & terjemahan** → masih di `js/data.js`, kamus `I18N` (kunci `id` & `en`).
+2. **Teks & terjemahan** → masih di `js/data.js`, kamus `I18N` (kunci `id`, `en`, `ja`).
 3. **Ikon teknologi di hero** → di `index.html`, blok `<ul class="hero-tech">`
    (ikon dari cdn.simpleicons.org) — tambah/hapus chip sesuai stack Anda.
 4. **Gambar proyek** → thumbnail SVG kustom sudah tersedia di
@@ -66,25 +65,22 @@ npx serve -l 4173
 
 ## Fitur
 
-- ⏳ Loading screen kata "halo" 12 bahasa + progres bar, hanya sekali per sesi
+- ⏳ Loading screen kata "halo" 17 bahasa + progres bar, hanya sekali per sesi
 - ⌨️ Hero berupa **jendela terminal**: `$ whoami` + nama mengetik, lalu skrip
   `./status.sh` diketik baris demi baris dengan kursor berkedip
 - 🛠️ **Ikon teknologi** (PHP, Flutter, Dart, JS, HTML, CSS, GitHub, MySQL)
   di samping nama hero — sesuai stack Anda
 - 📟 **Ticker berjalan** berisi humor developer (`$ npm install kesuksesan`,
   `404: rasa takut tidak ditemukan`) sebagai pembatas antar-section
-- 🔢 **Angka hantu** besar (01–04) di belakang tiap section
 - 🖼️ Form kontak dibingkai **jendela terminal** (`~/kirim-pesan.js`)
 - 💬 **WhatsApp & Instagram** di kontak (link otomatis dari `CONFIG`),
   ditambah **tombol WhatsApp mengambang** dengan animasi pulse
-- 🦖 **Easter egg Dino Run** dalam jendela terminal `~/dino-run.js`: rintangan
-  `{ }`, `404`, bug; animasi kaki berlari; latar grid paralaks + token kode
-  melayang; debu saat mendarat; skor & BEST di bilah judul; overlay GAME
-  OVER + tombol main lagi; lompat dengan spasi/tap; hanya berjalan saat
-  section terlihat
+- 🧊 **404 3D** dalam jendela terminal `~/404.js`: angka raksasa dengan efek
+  extrude tiga dimensi, melayang & berputar, lantai grid retrowave yang
+  bergeser, bayangan elips dinamis, dan parallax mengikuti kursor
 - 📊 **Progress bar scroll** tipis berwarna aksen di paling atas halaman
 - 🌗 Mode terang/gelap (mengikuti sistem saat pertama kali, tersimpan di localStorage)
-- 🌐 Dwibahasa ID/EN tanpa reload (label mono & nama teknologi tetap universal)
+- 🌐 Trilingual ID/EN/JA tanpa reload (label mono & nama teknologi tetap universal)
 - ♿ Aksesibilitas: kontras WCAG AA, fokus keyboard terlihat, `prefers-reduced-motion`
 - 📱 Responsif: desktop 2 kolom → mobile 1 kolom + menu hamburger
 - ⬆️ Tombol kembali ke atas mengambang

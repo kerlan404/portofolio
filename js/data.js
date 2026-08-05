@@ -77,7 +77,7 @@ const I18N = {
     'proj3.name': 'Landing Page Agency',
     'proj3.desc': 'Landing page berperforma tinggi dengan skor Lighthouse 98+, animasi ringan, dan pendekatan mobile-first.',
     'proj4.name': 'Website Portofolio Ini',
-    'proj4.desc': 'Portofolio dengan mode terang/gelap, dwibahasa ID/EN, dan easter egg dino-run di bagian footer.',
+    'proj4.desc': 'Portofolio dengan mode terang/gelap, trilingual ID/EN/JA, dan angka 404 3D animasi di bagian footer.',
 
     'contact.name': 'Nama',
     'contact.email': 'Email',
@@ -93,19 +93,10 @@ const I18N = {
     'footer.thanks': 'terima kasih sudah mampir',
     'footer.backTop': 'kembali ke atas',
 
-    'game.hint1': 'Koneksi ke rekruter terputus?',
-    'game.hint2': 'Sambil nunggu, main dulu ↓',
-    'game.control': 'SPASI / TAP — LOMPAT',
-    'game.over': 'GAME OVER',
-    'game.restart': 'MAIN LAGI',
-    'game.restartHint': 'atau tekan spasi',
-    'game.score': 'SKOR',
-    'game.best': 'BEST',
-    'game.status.idle': 'SIAP',
-    'game.status.run': 'BERJALAN',
-    'game.status.over': 'SELESAI',
-    'game.status.static': 'REDUCED MOTION',
-    'game.aria': 'Game Dino Run bertema developer. Tekan spasi atau tap untuk melompati rintangan.',
+    'e404.hint1': 'Halaman ini sengaja tidak ada.',
+    'e404.hint2': 'Tapi kamu tidak tersesat — kamu di sini.',
+    'e404.sub': '404 — HALAMAN TIDAK DITEMUKAN',
+    'e404.aria': 'Angka 404 tiga dimensi melayang di atas lantai grid.',
   },
 
   en: {
@@ -163,7 +154,7 @@ const I18N = {
     'proj3.name': 'Agency Landing Page',
     'proj3.desc': 'High-performance landing page with a 98+ Lighthouse score, lightweight animations, and a mobile-first approach.',
     'proj4.name': 'This Portfolio Website',
-    'proj4.desc': 'Portfolio with light/dark mode, ID/EN bilingual support, and a dino-run easter egg in the footer.',
+    'proj4.desc': 'Portfolio with light/dark mode, ID/EN/JA trilingual support, and an animated 3D 404 in the footer.',
 
     'contact.name': 'Name',
     'contact.email': 'Email',
@@ -179,19 +170,10 @@ const I18N = {
     'footer.thanks': 'thanks for stopping by',
     'footer.backTop': 'back to top',
 
-    'game.hint1': 'Connection to recruiter lost?',
-    'game.hint2': 'Play while you wait ↓',
-    'game.control': 'SPACE / TAP — JUMP',
-    'game.over': 'GAME OVER',
-    'game.restart': 'PLAY AGAIN',
-    'game.restartHint': 'or press space',
-    'game.score': 'SCORE',
-    'game.best': 'BEST',
-    'game.status.idle': 'READY',
-    'game.status.run': 'RUNNING',
-    'game.status.over': 'OVER',
-    'game.status.static': 'REDUCED MOTION',
-    'game.aria': 'Developer-themed Dino Run game. Press space or tap to jump over obstacles.',
+    'e404.hint1': 'This page intentionally does not exist.',
+    'e404.hint2': 'But you are not lost — you are right here.',
+    'e404.sub': '404 — PAGE NOT FOUND',
+    'e404.aria': 'A floating three-dimensional 404 above a grid floor.',
   },
 
   ja: {
@@ -236,7 +218,7 @@ const I18N = {
     'proj3.name': 'エージェンシー用ランディングページ',
     'proj3.desc': 'Lighthouse 98+ の高パフォーマンスLP。軽量なアニメーションとモバイルファースト。',
     'proj4.name': 'このポートフォリオサイト',
-    'proj4.desc': 'ライト/ダークモード、ID/EN/日本語、フッターの恐竜ランイースターエッグ付きポートフォリオ。',
+    'proj4.desc': 'ライト/ダークモード、ID/EN/日本語対応、フッターに3Dアニメーションの「404」を配置。',
 
     'proj.tech': '技術',
     'proj.featured': '注目作品',
@@ -264,23 +246,14 @@ const I18N = {
     'footer.thanks': 'ご覧いただきありがとうございます',
     'footer.backTop': 'トップへ ↑',
 
-    'game.hint1': '採用担当者との接続が切れましたか？',
-    'game.hint2': '待っている間に遊んでください ↓',
-    'game.control': 'SPACE / TAP — ジャンプ',
-    'game.over': 'ゲームオーバー',
-    'game.restart': 'もう一度',
-    'game.restartHint': 'またはスペースキー',
-    'game.score': 'スコア',
-    'game.best': 'ベスト',
-    'game.status.idle': '準備完了',
-    'game.status.run': '実行中',
-    'game.status.over': '終了',
-    'game.status.static': 'REDUCED MOTION',
-    'game.aria': '開発者テーマの恐竜ランゲーム。スペースキーまたはタップで障害物を飛び越えます。',
+    'e404.hint1': 'このページは意図的に存在しません。',
+    'e404.hint2': 'でも迷子ではありません — ここにいます。',
+    'e404.sub': '404 — ページが見つかりません',
+    'e404.aria': 'グリッドの床の上に浮かぶ3Dの「404」。',
   },
 };
 
-/* ----- Helper terjemahan (global agar bisa dipakai main.js & game.js) ----- */
+/* ----- Helper terjemahan (global agar bisa dipakai main.js) ----- */
 let CURRENT_LANG = 'id';
 
 function t(key) {

@@ -44,14 +44,13 @@
   const applyTranslations = () => {
     $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-placeholder]').forEach((el) => { el.placeholder = t(el.dataset.i18nPlaceholder); });
-    const game = $('#game');
-    if (game) game.setAttribute('aria-label', t('game.aria'));
+    const e404 = $('#digits-404');
+    if (e404) e404.setAttribute('aria-label', t('e404.aria'));
     const logo = $('#logo-name');
     if (logo) logo.textContent = CONFIG.nameShort;
     const footerName = $('#footer-name');
     if (footerName) footerName.textContent = CONFIG.nameShort;
     document.title = t('meta.title');
-    if (window.__gameRefreshUI) window.__gameRefreshUI();
 
     // Link sosial diambil dari CONFIG (satu tempat untuk edit)
     const socialMap = {
@@ -341,6 +340,20 @@
   /* ---------- FOOTER ---------- */
   const year = $('#footer-year');
   if (year) year.textContent = new Date().getFullYear();
+
+  /* ---------- 404 3D: parallax mengikuti kursor ---------- */
+  const scene404 = $('#scene-404');
+  if (scene404 && !reduceMotion) {
+    scene404.addEventListener('mousemove', (e) => {
+      const r = scene404.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      scene404.style.perspectiveOrigin = (50 + x * 24) + '% ' + (38 + y * 20) + '%';
+    });
+    scene404.addEventListener('mouseleave', () => {
+      scene404.style.perspectiveOrigin = '';
+    });
+  }
 
   /* ---------- INIT ---------- */
   const init = () => {

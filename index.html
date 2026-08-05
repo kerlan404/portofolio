@@ -322,7 +322,7 @@
               <h3><span data-i18n="proj4.name">Website Portofolio Ini</span></h3>
               <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
             </div>
-            <p class="project-desc" data-i18n="proj4.desc">Portofolio dengan mode terang/gelap, dwibahasa ID/EN, dan easter egg dino-run di bagian footer.</p>
+            <p class="project-desc" data-i18n="proj4.desc">Portofolio dengan mode terang/gelap, trilingual ID/EN/JA, dan angka 404 3D animasi di bagian footer.</p>
             <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
             <ul class="project-tags">
               <li class="tag">HTML</li>
@@ -408,7 +408,7 @@
   </section>
 </main>
 
-<!-- ============ FOOTER + EASTER EGG DINO RUN ============ -->
+<!-- ============ FOOTER + 404 3D ============ -->
 <footer id="footer">
   <div class="container">
     <div class="footer-top">
@@ -422,31 +422,26 @@
       </div>
     </div>
 
-    <div class="dino-wrap">
-      <p class="dino-hint" data-i18n="game.hint1">Koneksi ke rekruter terputus?</p>
-      <p class="dino-hint" data-i18n="game.hint2">Sambil nunggu, main dulu ↓</p>
+    <div class="error404-wrap">
+      <p class="e404-hint" data-i18n="e404.hint1">Halaman ini sengaja tidak ada.</p>
+      <p class="e404-hint" data-i18n="e404.hint2">Tapi kamu tidak tersesat — kamu di sini.</p>
 
       <div class="terminal-window game-window">
         <div class="terminal-bar">
           <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="t-title">~/dino-run.js <em class="t-status" id="game-status">SIAP</em></span>
-          <div class="game-meta">
-            <span class="game-meta-item"><span data-i18n="game.score">SKOR</span> <b id="game-score">0000</b></span>
-            <span class="game-meta-item"><span data-i18n="game.best">BEST</span> <b id="game-best">0000</b></span>
-          </div>
+          <span class="t-title">~/404.js <em class="t-status">● 404</em></span>
         </div>
-        <div class="game-canvas-wrap">
-          <canvas id="game" tabindex="0" role="img"
-                  aria-label="Game Dino Run. Tekan spasi atau tap untuk melompati rintangan { }, 404, dan bug."></canvas>
-          <div class="game-overlay" id="game-overlay" hidden>
-            <p class="over-title" id="over-title">GAME OVER</p>
-            <p class="over-score" id="over-score">SKOR 0000 · BEST 0000</p>
-            <button type="button" class="btn btn-primary" id="game-restart" data-i18n="game.restart">MAIN LAGI</button>
-            <p class="over-hint" data-i18n="game.restartHint">atau tekan spasi</p>
+        <div class="scene-404" id="scene-404">
+          <div class="floor-404" aria-hidden="true"></div>
+          <div class="digits-404" id="digits-404" role="img" aria-label="404">
+            <span class="digit-404">4</span>
+            <span class="digit-404">0</span>
+            <span class="digit-404">4</span>
           </div>
+          <div class="shadow-404" aria-hidden="true"></div>
         </div>
+        <p class="game-control e404-control" data-i18n="e404.sub">404 — HALAMAN TIDAK DITEMUKAN</p>
       </div>
-      <p class="game-control" data-i18n="game.control">SPASI / TAP — LOMPAT</p>
     </div>
 
     <p class="footer-end" aria-hidden="true">$ echo "<span class="accent" data-i18n="footer.thanks">terima kasih sudah mampir</span> 👋"</p>
@@ -462,6 +457,5 @@
 
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
-<script src="js/game.js"></script>
 </body>
 </html>
