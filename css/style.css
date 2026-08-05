@@ -772,13 +772,107 @@ body, a, button, input, textarea, .tag, .project-card,
 .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
 /* ---------- SEKARANG (NOW) ---------- */
-.now-window { max-width: 720px; }
+.now-window { max-width: 860px; }
 .now-body {
-  padding: 28px 30px;
-  display: flex; flex-direction: column; gap: 16px;
+  padding: 30px 32px;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 38px;
+  align-items: center;
   font-family: var(--mono);
   font-size: var(--fs-mono);
 }
+
+/* pemindai wajah 3D (animasi face-detection ala kamera) */
+.now-scan {
+  position: relative;
+  width: 190px; height: 190px;
+  margin-inline: auto;
+  perspective: 800px;
+}
+.scan-face {
+  position: absolute; inset: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 32%, var(--accent-soft), transparent 68%);
+  border: 1.5px dashed var(--accent);
+  display: grid; place-items: center;
+  transform-style: preserve-3d;
+  animation: face-float 5s ease-in-out infinite;
+}
+.scan-emoji {
+  font-size: 3.4rem;
+  transform: translateZ(38px);
+  filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.35));
+  animation: face-bob 5s ease-in-out infinite;
+}
+.scan-line {
+  position: absolute; left: 2px; right: 2px; top: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  box-shadow: 0 0 14px var(--accent);
+  opacity: 0;
+  animation: scan-y 2.8s ease-in-out infinite;
+}
+.scan-ring {
+  position: absolute; inset: 2px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  animation: ring-ping 2.8s ease-out infinite;
+}
+.scan-corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border: 2px solid var(--accent);
+  opacity: 0.85;
+}
+.scan-corner.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; border-top-left-radius: 6px; }
+.scan-corner.tr { top: 0; right: 0; border-left: 0; border-bottom: 0; border-top-right-radius: 6px; }
+.scan-corner.bl { bottom: 0; left: 0; border-right: 0; border-top: 0; border-bottom-left-radius: 6px; }
+.scan-corner.br { bottom: 0; right: 0; border-left: 0; border-top: 0; border-bottom-right-radius: 6px; }
+.scan-caption {
+  position: absolute; left: 0; right: 0; bottom: -30px;
+  text-align: center;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+@keyframes face-float {
+  0%, 100% { transform: translateZ(0) rotateX(10deg) rotateY(-8deg); }
+  50% { transform: translateZ(24px) rotateX(-8deg) rotateY(10deg); }
+}
+@keyframes face-bob {
+  0%, 100% { transform: translateZ(38px) translateY(0); }
+  50% { transform: translateZ(38px) translateY(-8px); }
+}
+@keyframes scan-y {
+  0% { top: 12%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { top: 82%; opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 12%; opacity: 0; }
+}
+@keyframes ring-ping {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.28); opacity: 0; }
+}
+
+/* info proyek */
+.now-info {
+  display: flex; flex-direction: column; gap: 13px;
+  min-width: 0;
+}
+.now-title {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.now-title .now-emoji { font-size: 1.35rem; }
 .now-row {
   display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
 }
@@ -790,12 +884,18 @@ body, a, button, input, textarea, .tag, .project-card,
   min-width: 150px;
 }
 .now-val { color: var(--ink-muted); }
+.now-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .now-meta {
-  margin-top: 8px;
+  margin-top: 2px;
   color: var(--ink-muted);
   opacity: 0.7;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .now-body { grid-template-columns: 1fr; gap: 26px; }
+  .now-scan { width: 160px; height: 160px; margin-bottom: 34px; }
+  .now-scan .scan-emoji { font-size: 2.8rem; }
 }
 
 /* ---------- PROYEK (satu kolom lurus, semua kartu sejajar) ---------- */

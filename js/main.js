@@ -358,6 +358,20 @@
   const year = $('#footer-year');
   if (year) year.textContent = new Date().getFullYear();
 
+  /* ---------- SEKARANG: wajah 3D menoleh mengikuti kursor ---------- */
+  const nowScan = $('.now-scan');
+  if (nowScan && !reduceMotion) {
+    nowScan.addEventListener('mousemove', (e) => {
+      const r = nowScan.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      nowScan.style.perspectiveOrigin = (50 + x * 30) + '% ' + (50 + y * 30) + '%';
+    });
+    nowScan.addEventListener('mouseleave', () => {
+      nowScan.style.perspectiveOrigin = '';
+    });
+  }
+
   /* ---------- 404 3D: parallax mengikuti kursor ---------- */
   const scene404 = $('#scene-404');
   if (scene404 && !reduceMotion) {

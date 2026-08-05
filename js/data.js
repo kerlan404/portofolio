@@ -5,7 +5,7 @@
 /* ----- Identitas (placeholder — ganti dengan data Anda) ----- */
 const CONFIG = {
   name: 'Mochammad Rezy Alfarabi',  // Nama besar di hero (efek mengetik)
-  nameShort: 'M.Rezy',              // Nama di navbar & footer
+  nameShort: 'M.Rezy Alfarabi',        // Nama di navbar & footer
   role: 'Full Stack Developer',  // Peran di terminal hero
   github: 'https://github.com/username',
   instagram: 'https://instagram.com/username',
@@ -64,12 +64,14 @@ const I18N = {
     'win.contact': '~/kirim-pesan.js',
     'win.social': '~/kontak.txt',
 
+    'now.projectName': 'Sistem Absensi Siswa',
     'now.build': 'sedang membangun',
     'now.learn': 'sedang mempelajari',
     'now.open': 'terbuka untuk',
-    'now.buildVal': 'aplikasi kasir & stok dengan Flutter',
-    'now.learnVal': 'Flutter, Dart, dan CI/CD mobile',
+    'now.buildVal': 'sistem absensi siswa — Next.js + React dengan pengenalan wajah',
+    'now.learnVal': 'Next.js, React, dan integrasi face recognition',
     'now.openVal': 'kolaborasi & proyek freelance',
+    'now.scanLabel': 'MEMINDAI…',
     'now.updated': 'diperbarui: Agustus 2026',
 
     'contact.response': 'biasanya membalas dalam 1×24 jam',
@@ -155,12 +157,14 @@ const I18N = {
     'win.contact': '~/send-message.js',
     'win.social': '~/contact.txt',
 
+    'now.projectName': 'Student Attendance System',
     'now.build': 'currently building',
     'now.learn': 'currently learning',
     'now.open': 'open to',
-    'now.buildVal': 'POS & inventory app with Flutter',
-    'now.learnVal': 'Flutter, Dart, mobile CI/CD',
+    'now.buildVal': 'student attendance system — Next.js + React with face recognition',
+    'now.learnVal': 'Next.js, React, and face recognition integration',
     'now.openVal': 'collaboration & freelance work',
+    'now.scanLabel': 'SCANNING…',
     'now.updated': 'updated: August 2026',
 
     'contact.response': 'usually replies within 24h',
@@ -265,12 +269,14 @@ const I18N = {
     'win.contact': '~/send-message.js',
     'win.social': '~/連絡.txt',
 
+    'now.projectName': '学生出席管理システム',
     'now.build': '現在開発中',
     'now.learn': '現在学習中',
     'now.open': '募集中',
-    'now.buildVal': 'FlutterでPOS・在庫管理アプリ',
-    'now.learnVal': 'Flutter、Dart、モバイルCI/CD',
+    'now.buildVal': '生徒の出席管理システム — Next.js + React で顔認証を導入',
+    'now.learnVal': 'Next.js、React、顔認証の統合',
     'now.openVal': 'コラボレーション & フリーランス案件',
+    'now.scanLabel': 'スキャン中…',
     'now.updated': '最終更新: 2026年8月',
 
     'contact.name': '名前',
