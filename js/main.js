@@ -114,6 +114,8 @@
     heroStarted = true;
     const nameEl = $('#hero-name');
     if (!nameEl) return;
+    const ghost = $('#hero-ghost');
+    if (ghost) ghost.textContent = CONFIG.name; // layer hantu di belakang nama
     const cursor = $('#name-cursor');
     const extras = ['#hero-tech', '#hero-tagline', '#hero-actions', '#hero-meta', '#hero-terminal', '#hero-scroll'];
 

@@ -28,6 +28,7 @@
 <body>
 <noscript><style>#loader{display:none}</style></noscript>
 <div id="scroll-progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ============ LOADING SCREEN ============ -->
 <div id="loader" aria-hidden="true">
@@ -69,7 +70,7 @@
     <div class="container hero-inner">
       <div class="hero-left">
         <p class="whoami"><span class="prompt">$</span> whoami<span class="cursor" id="whoami-cursor" aria-hidden="true"></span></p>
-        <h1 class="hero-name"><span id="hero-name"></span><span class="cursor hero-cursor" id="name-cursor" hidden aria-hidden="true"></span></h1>
+        <h1 class="hero-name"><span class="hero-ghost" id="hero-ghost" aria-hidden="true"></span><span id="hero-name"></span><span class="cursor hero-cursor" id="name-cursor" hidden aria-hidden="true"></span></h1>
         <ul class="hero-tech" id="hero-tech" aria-label="Teknologi">
           <li class="tech-chip"><img src="https://cdn.simpleicons.org/php" alt="PHP" width="16" height="16" loading="lazy"><span>PHP</span></li>
           <li class="tech-chip"><img src="https://cdn.simpleicons.org/flutter" alt="Flutter" width="16" height="16" loading="lazy"><span>Flutter</span></li>
@@ -92,6 +93,15 @@
       </div>
 
       <div class="hero-terminal" id="hero-terminal" aria-hidden="true">
+        <div class="spin-badge" aria-hidden="true">
+          <svg viewBox="0 0 100 100" class="spin-ring">
+            <defs>
+              <path id="spin-path" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/>
+            </defs>
+            <text class="spin-text"><textPath href="#spin-path">TERMINAL STYLE • WEB + MOBILE • 2026 •</textPath></text>
+          </svg>
+          <span class="spin-center">✦</span>
+        </div>
         <div class="terminal-bar">
           <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="t-title">~/start.sh</span>
@@ -129,6 +139,7 @@
     <div class="container">
       <h2 class="sr-only" data-i18n="nav.about">Tentang</h2>
       <p class="section-label">NAV.01 — <span data-i18n="nav.aboutLabel">TENTANG SAYA</span></p>
+      <p class="section-cmd" aria-hidden="true">$ cat about.md</p>
       <div class="about-grid">
         <div class="about-text">
           <p data-i18n="about.p1">Saya seorang software developer yang menikmati proses membangun produk dari nol: merancang database, menulis API, sampai merapikan antarmuka pengguna. Saya percaya kode yang baik adalah kode yang mudah dibaca, dan produk yang baik adalah produk yang terasa sederhana bagi penggunanya.</p>
@@ -159,8 +170,9 @@
     <div class="container">
       <h2 class="sr-only" data-i18n="nav.experience">Pengalaman</h2>
       <p class="section-label">NAV.02 — <span data-i18n="nav.expLabel">PENGALAMAN</span></p>
+      <p class="section-cmd" aria-hidden="true">$ ls ~/riwayat/</p>
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item" data-year="2024">
           <p class="timeline-date">2024 — <span data-i18n="exp.now">SEKARANG</span></p>
           <div class="timeline-body">
             <h3 class="timeline-role" data-i18n="exp1.role">Frontend Developer — PT Digital Nusantara</h3>
@@ -172,7 +184,7 @@
             </ul>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-year="2022">
           <p class="timeline-date">2022 — 2024</p>
           <div class="timeline-body">
             <h3 class="timeline-role" data-i18n="exp2.role">Full-Stack Developer — Startup Lokal</h3>
@@ -184,7 +196,7 @@
             </ul>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-year="2020">
           <p class="timeline-date">2020 — 2022</p>
           <div class="timeline-body">
             <h3 class="timeline-role" data-i18n="exp3.role">Freelance Web Developer — Berbagai Klien</h3>
@@ -205,19 +217,21 @@
     <div class="container">
       <h2 class="sr-only" data-i18n="nav.projects">Proyek</h2>
       <p class="section-label">NAV.03 — <span data-i18n="nav.projLabel">PROYEK</span></p>
+      <p class="section-cmd" aria-hidden="true">$ ls ~/proyek/</p>
       <div class="projects-grid">
-        <article class="project-card">
+        <article class="project-card project-featured">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
             <img src="assets/images/proyek-1.jpg" alt="Tampilan dashboard admin toko online" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
           </a>
           <div class="project-info">
+            <p class="featured-tag" data-i18n="proj.featured">PROYEK UNGGULAN</p>
             <div class="project-head">
               <h3><span class="project-num" aria-hidden="true">01</span><span data-i18n="proj1.name">Toko Online — CMS E-Commerce</span></h3>
               <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
             </div>
-            <p class="project-desc" data-i18n="proj1.desc">Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.</p>
+            <p class="project-desc project-desc-lg" data-i18n="proj1.desc">Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.</p>
             <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
             <ul class="project-tags">
               <li class="tag">PHP</li>
@@ -227,7 +241,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card project-offset">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
             <img src="assets/images/proyek-2.jpg" alt="Tampilan aplikasi kasir" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
@@ -269,7 +283,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card project-pull">
           <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
             <img src="assets/images/proyek-4.jpg" alt="Tampilan website portofolio ini" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
@@ -298,6 +312,7 @@
     <div class="container">
       <h2 class="sr-only" data-i18n="nav.contact">Kontak</h2>
       <p class="section-label">NAV.04 — <span data-i18n="nav.contactLabel">KONTAK</span></p>
+      <p class="section-cmd" aria-hidden="true">$ ./kirim-pesan.js</p>
       <div class="contact-grid">
         <form id="contact-form" class="terminal-window form-window" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
           <div class="terminal-bar">

@@ -118,6 +118,17 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   pointer-events: none;
 }
 
+/* ---------- GRAIN / NOISE (tekstur cetak, tile kecil agar ringan) ---------- */
+.grain {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 95;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
 /* ---------- LOADING SCREEN ---------- */
 #loader {
   position: fixed; inset: 0; z-index: 200;
@@ -263,10 +274,19 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
 
 /* ---------- JENDELA TERMINAL (komponen signature) ---------- */
 .terminal-window {
+  position: relative;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-soft);
   overflow: hidden;
+}
+/* scanline CRT halus */
+.terminal-window::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(127, 127, 127, 0.035) 2px 4px);
+  pointer-events: none;
 }
 .terminal-bar {
   display: flex; align-items: center; gap: 12px;
@@ -368,6 +388,7 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
 @keyframes blink { 50% { opacity: 0; } }
 
 .hero-name {
+  position: relative;
   font-family: var(--display);
   font-weight: 700;
   font-size: var(--fs-hero);
@@ -376,6 +397,17 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   color: var(--ink);
   margin-bottom: 22px;
   min-height: 1.2em;
+}
+/* layer hantu nama (duotone offset) — elemen nyata agar bisa aria-hidden */
+.hero-ghost {
+  position: absolute; inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--border);
+  opacity: 0.55;
+  transform: translate(7px, 7px);
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .hero-tech {
@@ -435,11 +467,42 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
 }
 
 .hero-terminal {
+  position: relative;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease 0.45s, transform 0.6s ease 0.45s;
 }
 .hero-terminal.shown { opacity: 1; transform: none; }
+
+/* lencana berputar (stiker di pojok terminal) */
+.spin-badge {
+  position: absolute; top: -30px; right: -26px;
+  width: 96px; height: 96px;
+  z-index: 3;
+  display: grid; place-items: center;
+}
+.spin-ring {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  animation: spin 18s linear infinite;
+}
+.spin-text {
+  font-family: var(--mono);
+  font-size: 8.6px;
+  letter-spacing: 2.2px;
+  fill: var(--ink-muted);
+  text-transform: uppercase;
+}
+.spin-center {
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--accent);
+  font-size: 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .scroll-hint {
   position: absolute; z-index: 1;
@@ -507,7 +570,7 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent);
-  margin-bottom: 44px;
+  margin-bottom: 10px;
   opacity: 0; transform: translateY(18px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -520,6 +583,20 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   margin-right: 12px;
 }
 .section-label.revealed { opacity: 1; transform: none; }
+
+.section-cmd {
+  font-family: var(--mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+  margin-bottom: 44px;
+}
+.section-cmd::after {
+  content: '▍';
+  margin-left: 6px;
+  color: var(--accent);
+  animation: blink 1s steps(2, start) infinite;
+}
 
 .mono-caption {
   font-family: var(--mono);
@@ -588,8 +665,23 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
   border-left: 2px solid var(--accent);
   max-width: 720px;
 }
-.timeline-item { position: relative; padding-bottom: 48px; }
+.timeline-item { position: relative; padding-bottom: 56px; }
 .timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::after {
+  content: attr(data-year);
+  position: absolute; right: 0; top: -10px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+.timeline-body { position: relative; z-index: 1; }
 .timeline-item::before {
   content: '';
   position: absolute; left: -37px; top: 5px;
@@ -618,12 +710,40 @@ body, a, button, input, textarea, .tag, .project-card, .game-box,
 .timeline-desc { color: var(--ink-muted); max-width: 60ch; }
 .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 
-/* ---------- PROYEK ---------- */
+/* ---------- PROYEK (grid asimetris, bukan template genap) ---------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  align-items: start;
 }
+.project-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: stretch;
+}
+.project-featured .project-thumb {
+  aspect-ratio: auto;
+  min-height: 340px;
+  border-bottom: none;
+  border-right: 1px solid var(--border);
+}
+.project-featured .project-info { justify-content: center; gap: 12px; }
+.project-offset { margin-top: 34px; }
+.project-pull {
+  grid-column: 1 / -1;
+  width: calc(50% - 12px);
+  justify-self: end;
+}
+.featured-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.project-desc-lg { font-size: var(--fs-body); max-width: 46ch; }
 .project-card {
   background: var(--bg-soft);
   border: 1px solid var(--border);
@@ -913,7 +1033,7 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 
 /* ---------- RESPONSIF ---------- */
 @media (max-width: 1023px) {
-  .about-grid { grid-template-columns: 260px 1fr; gap: 40px; }
+  /* about-grid sudah satu kolom penuh, tanpa override grid */
 }
 
 @media (max-width: 860px) {
@@ -943,6 +1063,17 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .hamburger { display: flex; }
 }
 
+@media (max-width: 860px) {
+  .project-featured { grid-template-columns: 1fr; }
+  .project-featured .project-thumb {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    border-bottom: 1px solid var(--border);
+    border-right: none;
+  }
+  .project-pull { width: 100%; }
+}
+
 @media (max-width: 640px) {
   .container { width: min(var(--container), 100% - 40px); }
 
@@ -950,10 +1081,13 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .hero-meta { gap: 8px 18px; }
   .section::before { display: none; }
 
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-photo { max-width: 320px; }
+  .about-grid { gap: 32px; }
 
   .projects-grid { grid-template-columns: 1fr; }
+  .project-offset { margin-top: 0; }
+  .project-pull { grid-column: auto; width: 100%; justify-self: auto; }
+  .hero-ghost { transform: translate(4px, 4px); }
+  .timeline-item::after { display: none; }
 
   .contact-grid { grid-template-columns: 1fr; gap: 24px; }
 

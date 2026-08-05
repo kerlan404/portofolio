@@ -43,6 +43,7 @@ const I18N = {
     'about.stats.clients': 'klien',
 
     'proj.tech': 'TEKNOLOGI',
+    'proj.featured': 'PROYEK UNGGULAN',
 
     'contact.response': 'biasanya membalas dalam 1×24 jam',
 
@@ -117,6 +118,7 @@ const I18N = {
     'about.stats.clients': 'clients',
 
     'proj.tech': 'STACK',
+    'proj.featured': 'FEATURED PROJECT',
 
     'contact.response': 'usually replies within 24h',
 
