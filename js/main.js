@@ -298,16 +298,39 @@
   const burger = $('#nav-toggle');
   const navLinks = $('#nav-links');
   if (burger && navLinks) {
+    const closeMenu = () => {
+      navLinks.classList.remove('open');
+      burger.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Buka menu');
+      document.body.style.overflow = ''; // lepas kunci scroll
+    };
     burger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+      // kunci scroll halaman saat menu mobile terbuka
+      document.body.style.overflow = open ? 'hidden' : '';
     });
-    $$('.nav-link').forEach((a) => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      burger.classList.remove('active');
-      burger.setAttribute('aria-expanded', 'false');
-    }));
+    $$('.nav-link').forEach((a) => a.addEventListener('click', closeMenu));
+    // tutup dengan tombol Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
+    });
+    // tutup saat tap di luar menu
+    document.addEventListener('click', (e) => {
+      if (!navLinks.classList.contains('open')) return;
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) closeMenu();
+    });
+    // tutup otomatis saat layar diperbesar kembali ke desktop
+    const mqDesktop = window.matchMedia('(min-width: 768px)');
+    const onMqChange = (e) => { if (e.matches) closeMenu(); };
+    if (typeof mqDesktop.addEventListener === 'function') {
+      mqDesktop.addEventListener('change', onMqChange);
+    } else if (typeof mqDesktop.addListener === 'function') {
+      mqDesktop.addListener(onMqChange); // Safari lama
+    }
   }
 
   /* ---------- SCROLL SPY: nav link aktif ---------- */

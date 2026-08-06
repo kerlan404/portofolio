@@ -86,8 +86,12 @@ body {
 a { color: var(--accent); text-decoration: none; }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
-button { font-family: inherit; cursor: pointer; }
+button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
 [hidden] { display: none !important; }
+
+/* kenyamanan layar sentuh & anti-zoom input di iOS */
+* { -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 ::-webkit-scrollbar { width: 12px; }
@@ -215,6 +219,13 @@ body, a, button, input, textarea, .tag, .project-card,
 }
 .nav-link:hover, .nav-link.active { color: var(--ink); }
 .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+/* panah menu mobile — elemen nyata, disembunyikan dari screen reader (aria-hidden) */
+.nav-arrow {
+  display: none; /* hanya tampil di menu mobile */
+  font-family: var(--mono);
+  color: var(--accent);
+  line-height: 1;
+}
 
 .nav-controls { display: flex; align-items: center; gap: 14px; }
 
@@ -328,7 +339,9 @@ body, a, button, input, textarea, .tag, .project-card,
 /* ---------- HERO ---------- */
 #hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh; /* fallback lama */
+  min-height: 100svh; /* address bar dinamis (mobile) */
+  min-height: 100dvh;
   display: flex; align-items: center;
   padding-top: var(--nav-h);
   overflow: hidden;
@@ -1645,22 +1658,61 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .section { padding: 84px 0; }
   .now-milestones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
+  /* menu mobile: panel kaca turun dari navbar */
   .nav-links {
     position: fixed;
     top: var(--nav-h); left: 0; right: 0;
-    flex-direction: column; align-items: flex-start; gap: 4px;
-    padding: 16px 24px 24px;
-    background: var(--bg);
+    flex-direction: column; align-items: stretch; gap: 2px;
+    padding: 10px 20px calc(18px + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
     border-bottom: 1px solid var(--border);
-    transform: translateY(-8px);
+    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    max-height: calc(100vh - var(--nav-h)); /* fallback */
+    max-height: calc(100dvh - var(--nav-h));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    transition: opacity 0.22s ease, transform 0.22s ease;
   }
   .nav-links.open { opacity: 1; transform: none; pointer-events: auto; }
-  .nav-link { width: 100%; padding: 12px 2px; font-size: 1rem; }
 
-  .hamburger { display: flex; }
+  .nav-link {
+    width: 100%;
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 12px;
+    font-size: 1.02rem;
+    border-radius: var(--radius-btn);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease,
+                background-color var(--dur) ease, color var(--dur) ease;
+  }
+  .nav-arrow {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .nav-link::after { display: none; } /* garis bawah ala desktop tidak dipakai di sini */
+  .nav-link:active { background: var(--accent-soft); }
+  .nav-links.open .nav-link { opacity: 1; transform: none; }
+  .nav-links.open .nav-link.active { color: var(--accent); background: var(--accent-soft); }
+  .nav-links.open .nav-link:hover .nav-arrow,
+  .nav-links.open .nav-link.active .nav-arrow { opacity: 1; }
+  /* muncul berurutan (stagger) saat menu dibuka */
+  .nav-links.open .nav-link:nth-child(1) { transition-delay: 0.03s; }
+  .nav-links.open .nav-link:nth-child(2) { transition-delay: 0.07s; }
+  .nav-links.open .nav-link:nth-child(3) { transition-delay: 0.11s; }
+  .nav-links.open .nav-link:nth-child(4) { transition-delay: 0.15s; }
+  .nav-links.open .nav-link:nth-child(5) { transition-delay: 0.19s; }
+
+  .hamburger { display: flex; width: 40px; height: 40px; }
+  .icon-btn { width: 40px; height: 40px; }
+  .nav-controls { gap: 6px; }
 }
 
 @media (max-width: 860px) {
@@ -1670,28 +1722,119 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 @media (max-width: 640px) {
   .container { width: min(var(--container), 100% - 40px); }
 
+  /* ---- HERO ---- */
   .hero-terminal { display: none; }
-  .hero-meta { gap: 8px 18px; }
-
-  .about-grid { gap: 32px; }
-
-  .project-featured .project-thumb { aspect-ratio: 16 / 10; }
+  #hero { padding-top: calc(var(--nav-h) + 8px); }
+  .hero-inner { gap: 34px; padding: 40px 0 88px; } /* ruang ekstra agar scroll-hint tak menimpa konten */
+  .hero-left::before { width: 320px; height: 320px; left: -120px; top: -100px; }
+  .hero-name {
+    font-size: clamp(2.15rem, 11vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
   .hero-ghost { transform: translate(4px, 4px); }
-  .timeline-item::after { display: none; }
+  .whoami { margin-bottom: 20px; }
+  .hero-tech, .hero-ai { gap: 7px; margin-bottom: 20px; }
+  .hero-ai-label { margin: -8px 0 10px; }
+  .tech-chip { padding: 6px 10px; gap: 6px; }
+  .hero-tagline { margin-bottom: 26px; }
+  .hero-meta { margin-top: 26px; gap: 8px 18px; }
 
+  /* ---- TENTANG ---- */
+  .about-grid { gap: 32px; }
+  .about-stats { gap: 10px; }
+  .about-stats li { padding: 12px 12px; }
+
+  /* ---- PENGALAMAN ---- */
+  .timeline { padding-left: 24px; }
+  .timeline-item { padding: 22px 20px; }
+  .timeline-item::before { left: -31px; }
+  .timeline-item::after { display: none; }
+  .timeline-role { font-size: 1.2rem; }
+
+  /* ---- SEKARANG ---- */
+  .now-body { padding: 24px 20px; }
+  .now-row { gap: 4px 10px; }
+  .now-key { min-width: 0; }
+  .now-cta { gap: 10px; }
+  .now-mockup-btn { width: 100%; justify-content: center; }
+
+  /* ---- PROYEK ---- */
+  .project-featured .project-thumb { aspect-ratio: 16 / 10; }
+  .project-info { padding: 18px 18px 22px; }
+  .project-head { flex-wrap: wrap; gap: 8px; }
+
+  /* ---- KONTAK ---- */
   .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+  .form-body { padding: 24px 20px 22px; }
+  .form-row { flex-wrap: wrap; gap: 14px; }
+  .form-row .btn { width: 100%; justify-content: center; }
+  .social-body { padding: 20px 16px; }
+  .social-row { padding: 13px 12px; }
 
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
 
-  .back-to-top { right: 16px; bottom: 16px; }
-  .wa-float { right: 70px; bottom: 16px; width: 42px; height: 42px; }
+  /* ---- FLOAT (safe area iPhone) ---- */
+  .back-to-top { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+  .wa-float { right: calc(66px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+  .credit-gif-wrap { left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 48px; height: 48px; }
 
+  /* ---- LAIN-LAIN ---- */
+  .scene-404 { height: 240px; }
   .e404-control { font-size: 0.68rem; padding: 10px 8px; }
   .terminal-bar { gap: 8px; }
-  .lang-toggle { gap: 5px; font-size: 0.72rem; }
-  .nav-controls { gap: 8px; }
+  .lang-toggle { gap: 4px; font-size: 0.7rem; }
+  .lang-btn { padding: 6px 3px; }
+  .nav-controls { gap: 6px; }
+  .section { padding: 72px 0; }
+  .section-cmd { margin-bottom: 32px; }
+}
 
-  .credit-gif-wrap { left: 16px; bottom: 16px; width: 52px; height: 52px; }
+/* ---------- HP SEMPIT (<480px) ---------- */
+@media (max-width: 480px) {
+  .container { width: min(var(--container), 100% - 28px); }
+  .section { padding: 64px 0; }
+
+  .hero-name { font-size: clamp(1.9rem, 10vw, 2.4rem); }
+  .hero-tech, .hero-ai { gap: 6px; }
+  .tech-chip { font-size: 0.75rem; padding: 5px 9px; }
+  .tech-chip img { width: 14px; height: 14px; }
+
+  .logo { font-size: 0.75rem; }
+  .lang-toggle { gap: 3px; font-size: 0.66rem; }
+
+  .about-stats { gap: 8px; }
+  .about-stats li { padding: 10px 8px; text-align: center; }
+  .about-stats b { font-size: 1.25rem; }
+  .about-stats span { font-size: 0.62rem; letter-spacing: 0.02em; }
+
+  .timeline-head { gap: 8px; }
+  .timeline-date { font-size: 0.72rem; padding: 4px 10px; }
+
+  .now-title { font-size: 1.15rem; }
+  .now-status { font-size: 0.62rem; padding: 4px 10px; }
+  .now-mockup-note { display: none; }
+
+  .form-note { font-size: 0.7rem; }
+
+  .e404-hint { font-size: 0.8rem; }
+  .footer-top { justify-content: center; text-align: center; }
+  .footer-actions { justify-content: center; gap: 14px; }
+}
+
+/* ---------- HP LANDSCAPE PENDEK ---------- */
+@media (max-height: 520px) and (orientation: landscape) {
+  #hero { min-height: auto; padding: calc(var(--nav-h) + 24px) 0 72px; }
+  .scroll-hint { display: none; }
+  .nav-links { max-height: calc(100vh - var(--nav-h)); }
+}
+
+/* ---------- LAYAR SENTUH (tanpa hover) ---------- */
+@media (hover: none) {
+  .project-card:hover { transform: none; }
+  .project-card:hover .project-thumb img { transform: none; }
+  /* ikon panah thumbnail selalu terlihat agar jelas bisa diklik */
+  .thumb-arrow { opacity: 1; transform: none; }
 }
 
 /* ---------- AKSESIBILITAS: REDUCED MOTION ---------- */
