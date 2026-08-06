@@ -41,6 +41,7 @@ const I18N = {
     'hero.ctaProjects': 'Lihat Proyek →',
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'terbuka untuk kolaborasi',
+    'hero.aiTools': '✦ AI TOOLS',
 
     'ticker.1': '$ npm install kesuksesan',
     'ticker.2': '404: rasa takut tidak ditemukan',
@@ -78,6 +79,12 @@ const I18N = {
     'now.f3': 'notifikasi realtime',
     'now.scanLabel': 'MEMINDAI…',
     'now.updated': 'diperbarui: Agustus 2026',
+    'now.mockup': 'Lihat Mockup UI',
+    'now.mockupNote': 'mockup interaktif',
+    'now.ms1': 'mockup UI',
+    'now.ms2': 'login & dashboard',
+    'now.ms3': 'face recognition',
+    'now.ms4': 'realtime & notifikasi',
 
     'contact.response': 'biasanya membalas dalam 1×24 jam',
 
@@ -139,6 +146,7 @@ const I18N = {
     'hero.ctaProjects': 'View Projects →',
     'hero.scroll': '↓ scroll',
     'hero.meta.ready': 'open to collaboration',
+    'hero.aiTools': '✦ AI TOOLS',
 
     'ticker.1': '$ npm install success',
     'ticker.2': '404: fear not found',
@@ -176,6 +184,12 @@ const I18N = {
     'now.f3': 'realtime notifications',
     'now.scanLabel': 'SCANNING…',
     'now.updated': 'updated: August 2026',
+    'now.mockup': 'View UI Mockup',
+    'now.mockupNote': 'interactive mockup',
+    'now.ms1': 'UI mockup',
+    'now.ms2': 'login & dashboard',
+    'now.ms3': 'face recognition',
+    'now.ms4': 'realtime & notifications',
 
     'contact.response': 'usually replies within 24h',
 
@@ -237,6 +251,7 @@ const I18N = {
     'hero.ctaProjects': '制作物を見る →',
     'hero.scroll': '↓ スクロール',
     'hero.meta.ready': 'コラボレーション歓迎',
+    'hero.aiTools': '✦ AIツール',
 
     'ticker.1': '$ npm install 成功',
     'ticker.2': '404: 恐怖は見つかりません',
@@ -293,6 +308,12 @@ const I18N = {
     'now.f3': 'リアルタイム通知',
     'now.scanLabel': 'スキャン中…',
     'now.updated': '最終更新: 2026年8月',
+    'now.mockup': 'UIモックアップを見る',
+    'now.mockupNote': 'インタラクティブモックアップ',
+    'now.ms1': 'UIモックアップ',
+    'now.ms2': 'ログイン & ダッシュボード',
+    'now.ms3': '顔認識',
+    'now.ms4': 'リアルタイム & 通知',
 
     'contact.name': '名前',
     'contact.email': 'メールアドレス',

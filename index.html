@@ -114,6 +114,15 @@
           <li class="tech-chip"><img src="assets/icons/react.svg" alt="" width="16" height="16" loading="lazy"><span>React</span></li>
           <li class="tech-chip"><img src="assets/icons/nodedotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Node.js</span></li>
           <li class="tech-chip"><img src="assets/icons/express.svg" alt="" width="16" height="16" loading="lazy"><span>Express</span></li>
+          <li class="tech-chip"><img src="assets/icons/vscode.svg" alt="" width="16" height="16" loading="lazy"><span>VS Code</span></li>
+        </ul>
+        <p class="hero-ai-label mono-caption" id="hero-ai-label" data-i18n="hero.aiTools">✦ AI TOOLS</p>
+        <ul class="hero-ai" id="hero-ai" aria-label="AI Tools">
+          <li class="tech-chip"><img src="assets/icons/claude.svg" alt="" width="16" height="16" loading="lazy"><span>Claude</span></li>
+          <li class="tech-chip"><img src="assets/icons/antigravity.svg" alt="" width="16" height="16" loading="lazy"><span>Antigravity</span></li>
+          <li class="tech-chip"><img src="assets/icons/copilot.svg" alt="" width="16" height="16" loading="lazy"><span>Copilot</span></li>
+          <li class="tech-chip"><img src="assets/icons/gemini.svg" alt="" width="16" height="16" loading="lazy"><span>Gemini</span></li>
+          <li class="tech-chip"><img src="assets/icons/chatgpt.svg" alt="" width="16" height="16" loading="lazy"><span>ChatGPT</span></li>
         </ul>
         <p class="hero-tagline" id="hero-tagline" data-i18n="hero.tagline">Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.</p>
         <div class="hero-actions" id="hero-actions">
@@ -194,6 +203,7 @@
             <li class="tag">React</li>
             <li class="tag">Node.js</li>
             <li class="tag">Express</li>
+            <li class="tag">VS Code</li>
           </ul>
           <ul class="about-stats">
             <li><b>2+</b><span data-i18n="about.stats.years">tahun belajar coding</span></li>
@@ -285,8 +295,22 @@
             <div class="now-progress">
               <span class="now-progress-label" data-i18n="now.progress">progres proyek</span>
               <span class="now-progress-track"><i></i></span>
-              <span class="now-progress-pct">70%</span>
+              <span class="now-progress-pct" id="now-progress-pct">20%</span>
             </div>
+            <div class="now-cta">
+              <a class="btn btn-secondary now-mockup-btn" href="https://mock-ui-absenku-kel1.netlify.app/#/login" target="_blank" rel="noopener" aria-label="Mockup UI Sistem Absensi Siswa">
+                <span class="now-mockup-ico" aria-hidden="true">🖥️</span>
+                <span data-i18n="now.mockup">Lihat Mockup UI</span>
+                <span class="now-mockup-arrow" aria-hidden="true">↗</span>
+              </a>
+              <span class="now-mockup-note mono-caption" data-i18n="now.mockupNote">mockup interaktif</span>
+            </div>
+            <ul class="now-milestones" aria-label="Fase proyek">
+              <li class="milestone done"><span class="m-dot" aria-hidden="true"></span><span data-i18n="now.ms1">mockup UI</span><span class="m-check" aria-hidden="true">✓</span></li>
+              <li class="milestone active" aria-current="step"><span class="m-dot" aria-hidden="true"></span><span data-i18n="now.ms2">login & dashboard</span></li>
+              <li class="milestone"><span class="m-dot" aria-hidden="true"></span><span data-i18n="now.ms3">face recognition</span></li>
+              <li class="milestone"><span class="m-dot" aria-hidden="true"></span><span data-i18n="now.ms4">realtime & notifikasi</span></li>
+            </ul>
             <ul class="now-feats">
               <li><span class="feat-emoji" aria-hidden="true">😀</span><span data-i18n="now.f1">deteksi wajah</span></li>
               <li><span class="feat-emoji" aria-hidden="true">📋</span><span data-i18n="now.f2">rekap kehadiran otomatis</span></li>
@@ -511,7 +535,10 @@
     </div>
 
     <p class="footer-end" aria-hidden="true">$ echo "<span class="accent" data-i18n="footer.thanks">terima kasih sudah mampir</span> 👋"</p>
-    <p class="footer-credit">portofolio by devick404</p>
+    <p class="footer-credit">
+      <img class="credit-gif" src="assets/chainsaw-man-reze.gif" alt="" width="44" height="44" loading="lazy">
+      <span>portofolio by devick404</span>
+    </p>
   </div>
 </footer>
 
