@@ -1491,12 +1491,8 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 }
 .footer-end .accent { color: var(--accent); }
 
-/* kredit kecil di bagian paling bawah + gif pojok */
+/* kredit kecil di bagian paling bawah */
 .footer-credit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
   margin-top: 44px;
   text-align: center;
   font-family: var(--mono);
@@ -1505,18 +1501,80 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   text-transform: lowercase;
   color: var(--ink-muted);
 }
+
+/* GIF maskot pojok kiri bawah (fixed, mengambang) */
+.credit-gif-wrap {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 80;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
 .credit-gif {
-  width: 44px;
-  height: 44px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--border);
   background: var(--bg);
+  border: 2px solid var(--border);
   box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.45);
   animation: credit-bob 3.2s ease-in-out infinite;
-  transition: transform 0.2s ease, border-color var(--dur) ease;
+  transition: transform 0.2s ease, border-color var(--dur) ease, box-shadow 0.3s ease;
 }
-.credit-gif:hover { animation: none; transform: scale(1.12); border-color: var(--accent); }
+.credit-gif-wrap:hover .credit-gif {
+  animation: none;
+  transform: scale(1.15) rotate(6deg);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 20px 3px color-mix(in srgb, var(--accent) 60%, transparent),
+    0 14px 30px -12px rgba(0, 0, 0, 0.5);
+}
+/* aura neon berdenyut di belakang gif */
+.gif-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(2px);
+}
+.credit-gif-wrap:hover .gif-glow {
+  opacity: 1;
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+/* partikel meledak saat hover */
+.gif-particle {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.credit-gif-wrap:hover .gif-particle {
+  animation: particle-burst 0.9s ease-out infinite;
+}
+.gif-particle.p1 { animation-delay: 0s;    --dx: -30px; --dy: -22px; }
+.gif-particle.p2 { animation-delay: 0.07s; --dx: 28px;  --dy: -26px; }
+.gif-particle.p3 { animation-delay: 0.14s; --dx: 34px;  --dy: 10px;  }
+.gif-particle.p4 { animation-delay: 0.21s; --dx: -26px; --dy: 26px;  }
+@keyframes particle-burst {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  15%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1); }
+}
 @keyframes credit-bob {
   0%, 100% { transform: translateY(0) rotate(-4deg); }
   50% { transform: translateY(-5px) rotate(4deg); }
@@ -1632,6 +1690,8 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .terminal-bar { gap: 8px; }
   .lang-toggle { gap: 5px; font-size: 0.72rem; }
   .nav-controls { gap: 8px; }
+
+  .credit-gif-wrap { left: 16px; bottom: 16px; width: 56px; height: 56px; }
 }
 
 /* ---------- AKSESIBILITAS: REDUCED MOTION ---------- */
