@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, EJS, Next.js). Lihat proyek, pengalaman, dan cara menghubungi saya.">
+<meta name="description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, Express.js, EJS, Next.js, Tailwind CSS). Lihat proyek, pengalaman, dan cara menghubungi saya.">
 <meta name="theme-color" content="#0B0F14">
 <title>Mochammad Rezy Alfarabi — Portofolio</title>
 
@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="M.Rezy Alfarabi — Portofolio">
 <meta property="og:title" content="Mochammad Rezy Alfarabi — Full Stack Developer">
-<meta property="og:description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, EJS, Next.js). Lihat proyek, pengalaman, dan cara menghubungi saya.">
+<meta property="og:description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, Express.js, EJS, Next.js, Tailwind CSS). Lihat proyek, pengalaman, dan cara menghubungi saya.">
 <meta property="og:url" content="https://YOUR-DOMAIN.netlify.app/">
 <meta property="og:image" content="https://YOUR-DOMAIN.netlify.app/og-image.png">
 <meta property="og:image:type" content="image/png">
@@ -25,7 +25,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mochammad Rezy Alfarabi — Full Stack Developer">
-<meta name="twitter:description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, EJS, Next.js).">
+<meta name="twitter:description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, Express.js, EJS, Next.js, Tailwind CSS).">
 <meta name="twitter:image" content="https://YOUR-DOMAIN.netlify.app/og-image.png">
 <script>
   /* Set tema sebelum CSS dimuat supaya tidak flash */
@@ -105,6 +105,7 @@
           <li class="tech-chip"><img src="assets/icons/javascript.svg" alt="" width="16" height="16" loading="lazy"><span>JavaScript</span></li>
           <li class="tech-chip"><img src="assets/icons/html5.svg" alt="" width="16" height="16" loading="lazy"><span>HTML</span></li>
           <li class="tech-chip"><img src="assets/icons/css3.svg" alt="" width="16" height="16" loading="lazy"><span>CSS</span></li>
+          <li class="tech-chip"><img src="assets/icons/tailwind.svg" alt="" width="16" height="16" loading="lazy"><span>Tailwind</span></li>
           <li class="tech-chip"><img src="assets/icons/mysql.svg" alt="" width="16" height="16" loading="lazy"><span>MySQL</span></li>
           <li class="tech-chip"><img src="assets/icons/git.svg" alt="" width="16" height="16" loading="lazy"><span>Git</span></li>
           <li class="tech-chip"><img src="assets/icons/github.svg" alt="" width="16" height="16" loading="lazy"><span>GitHub</span></li>
@@ -112,6 +113,7 @@
           <li class="tech-chip"><img src="assets/icons/nextdotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Next.js</span></li>
           <li class="tech-chip"><img src="assets/icons/react.svg" alt="" width="16" height="16" loading="lazy"><span>React</span></li>
           <li class="tech-chip"><img src="assets/icons/nodedotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Node.js</span></li>
+          <li class="tech-chip"><img src="assets/icons/express.svg" alt="" width="16" height="16" loading="lazy"><span>Express</span></li>
         </ul>
         <p class="hero-tagline" id="hero-tagline" data-i18n="hero.tagline">Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.</p>
         <div class="hero-actions" id="hero-actions">
@@ -183,6 +185,7 @@
             <li class="tag">JavaScript</li>
             <li class="tag">HTML</li>
             <li class="tag">CSS</li>
+            <li class="tag">Tailwind</li>
             <li class="tag">MySQL</li>
             <li class="tag">Git</li>
             <li class="tag">GitHub</li>
@@ -190,6 +193,7 @@
             <li class="tag">Next.js</li>
             <li class="tag">React</li>
             <li class="tag">Node.js</li>
+            <li class="tag">Express</li>
           </ul>
           <ul class="about-stats">
             <li><b>2+</b><span data-i18n="about.stats.years">tahun belajar coding</span></li>
@@ -308,90 +312,88 @@
       <p class="section-cmd" aria-hidden="true" data-i18n="cmd.proj">$ ls ~/proyek/</p>
       <div class="projects-grid">
         <article class="project-card project-featured">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-1.svg" alt="Tampilan dashboard admin toko online" loading="lazy"
+          <a class="project-thumb" href="https://revoz-id.netlify.app/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek%201.png" alt="Tampilan website e-commerce smart watch Revorz" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
-            <span class="thumb-overlay" aria-hidden="true"><span>$ npm run deploy</span><span class="ok">✓ ok</span></span>
+            <span class="thumb-overlay" aria-hidden="true"><span>$ netlify deploy</span><span class="ok">✓ ok</span></span>
           </a>
           <div class="project-info">
             <p class="featured-tag" data-i18n="proj.featured">PROYEK UNGGULAN</p>
             <div class="project-head">
-              <h3><span data-i18n="proj1.name">Toko Online — CMS E-Commerce</span></h3>
-              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
+              <h3><span data-i18n="proj1.name">Revorz — E-Commerce Smart Watch</span></h3>
+              <a class="project-link" href="https://revoz-id.netlify.app/" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
             </div>
-            <p class="project-desc project-desc-lg" data-i18n="proj1.desc">Platform toko online lengkap: kelola produk, promo, pelanggan, dan pesanan lewat dashboard admin.</p>
+            <p class="project-desc project-desc-lg" data-i18n="proj1.desc">Landing page e-commerce smart watch premium: dark theme elegan, desain responsif, dan animasi halus — dipublikasikan di Netlify.</p>
             <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
             <ul class="project-tags">
-              <li class="tag">PHP</li>
-              <li class="tag">MySQL</li>
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
               <li class="tag">JavaScript</li>
+              <li class="tag">Netlify</li>
             </ul>
           </div>
         </article>
 
         <article class="project-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-2.svg" alt="Tampilan aplikasi kasir" loading="lazy"
+          <a class="project-thumb" href="https://github.com/kerlan404/kapanbeli" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek2.png" alt="Tampilan website manajemen dapur Kapanbeli" loading="lazy"
                  onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
             <span class="thumb-arrow" aria-hidden="true">↗</span>
           </a>
           <div class="project-info">
             <p class="project-status off"><span class="dot" aria-hidden="true"></span>IN&nbsp;DEV</p>
             <div class="project-head">
-              <h3><span data-i18n="proj2.name">Aplikasi Kasir & Stok</span></h3>
-              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
+              <h3><span data-i18n="proj2.name">Kapanbeli — Manajemen Stok & Catatan Dapur</span></h3>
+              <a class="project-link" href="https://github.com/kerlan404/kapanbeli" target="_blank" rel="noopener" aria-label="Lihat repository proyek">repo ↗</a>
             </div>
-            <p class="project-desc" data-i18n="proj2.desc">Aplikasi point-of-sale offline untuk UMKM dengan laporan penjualan harian dan pencatatan stok.</p>
+            <p class="project-desc" data-i18n="proj2.desc">Aplikasi web inventaris dapur: pantau stok bahan real-time, catat pembelian, dan dapatkan saran belanja otomatis sebelum bahan habis.</p>
+            <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
+            <ul class="project-tags">
+              <li class="tag">Node.js</li>
+              <li class="tag">Express.js</li>
+              <li class="tag">EJS</li>
+              <li class="tag">Tailwind CSS</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb" aria-hidden="true">
+            <img src="assets/images/proyek%203.png" alt="Tampilan website toko online Zeta" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+          </div>
+          <div class="project-info">
+            <p class="project-status"><span class="dot" aria-hidden="true"></span>TUGAS&nbsp;SEKOLAH</p>
+            <div class="project-head">
+              <h3><span data-i18n="proj3.name">Zeta — Toko Online Boutique</span></h3>
+            </div>
+            <p class="project-desc" data-i18n="proj3.desc">Website toko online boutique premium: katalog koleksi kurasi, keranjang belanja, dan sistem pemesanan — dibangun dengan PHP native dan MySQL.</p>
+            <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
+            <ul class="project-tags">
+              <li class="tag">PHP</li>
+              <li class="tag">MySQL</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-thumb" href="https://github.com/kerlan404/berita--headline-olahraga-politik-teknologi-dan-dll-" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+            <img src="assets/images/proyek%204.png" alt="Tampilan aplikasi berita REEDSFEED" loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+            <span class="thumb-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="project-info">
+            <p class="project-status off"><span class="dot" aria-hidden="true"></span>IN&nbsp;DEV</p>
+            <div class="project-head">
+              <h3><span data-i18n="proj4.name">REEDSFEED — Aplikasi Berita</span></h3>
+              <a class="project-link" href="https://github.com/kerlan404/berita--headline-olahraga-politik-teknologi-dan-dll-" target="_blank" rel="noopener" aria-label="Lihat repository proyek">repo ↗</a>
+            </div>
+            <p class="project-desc" data-i18n="proj4.desc">Aplikasi berita lintas kategori: berita terbaru, kategori olahraga/teknologi/bisnis/entertainment/politik, dan breaking news — dibangun dengan Flutter.</p>
             <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
             <ul class="project-tags">
               <li class="tag">Flutter</li>
               <li class="tag">Dart</li>
-              <li class="tag">SQLite</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-3.svg" alt="Tampilan landing page agency" loading="lazy"
-                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
-            <span class="thumb-arrow" aria-hidden="true">↗</span>
-          </a>
-          <div class="project-info">
-            <p class="project-status"><span class="dot" aria-hidden="true"></span>LIVE</p>
-            <div class="project-head">
-              <h3><span data-i18n="proj3.name">Landing Page Agency</span></h3>
-              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
-            </div>
-            <p class="project-desc" data-i18n="proj3.desc">Landing page berperforma tinggi dengan skor Lighthouse 98+, animasi ringan, dan pendekatan mobile-first.</p>
-            <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
-            <ul class="project-tags">
-              <li class="tag">HTML</li>
-              <li class="tag">CSS</li>
-              <li class="tag">JavaScript</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-            <img src="assets/images/proyek-4.svg" alt="Tampilan website portofolio ini" loading="lazy"
-                 onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
-            <span class="thumb-arrow" aria-hidden="true">↗</span>
-          </a>
-          <div class="project-info">
-            <p class="project-status"><span class="dot" aria-hidden="true"></span>LIVE</p>
-            <div class="project-head">
-              <h3><span data-i18n="proj4.name">Website Portofolio Ini</span></h3>
-              <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Lihat proyek live">live ↗</a>
-            </div>
-            <p class="project-desc" data-i18n="proj4.desc">Portofolio dengan mode terang/gelap, trilingual ID/EN/JA, dan angka 404 3D animasi di bagian footer.</p>
-            <p class="mono-caption project-tech-caption" data-i18n="proj.tech">TEKNOLOGI</p>
-            <ul class="project-tags">
-              <li class="tag">HTML</li>
-              <li class="tag">CSS</li>
-              <li class="tag">JavaScript</li>
             </ul>
           </div>
         </article>
