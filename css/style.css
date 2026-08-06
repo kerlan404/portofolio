@@ -1508,8 +1508,8 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   left: 22px;
   bottom: 22px;
   z-index: 80;
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
 }
 .credit-gif {
@@ -1691,7 +1691,7 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .lang-toggle { gap: 5px; font-size: 0.72rem; }
   .nav-controls { gap: 8px; }
 
-  .credit-gif-wrap { left: 16px; bottom: 16px; width: 50px; height: 50px; }
+  .credit-gif-wrap { left: 16px; bottom: 16px; width: 52px; height: 52px; }
 }
 
 /* ---------- AKSESIBILITAS: REDUCED MOTION ---------- */
