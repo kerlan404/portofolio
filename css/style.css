@@ -67,6 +67,7 @@ html[data-theme='dark'] {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 8px); /* cadangan offset anchor */
   background: var(--bg);
   scrollbar-color: var(--border) var(--bg);
   scrollbar-width: thin;
@@ -593,6 +594,11 @@ html[data-theme='dark'] .tech-chip img[src$='copilot.svg'] {
 }
 .ticker .tick-sep { color: var(--accent); }
 @keyframes ticker-scroll { to { transform: translateX(-50%); } }
+
+/* desktop: jeda ticker saat hover agar teks sempat terbaca */
+@media (hover: hover) {
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+}
 
 /* ---------- SECTION UMUM ---------- */
 .section { position: relative; padding: 112px 0; scroll-margin-top: calc(var(--nav-h) + 8px); }
@@ -1269,7 +1275,7 @@ html[data-theme='dark'] .tech-chip img[src$='copilot.svg'] {
 textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 
 .form-row { display: flex; align-items: center; gap: 20px; }
-.form-status { font-family: var(--mono); font-size: var(--fs-mono); color: var(--ink-muted); }
+.form-status { font-family: var(--mono); font-size: var(--fs-mono); color: var(--ink-muted); min-height: 1.5em; /* cegah lompatan layout saat status muncul */ }
 .form-status.ok { color: var(--accent); }
 .form-status.err { color: var(--danger); }
 .form-note { margin-top: 22px; }
@@ -1397,6 +1403,7 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   cursor: grab;
   touch-action: manipulation;
 }
+.scene-404:active { cursor: grabbing; } /* terasa bisa "diseret" saat ditekan */
 
 /* lantai grid perspektif ala retrowave */
 .floor-404 {
@@ -1645,10 +1652,6 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 .back-to-top:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ---------- RESPONSIF ---------- */
-@media (max-width: 1023px) {
-  /* about-grid sudah satu kolom penuh, tanpa override grid */
-}
-
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-terminal { max-width: 520px; }
