@@ -175,8 +175,6 @@
     { kind: 'cmd', prompt: '~/portfolio $', text: './status.sh' },
     { kind: 'out', key: 'role', value: CONFIG.role },
     { kind: 'out', key: 'status', value: t('hero.meta.ready') },
-    { kind: 'out', key: 'stack', value: '[PHP · Flutter · Dart · JavaScript · HTML · CSS · Tailwind · MySQL · Git · Express.js · EJS · Next.js · React · Node.js · VS Code]' },
-    { kind: 'out', key: 'ai', value: '[Claude · Gemini · ChatGPT · Copilot · Antigravity]' },
   ];
 
   const makeTermRow = (line) => {
