@@ -283,11 +283,17 @@
   const progBar = $('#scroll-progress');
   const onScroll = () => {
     if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 24);
-    if (backTop) backTop.classList.toggle('show', window.scrollY > 600);
     if (progBar) {
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
       progBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    }
+    // tombol kembali ke atas hanya muncul saat sudah scroll sampai bawah halaman
+    if (backTop) {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const nearBottom = max > 0 && (max - window.scrollY) < window.innerHeight * 0.6;
+      backTop.classList.toggle('show', nearBottom);
     }
   };
   window.addEventListener('scroll', onScroll, { passive: true });

@@ -1620,7 +1620,7 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 
 /* ---------- TOMBOL WHATSAPP MENGAMBANG ---------- */
 .wa-float {
-  position: fixed; right: 78px; bottom: 22px; z-index: 80;
+  position: fixed; right: 22px; bottom: 22px; z-index: 80;
   width: 46px; height: 46px;
   display: grid; place-items: center;
   border-radius: 50%;
@@ -1651,7 +1651,7 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 
 /* ---------- BACK TO TOP ---------- */
 .back-to-top {
-  position: fixed; right: 22px; bottom: 22px; z-index: 80;
+  position: fixed; right: 78px; bottom: 22px; z-index: 80;
   width: 44px; height: 44px;
   display: grid; place-items: center;
   border: 1px solid var(--border);
@@ -1798,8 +1798,8 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
 
   /* ---- FLOAT (safe area iPhone) ---- */
-  .back-to-top { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
-  .wa-float { right: calc(66px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+  .back-to-top { right: 66px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+  .wa-float { right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
   .credit-gif-wrap { left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 48px; height: 48px; }
 
   /* ---- LAIN-LAIN ---- */
