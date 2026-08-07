@@ -1652,20 +1652,24 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 /* ---------- BACK TO TOP ---------- */
 .back-to-top {
   position: fixed; right: 78px; bottom: 22px; z-index: 80;
-  width: 44px; height: 44px;
-  display: grid; place-items: center;
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 40px;
+  padding: 0 14px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-btn);
+  border-radius: 999px;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease,
               border-color var(--dur) ease, color var(--dur) ease;
 }
+.back-to-top .bt-prompt { color: var(--accent); font-weight: 700; }
 .back-to-top.show { opacity: 1; transform: none; pointer-events: auto; }
 .back-to-top:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -1798,7 +1802,7 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
 
   /* ---- FLOAT (safe area iPhone) ---- */
-  .back-to-top { right: 66px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+  .back-to-top { right: 66px; bottom: calc(16px + env(safe-area-inset-bottom)); height: 38px; padding: 0 12px; font-size: 0.72rem; }
   .wa-float { right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
   .credit-gif-wrap { left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 48px; height: 48px; }
 
