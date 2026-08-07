@@ -1621,37 +1621,48 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
 /* ---------- TOMBOL WHATSAPP MENGAMBANG ---------- */
 .wa-float {
   position: fixed; right: 22px; bottom: 22px; z-index: 80;
-  width: 46px; height: 46px;
-  display: grid; place-items: center;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 1px solid var(--accent);
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 40px;
+  padding: 0 15px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.15s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease,
+              border-color var(--dur) ease, color var(--dur) ease;
 }
 .wa-float.show { opacity: 1; transform: none; pointer-events: auto; }
-.wa-float:hover { filter: brightness(1.1); }
-.wa-float img {
-  width: 20px; height: 20px;
-  filter: brightness(0) invert(1); /* ikon putih di atas aksen */
+.wa-float:hover { border-color: var(--accent); color: var(--accent); }
+.wa-float .wa-ico { width: 18px; height: 18px; flex-shrink: 0; }
+.wa-float .wa-prompt { color: var(--accent); font-weight: 700; }
+.wa-float .wa-cursor {
+  display: inline-block;
+  width: 0.5em; height: 1em;
+  background: var(--accent);
+  animation: blink 1s steps(2, start) infinite;
 }
 .wa-pulse {
   position: absolute; inset: -5px;
-  border-radius: 50%;
+  border-radius: 999px;
   border: 2px solid var(--accent);
   opacity: 0;
   animation: wa-pulse 2.4s ease-out infinite;
 }
 @keyframes wa-pulse {
-  0% { transform: scale(0.85); opacity: 0.7; }
-  100% { transform: scale(1.45); opacity: 0; }
+  0% { transform: scale(0.92); opacity: 0.7; }
+  100% { transform: scale(1.4); opacity: 0; }
 }
 
 /* ---------- BACK TO TOP ---------- */
 .back-to-top {
-  position: fixed; right: 78px; bottom: 22px; z-index: 80;
+  position: fixed; right: 22px; bottom: 74px; z-index: 80;
   display: inline-flex; align-items: center; gap: 6px;
   height: 40px;
   padding: 0 14px;
@@ -1670,6 +1681,12 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
               border-color var(--dur) ease, color var(--dur) ease;
 }
 .back-to-top .bt-prompt { color: var(--accent); font-weight: 700; }
+.back-to-top .bt-cursor {
+  display: inline-block;
+  width: 0.5em; height: 1em;
+  background: var(--accent);
+  animation: blink 1s steps(2, start) infinite;
+}
 .back-to-top.show { opacity: 1; transform: none; pointer-events: auto; }
 .back-to-top:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -1802,8 +1819,8 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
 
   /* ---- FLOAT (safe area iPhone) ---- */
-  .back-to-top { right: 66px; bottom: calc(16px + env(safe-area-inset-bottom)); height: 38px; padding: 0 12px; font-size: 0.72rem; }
-  .wa-float { right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; }
+  .back-to-top { right: 16px; bottom: calc(66px + env(safe-area-inset-bottom)); height: 38px; padding: 0 12px; font-size: 0.72rem; }
+  .wa-float { right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); height: 38px; padding: 0 12px; font-size: 0.72rem; }
   .credit-gif-wrap { left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 48px; height: 48px; }
 
   /* ---- LAIN-LAIN ---- */
