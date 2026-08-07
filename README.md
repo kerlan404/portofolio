@@ -49,11 +49,10 @@ kata "Hai" multi-bahasa, mode terang/gelap, trilingual **ID/EN/JA**, dan angka
    `assets/images/README.md`).
 5. **Link proyek "live ↗"** → di `index.html`, ganti `href="#"` pada
    `.project-link` dengan URL proyek.
-6. **Domain untuk OG/sosmed** → `og:image` & `twitter:image` sudah memakai path
-   relatif (`assets/og-image.png`) sehingga thumbnail preview langsung tampil
-   setelah deploy. Untuk `og:url` & `canonical`, ganti `YOUR-DOMAIN` dengan domain
-   Netlify asli (contoh: `https://portofolio-mrezy.netlify.app`) — opsional, hanya
-   dibutuhkan agar preview konsisten di semua platform.
+6. **Domain untuk OG/sosmed** → sudah terisi domain Netlify asli
+   (`https://mochammadrezyalfaraby.netlify.app`) pada `og:url`, `og:image`,
+   `canonical`, dan `twitter:image`. Jika nanti memakai custom domain, ganti
+   semua URL tersebut di `index.html`.
 
 ## Menjalankan di lokal
 
@@ -73,9 +72,8 @@ npx serve -l 4173
 4. Deploy — setiap push ke GitHub otomatis ter-deploy.
 5. **Form kontak** aktif otomatis (Netlify Forms, gratis) — notifikasi
    submission ada di **Site settings → Forms**.
-6. Setelah domain Netlify diketahui, ganti `YOUR-DOMAIN` pada `og:url` &
-   `canonical` di `index.html` (lihat langkah 6 di atas). Thumbnail link
-   sudah otomatis tampil karena `og:image` memakai path relatif.
+6. Domain OG sudah terisi — thumbnail preview WA/IG/Twitter tampil otomatis.
+   Jika mengganti domain Netlify/custom, update URL pada meta OG di `index.html`.
 
 ## Fitur
 
