@@ -40,18 +40,20 @@ kata "Hai" multi-bahasa, mode terang/gelap, trilingual **ID/EN/JA**, dan angka
    (`name`, `nameShort`, `github`, `instagram`, `whatsapp`, `email`).
    Nomor WhatsApp memakai format internasional tanpa `+` (contoh: `6281234567890`).
 2. **Teks & terjemahan** → masih di `js/data.js`, kamus `I18N` (kunci `id`, `en`, `ja`).
-3. **Ikon teknologi di hero** → di `index.html`, blok `<ul class="hero-tech">`
-   (ikon dari cdn.simpleicons.org) — tambah/hapus chip sesuai stack Anda.
+3. **Ikon teknologi & AI tools** → di `index.html`, blok `<ul class="stack-chips">`
+   dalam section `#stack` (grup BAHASA / FRAMEWORK / TOOLS / AI TOOLS) — tambah/hapus
+   chip sesuai stack Anda. Ikon disimpan lokal di `assets/icons/`.
 4. **Gambar proyek** → thumbnail SVG kustom sudah tersedia di
    `assets/images/`. Untuk memakai screenshot asli, simpan sebagai
    `proyek-1.png` lalu ubah `src` di `index.html` (lihat
    `assets/images/README.md`).
 5. **Link proyek "live ↗"** → di `index.html`, ganti `href="#"` pada
    `.project-link` dengan URL proyek.
-6. **Domain untuk OG/sosmed** → di `index.html`, ganti semua
-   `YOUR-DOMAIN` di blok meta `og:*` / `twitter:*` dengan domain Netlify
-   asli (contoh: `https://portofolio-mrezy.netlify.app`). Tanpa ini,
-   thumbnail link tidak tampil saat dibagikan ke WhatsApp/Twitter/etc.
+6. **Domain untuk OG/sosmed** → `og:image` & `twitter:image` sudah memakai path
+   relatif (`assets/og-image.png`) sehingga thumbnail preview langsung tampil
+   setelah deploy. Untuk `og:url` & `canonical`, ganti `YOUR-DOMAIN` dengan domain
+   Netlify asli (contoh: `https://portofolio-mrezy.netlify.app`) — opsional, hanya
+   dibutuhkan agar preview konsisten di semua platform.
 
 ## Menjalankan di lokal
 
@@ -71,16 +73,17 @@ npx serve -l 4173
 4. Deploy — setiap push ke GitHub otomatis ter-deploy.
 5. **Form kontak** aktif otomatis (Netlify Forms, gratis) — notifikasi
    submission ada di **Site settings → Forms**.
-6. Setelah domain Netlify diketahui, ganti `YOUR-DOMAIN` pada meta `og:*`
-   di `index.html` (lihat langkah 6 di atas) — thumbnail link baru tampil.
+6. Setelah domain Netlify diketahui, ganti `YOUR-DOMAIN` pada `og:url` &
+   `canonical` di `index.html` (lihat langkah 6 di atas). Thumbnail link
+   sudah otomatis tampil karena `og:image` memakai path relatif.
 
 ## Fitur
 
 - ⏳ Loading screen kata "halo" 17 bahasa + progres bar, hanya sekali per sesi
 - ⌨️ Hero berupa **jendela terminal**: `$ whoami` + nama mengetik, lalu skrip
   `./status.sh` diketik baris demi baris dengan kursor berkedip
-- 🛠️ **Ikon teknologi** (PHP, Flutter, Dart, JS, HTML, CSS, GitHub, MySQL)
-  di samping nama hero — sesuai stack Anda
+- 🛠️ **Panel STACK** di bawah hero: grup BAHASA / FRAMEWORK & UI / TOOLS & DB /
+  AI TOOLS dengan ikon resmi (PHP, Flutter, Dart, JS, HTML, CSS, GitHub, MySQL, dll)
 - 📟 **Ticker berjalan** berisi humor developer (`$ npm install kesuksesan`,
   `404: rasa takut tidak ditemukan`) sebagai pembatas antar-section
 - 🖼️ Form kontak dibingkai **jendela terminal** (`~/kirim-pesan.js`)

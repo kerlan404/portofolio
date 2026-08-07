@@ -150,8 +150,14 @@ body, a, button, input, textarea, .tag, .project-card,
   background: var(--bg);
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+  /* failsafe: kalau JS gagal dimuat (mis. saat deploy), loader tetap menghilang
+     sendiri setelah 7 detik — normalnya JS menutup lebih dulu (~6 detik). */
+  animation: loader-failsafe 0.4s ease 7s forwards;
 }
 #loader.done { transform: translateY(-100%); pointer-events: none; }
+@keyframes loader-failsafe {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
 
 .loader-inner { text-align: center; }
 .loader-word {
@@ -428,13 +434,6 @@ body, a, button, input, textarea, .tag, .project-card,
   user-select: none;
 }
 
-.hero-tech {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 26px;
-  opacity: 0; transform: translateY(14px);
-  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
-}
-.hero-tech.shown { opacity: 1; transform: none; }
 .tech-chip {
   display: inline-flex; align-items: center; gap: 7px;
   padding: 6px 12px;
@@ -464,23 +463,42 @@ html[data-theme='dark'] .tech-chip img[src$='copilot.svg'] {
   filter: invert(1) drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
 }
 
-/* ---------- KOMPONEN AI (tools) ---------- */
-.hero-ai-label {
-  margin: -14px 0 12px;
+/* ---------- STACK (panel teknologi & AI tools di bawah hero) ---------- */
+.stack-window {
+  max-width: 900px;
+  box-shadow: 0 30px 70px -34px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.stack-body {
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.stack-group {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 18px 20px;
+  transition: border-color var(--dur) ease, background-color var(--dur) ease;
+}
+.stack-group:hover { border-color: var(--accent); }
+/* grup AI Tools diberi aksen lembut supaya menonjol */
+.stack-group-ai {
+  background: linear-gradient(135deg, var(--accent-soft), transparent 62%);
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+}
+.stack-group-ai:hover { border-color: var(--accent); }
+.stack-group-label {
+  display: flex; align-items: center; gap: 8px;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
-  color: var(--ink-muted);
-  opacity: 0; transform: translateY(14px);
-  transition: opacity 0.6s ease 0.28s, transform 0.6s ease 0.28s;
+  color: var(--accent);
+  margin-bottom: 14px;
 }
-.hero-ai-label.shown { opacity: 1; transform: none; }
-.hero-ai {
+.stack-group-label::before { content: '▸'; }
+.stack-chips {
   display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 26px;
-  opacity: 0; transform: translateY(14px);
-  transition: opacity 0.6s ease 0.32s, transform 0.6s ease 0.32s;
 }
-.hero-ai.shown { opacity: 1; transform: none; }
 
 .hero-tagline {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
@@ -1737,9 +1755,11 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   }
   .hero-ghost { transform: translate(4px, 4px); }
   .whoami { margin-bottom: 20px; }
-  .hero-tech, .hero-ai { gap: 7px; margin-bottom: 20px; }
-  .hero-ai-label { margin: -8px 0 10px; }
   .tech-chip { padding: 6px 10px; gap: 6px; }
+
+  /* ---- STACK ---- */
+  .stack-body { grid-template-columns: 1fr; gap: 14px; padding: 20px 18px; }
+  .stack-group { padding: 16px 16px; }
   .hero-tagline { margin-bottom: 26px; }
   .hero-meta { margin-top: 26px; gap: 8px 18px; }
 
@@ -1799,7 +1819,6 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   .section { padding: 64px 0; }
 
   .hero-name { font-size: clamp(1.9rem, 10vw, 2.4rem); }
-  .hero-tech, .hero-ai { gap: 6px; }
   .tech-chip { font-size: 0.75rem; padding: 5px 9px; }
   .tech-chip img { width: 14px; height: 14px; }
 
@@ -1850,7 +1869,6 @@ textarea.field { resize: vertical; min-height: 110px; line-height: 1.5; }
   }
   #loader { transition: none; }
   .ticker-track { animation: none; }
-  .hero-tagline, .hero-actions, .hero-meta, .hero-tech, .hero-terminal,
-  .hero-ai, .hero-ai-label,
+  .hero-tagline, .hero-actions, .hero-meta, .hero-terminal,
   .scroll-hint, .section-label { opacity: 1; transform: none; }
 }

@@ -8,13 +8,16 @@
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <title>Mochammad Rezy Alfarabi — Portofolio</title>
 
-<!-- Open Graph — ganti YOUR-DOMAIN dengan domain Netlify asli setelah deploy! -->
+<!-- Open Graph — path relatif (assets/og-image.png) sehingga thumbnail preview WA/IG langsung tampil
+     setelah deploy, tanpa perlu mengubah URL manual. ⚠️ OPSIONAL setelah deploy: ganti og:url & og:image
+     dengan domain asli, contoh: https://namasite.netlify.app/assets/og-image.png (untuk platform tertentu
+     yang memaksa URL absolut seperti Twitter). -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="M.Rezy Alfarabi — Portofolio">
 <meta property="og:title" content="Mochammad Rezy Alfarabi — Full Stack Developer">
 <meta property="og:description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, Express.js, EJS, Next.js, Tailwind CSS). Lihat proyek, pengalaman, dan cara menghubungi saya.">
 <meta property="og:url" content="https://YOUR-DOMAIN.netlify.app/">
-<meta property="og:image" content="https://YOUR-DOMAIN.netlify.app/og-image.png">
+<meta property="og:image" content="assets/og-image.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,11 +26,14 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 
+<!-- Canonical: mengikuti domain yang sedang dipakai (otomatis benar setelah deploy) -->
+<link rel="canonical" href="https://YOUR-DOMAIN.netlify.app/">
+
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mochammad Rezy Alfarabi — Full Stack Developer">
 <meta name="twitter:description" content="Portofolio Mochammad Rezy Alfarabi — Full Stack Developer (PHP, Flutter, Dart, JavaScript, MySQL, Express.js, EJS, Next.js, Tailwind CSS).">
-<meta name="twitter:image" content="https://YOUR-DOMAIN.netlify.app/og-image.png">
+<meta name="twitter:image" content="assets/og-image.png">
 <script>
   /* Set tema sebelum CSS dimuat supaya tidak flash */
   (function () {
@@ -99,35 +105,10 @@
       <div class="hero-left">
         <p class="whoami"><span class="prompt">$</span> whoami<span class="cursor" id="whoami-cursor" aria-hidden="true"></span></p>
         <h1 class="hero-name"><span class="hero-ghost" id="hero-ghost" aria-hidden="true"></span><span id="hero-name"></span><span class="cursor hero-cursor" id="name-cursor" hidden aria-hidden="true"></span></h1>
-        <ul class="hero-tech" id="hero-tech" aria-label="Teknologi">
-          <li class="tech-chip"><img src="assets/icons/php.svg" alt="" width="16" height="16" loading="lazy"><span>PHP</span></li>
-          <li class="tech-chip"><img src="assets/icons/flutter.svg" alt="" width="16" height="16" loading="lazy"><span>Flutter</span></li>
-          <li class="tech-chip"><img src="assets/icons/dart.svg" alt="" width="16" height="16" loading="lazy"><span>Dart</span></li>
-          <li class="tech-chip"><img src="assets/icons/javascript.svg" alt="" width="16" height="16" loading="lazy"><span>JavaScript</span></li>
-          <li class="tech-chip"><img src="assets/icons/html5.svg" alt="" width="16" height="16" loading="lazy"><span>HTML</span></li>
-          <li class="tech-chip"><img src="assets/icons/css3.svg" alt="" width="16" height="16" loading="lazy"><span>CSS</span></li>
-          <li class="tech-chip"><img src="assets/icons/tailwind.svg" alt="" width="16" height="16" loading="lazy"><span>Tailwind</span></li>
-          <li class="tech-chip"><img src="assets/icons/mysql.svg" alt="" width="16" height="16" loading="lazy"><span>MySQL</span></li>
-          <li class="tech-chip"><img src="assets/icons/git.svg" alt="" width="16" height="16" loading="lazy"><span>Git</span></li>
-          <li class="tech-chip"><img src="assets/icons/github.svg" alt="" width="16" height="16" loading="lazy"><span>GitHub</span></li>
-          <li class="tech-chip"><img src="assets/icons/ejs.svg" alt="" width="16" height="16" loading="lazy"><span>EJS</span></li>
-          <li class="tech-chip"><img src="assets/icons/nextdotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Next.js</span></li>
-          <li class="tech-chip"><img src="assets/icons/react.svg" alt="" width="16" height="16" loading="lazy"><span>React</span></li>
-          <li class="tech-chip"><img src="assets/icons/nodedotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Node.js</span></li>
-          <li class="tech-chip"><img src="assets/icons/express.svg" alt="" width="16" height="16" loading="lazy"><span>Express</span></li>
-          <li class="tech-chip"><img src="assets/icons/vscode.svg" alt="" width="16" height="16" loading="lazy"><span>VS Code</span></li>
-        </ul>
-        <p class="hero-ai-label mono-caption" id="hero-ai-label" data-i18n="hero.aiTools">✦ AI TOOLS</p>
-        <ul class="hero-ai" id="hero-ai" aria-label="AI Tools">
-          <li class="tech-chip"><img src="assets/icons/claude.svg" alt="" width="16" height="16" loading="lazy"><span>Claude</span></li>
-          <li class="tech-chip"><img src="assets/icons/antigravity.svg" alt="" width="16" height="16" loading="lazy"><span>Antigravity</span></li>
-          <li class="tech-chip"><img src="assets/icons/copilot.svg" alt="" width="16" height="16" loading="lazy"><span>Copilot</span></li>
-          <li class="tech-chip"><img src="assets/icons/gemini.svg" alt="" width="16" height="16" loading="lazy"><span>Gemini</span></li>
-          <li class="tech-chip"><img src="assets/icons/chatgpt.svg" alt="" width="16" height="16" loading="lazy"><span>ChatGPT</span></li>
-        </ul>
         <p class="hero-tagline" id="hero-tagline" data-i18n="hero.tagline">Software Developer — membangun produk web yang rapi, cepat, dan bermanfaat.</p>
         <div class="hero-actions" id="hero-actions">
           <a class="btn btn-primary" href="#proyek" data-i18n="hero.ctaProjects">Lihat Proyek →</a>
+          <a class="btn btn-secondary" href="#kontak" data-i18n="hero.ctaContact">Hubungi Saya</a>
         </div>
         <ul class="hero-meta" id="hero-meta" aria-label="Status">
           <li>~/portfolio</li>
@@ -153,7 +134,65 @@
         <div class="terminal-body" id="term-output"></div>
       </div>
     </div>
-    <a class="scroll-hint" id="hero-scroll" href="#tentang" data-i18n="hero.scroll" aria-label="scroll ke bawah">↓ scroll</a>
+    <a class="scroll-hint" id="hero-scroll" href="#stack" data-i18n="hero.scroll" aria-label="scroll ke bawah">↓ scroll</a>
+  </section>
+
+  <!-- ============ STACK (teknologi & AI tools) ============ -->
+  <section id="stack" class="section">
+    <div class="container">
+      <h2 class="sr-only" data-i18n="nav.stack">Stack</h2>
+      <p class="section-label"><span data-i18n="nav.stackLabel">STACK</span></p>
+      <p class="section-cmd" aria-hidden="true" data-i18n="cmd.stack">$ cat ~/stack.txt</p>
+      <div class="terminal-window stack-window">
+        <div class="terminal-bar">
+          <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="t-title" data-i18n="win.stack">~/stack.txt</span>
+        </div>
+        <div class="stack-body">
+          <div class="stack-group">
+            <p class="stack-group-label mono-caption" data-i18n="stack.langs">BAHASA</p>
+            <ul class="stack-chips" aria-label="Bahasa pemrograman">
+              <li class="tech-chip"><img src="assets/icons/php.svg" alt="" width="16" height="16" loading="lazy"><span>PHP</span></li>
+              <li class="tech-chip"><img src="assets/icons/dart.svg" alt="" width="16" height="16" loading="lazy"><span>Dart</span></li>
+              <li class="tech-chip"><img src="assets/icons/javascript.svg" alt="" width="16" height="16" loading="lazy"><span>JavaScript</span></li>
+              <li class="tech-chip"><img src="assets/icons/html5.svg" alt="" width="16" height="16" loading="lazy"><span>HTML</span></li>
+              <li class="tech-chip"><img src="assets/icons/css3.svg" alt="" width="16" height="16" loading="lazy"><span>CSS</span></li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <p class="stack-group-label mono-caption" data-i18n="stack.framework">FRAMEWORK & UI</p>
+            <ul class="stack-chips" aria-label="Framework dan UI">
+              <li class="tech-chip"><img src="assets/icons/nextdotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Next.js</span></li>
+              <li class="tech-chip"><img src="assets/icons/react.svg" alt="" width="16" height="16" loading="lazy"><span>React</span></li>
+              <li class="tech-chip"><img src="assets/icons/nodedotjs.svg" alt="" width="16" height="16" loading="lazy"><span>Node.js</span></li>
+              <li class="tech-chip"><img src="assets/icons/express.svg" alt="" width="16" height="16" loading="lazy"><span>Express</span></li>
+              <li class="tech-chip"><img src="assets/icons/ejs.svg" alt="" width="16" height="16" loading="lazy"><span>EJS</span></li>
+              <li class="tech-chip"><img src="assets/icons/flutter.svg" alt="" width="16" height="16" loading="lazy"><span>Flutter</span></li>
+              <li class="tech-chip"><img src="assets/icons/tailwind.svg" alt="" width="16" height="16" loading="lazy"><span>Tailwind</span></li>
+            </ul>
+          </div>
+          <div class="stack-group">
+            <p class="stack-group-label mono-caption" data-i18n="stack.tools">TOOLS & DB</p>
+            <ul class="stack-chips" aria-label="Tools dan database">
+              <li class="tech-chip"><img src="assets/icons/mysql.svg" alt="" width="16" height="16" loading="lazy"><span>MySQL</span></li>
+              <li class="tech-chip"><img src="assets/icons/git.svg" alt="" width="16" height="16" loading="lazy"><span>Git</span></li>
+              <li class="tech-chip"><img src="assets/icons/github.svg" alt="" width="16" height="16" loading="lazy"><span>GitHub</span></li>
+              <li class="tech-chip"><img src="assets/icons/vscode.svg" alt="" width="16" height="16" loading="lazy"><span>VS Code</span></li>
+            </ul>
+          </div>
+          <div class="stack-group stack-group-ai">
+            <p class="stack-group-label mono-caption" data-i18n="stack.ai">AI TOOLS</p>
+            <ul class="stack-chips" aria-label="AI Tools">
+              <li class="tech-chip"><img src="assets/icons/claude.svg" alt="" width="16" height="16" loading="lazy"><span>Claude</span></li>
+              <li class="tech-chip"><img src="assets/icons/antigravity.svg" alt="" width="16" height="16" loading="lazy"><span>Antigravity</span></li>
+              <li class="tech-chip"><img src="assets/icons/copilot.svg" alt="" width="16" height="16" loading="lazy"><span>Copilot</span></li>
+              <li class="tech-chip"><img src="assets/icons/gemini.svg" alt="" width="16" height="16" loading="lazy"><span>Gemini</span></li>
+              <li class="tech-chip"><img src="assets/icons/chatgpt.svg" alt="" width="16" height="16" loading="lazy"><span>ChatGPT</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ TICKER ============ -->

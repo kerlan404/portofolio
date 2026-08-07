@@ -134,7 +134,7 @@
     const ghost = $('#hero-ghost');
     if (ghost) ghost.textContent = CONFIG.name; // layer hantu di belakang nama
     const cursor = $('#name-cursor');
-    const extras = ['#hero-tech', '#hero-ai-label', '#hero-ai', '#hero-tagline', '#hero-actions', '#hero-meta', '#hero-terminal', '#hero-scroll'];
+    const extras = ['#hero-tagline', '#hero-actions', '#hero-meta', '#hero-terminal', '#hero-scroll'];
 
     const revealExtras = () => {
       extras.forEach((sel) => { const el = $(sel); if (el) el.classList.add('shown'); });
